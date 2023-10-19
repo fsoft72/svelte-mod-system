@@ -69,13 +69,21 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 	if ( is_new ) document.head.appendChild( style );
 };
 
+let currentThemeColors: Record<string, number[]> = {};
+
+export const themeColors = (): Record<string, number[]> => currentThemeColors;
+
 export const themeCreate = ( name: string, colors: Record<string, number[]> ) => {
 	let modes: any = {};
 
-	Object.entries( colors ).forEach( ( [ mode, values ] ) => {
+	currentThemeColors = { ...currentThemeColors, ...colors };
+
+	Object.entries( currentThemeColors ).forEach( ( [ mode, values ] ) => {
 		const mode_colors = calculateColors( 'liwe3-' + mode, values[ 0 ], values[ 1 ], values[ 2 ] );
 		modes = { ...modes, ...mode_colors };
 	} );
+
+	modes = { ...modes, ...calculateColors( 'liwe3-dark', 80, 80, 80 ) };
 
 	injectColors( name, modes );
 };

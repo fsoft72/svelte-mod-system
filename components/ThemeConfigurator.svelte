@@ -11,6 +11,8 @@
 		type GridField
 	} from '$liwe3/components/DataGrid.svelte';
 	import type { Color } from '$liwe3/types/types';
+	import { themeColors, themeCreate } from '../theme';
+	import { onMount } from 'svelte';
 
 	const ranges = [900, 800, 700, 600, 500, 400, 300, 200, 100, 50];
 	const fields: GridField[] = [
@@ -92,6 +94,26 @@
 	];
 
 	let darkMode = false;
+	let mode: Color = 'mode1';
+
+	let is_ready = false;
+
+	const colors: Record<string, string> = {
+		mode1: '#000000',
+		mode2: '#000000',
+		mode3: '#000000',
+		mode4: '#000000',
+		info: '#000000',
+		error: '#000000',
+		warning: '#000000',
+		success: '#000000',
+		dark: '#000000'
+	};
+
+	let mode1 = colors.mode1;
+	let mode2 = colors.mode2;
+	let mode3 = colors.mode3;
+	let mode4 = colors.mode4;
 
 	const modes: Color[] = [
 		'mode1',
@@ -101,17 +123,84 @@
 		'info',
 		'error',
 		'warning',
-		'success'
+		'success',
+		'dark'
 	];
+
+	// gets a string like '#ff00a0' and returns [ 255, 0, 160 ]
+	const rgbHexToInt = (rgb: string) => {
+		const r = parseInt(rgb.slice(1, 3), 16);
+		const g = parseInt(rgb.slice(3, 5), 16);
+		const b = parseInt(rgb.slice(5, 7), 16);
+
+		return [r, g, b];
+	};
+
+	const intToRGBHex = (rgb: number[]) => {
+		const r = rgb[0].toString(16).padStart(2, '0');
+		const g = rgb[1].toString(16).padStart(2, '0');
+		const b = rgb[2].toString(16).padStart(2, '0');
+
+		return `#${r}${g}${b}`;
+	};
+
+	$: {
+		is_ready && themeCreate('colors', { mode1: rgbHexToInt(mode1) });
+	}
+
+	$: {
+		is_ready && themeCreate('colors', { mode2: rgbHexToInt(mode2) });
+	}
+
+	$: {
+		is_ready && themeCreate('colors', { mode3: rgbHexToInt(mode3) });
+	}
+
+	$: {
+		is_ready && themeCreate('colors', { mode4: rgbHexToInt(mode4) });
+	}
+
+	onMount(() => {
+		const tc = themeColors();
+		Object.keys(tc).map((key) => {
+			colors[key] = intToRGBHex(tc[key]);
+		});
+
+		mode1 = colors.mode1;
+		mode2 = colors.mode2;
+		mode3 = colors.mode3;
+		mode4 = colors.mode4;
+
+		is_ready = true;
+	});
 </script>
 
-<div class="container">
-	Dark Mode: <input type="checkbox" bind:checked={darkMode} />
+<div class="container liwe3-light-theme">
+	<div class="tweekers">
+		<div>
+			Dark Mode: <input type="checkbox" bind:checked={darkMode} />
+		</div>
+		<div>
+			Mode:
+			<select bind:value={mode}>
+				{#each modes as mode}
+					<option value={mode}>{mode}</option>
+				{/each}
+			</select>
+		</div>
+		<div>
+			Colors:
+			<input type="color" bind:value={mode1} />
+			<input type="color" bind:value={mode2} />
+			<input type="color" bind:value={mode3} />
+			<input type="color" bind:value={mode4} />
+		</div>
+	</div>
 	<div class={darkMode ? 'liwe3-dark-theme' : 'liwe3-light-theme'}>
-		<Tabs>
+		<Tabs {mode}>
 			<Tab id="colors" title="Colors">
 				<div class="colors">
-					{#each ['mode1', 'mode2', 'mode3', 'mode4', 'info', 'error', 'warning', 'success'] as name}
+					{#each modes as name}
 						<div class="col">
 							{#each ranges as val}
 								<div class="color" style={`background-color: var(--liwe3-${name}-${val});`}>
@@ -140,7 +229,7 @@
 				</div>
 			</Tab>
 			<Tab id="selects" title="Selects">
-				<div class="row">
+				<div class="row form">
 					{#each ['mode1', 'mode2', 'mode3', 'mode4'] as mode}
 						<Select class={mode} items={['mode1', 'mode2', 'mode3', 'mode4']} />
 					{/each}
@@ -190,5 +279,11 @@
 		gap: 0.5rem;
 
 		margin-bottom: 0.5rem;
+	}
+
+	.tweekers {
+		display: flex;
+		flex-direction: row;
+		gap: 2rem;
 	}
 </style>
