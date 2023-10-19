@@ -13,6 +13,7 @@
 	import type { Color } from '$liwe3/types/types';
 	import { themeColors, themeCreate } from '../theme';
 	import { onMount } from 'svelte';
+	import AutoComplete from '$liwe3/components/AutoComplete.svelte';
 
 	const ranges = [900, 800, 700, 600, 500, 400, 300, 200, 100, 50];
 	const fields: GridField[] = [
@@ -241,6 +242,17 @@
 					<DataGrid mode="mode2" {fields} {data} {actions} />
 					<DataGrid mode="mode3" {fields} {data} {actions} />
 					<DataGrid mode="mode4" {fields} {data} {actions} />
+				</div>
+			</Tab>
+			<Tab id="controls" title="Controls">
+				<div class="col form">
+					Autocomplete
+					<div class="row">
+						<AutoComplete mode="mode1" items={['mode1', 'mode2', 'mode3', 'mode4']} />
+						<AutoComplete mode="mode2" items={['mode1', 'mode2', 'mode3', 'mode4']} />
+						<AutoComplete mode="mode3" items={['mode1', 'mode2', 'mode3', 'mode4']} />
+						<AutoComplete mode="mode4" items={['mode1', 'mode2', 'mode3', 'mode4']} />
+					</div>
 				</div>
 			</Tab>
 		</Tabs>
