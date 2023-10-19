@@ -19,6 +19,7 @@
 	import ProgressBar from '$liwe3/components/ProgressBar.svelte';
 	import DraggableTree from '$liwe3/components/DraggableTree.svelte';
 	import ElementList from '$liwe3/components/ElementList.svelte';
+	import TagInput from '$liwe3/components/TagInput.svelte';
 
 	const ranges = [900, 800, 700, 600, 500, 400, 300, 200, 100, 50];
 	const fields: GridField[] = [
@@ -337,6 +338,13 @@
 						<ProgressBar mode="mode2" percentage={50} />
 						<ProgressBar mode="mode3" percentage={50} />
 						<ProgressBar mode="mode4" percentage={50} />
+					</div>
+					Tag Input
+					<div class="row">
+						<TagInput mode="mode1" allowNewTags={true} />
+						<TagInput mode="mode2" allowNewTags={true} />
+						<TagInput mode="mode3" allowNewTags={true} />
+						<TagInput mode="mode4" allowNewTags={true} />
 					</div>
 				</div>
 			</Tab>
