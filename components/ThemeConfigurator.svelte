@@ -14,6 +14,11 @@
 	import { themeColors, themeCreate } from '../theme';
 	import { onMount } from 'svelte';
 	import AutoComplete from '$liwe3/components/AutoComplete.svelte';
+	import MarkdownInput from '$liwe3/components/MarkdownInput.svelte';
+	import Modal from '$liwe3/components/Modal.svelte';
+	import ProgressBar from '$liwe3/components/ProgressBar.svelte';
+	import DraggableTree from '$liwe3/components/DraggableTree.svelte';
+	import ElementList from '$liwe3/components/ElementList.svelte';
 
 	const ranges = [900, 800, 700, 600, 500, 400, 300, 200, 100, 50];
 	const fields: GridField[] = [
@@ -116,6 +121,9 @@
 	let mode3 = colors.mode3;
 	let mode4 = colors.mode4;
 
+	let testMode: Color = 'mode1';
+	let showModal = false;
+
 	const modes: Color[] = [
 		'mode1',
 		'mode2',
@@ -198,6 +206,22 @@
 		</div>
 	</div>
 	<div class={darkMode ? 'liwe3-dark-theme' : 'liwe3-light-theme'}>
+		{#if showModal}
+			<Modal
+				title="Theme modal test"
+				size="md"
+				mode={testMode}
+				on:cancel={() => {
+					showModal = false;
+				}}
+				on:close={() => {
+					showModal = false;
+				}}
+			>
+				<h1>Modal test</h1>
+				<p>Modal test</p>
+			</Modal>
+		{/if}
 		<Tabs {mode}>
 			<Tab id="colors" title="Colors">
 				<div class="colors">
@@ -244,6 +268,22 @@
 					<DataGrid mode="mode4" {fields} {data} {actions} />
 				</div>
 			</Tab>
+			<Tab id="dragtree" title="Draggable Tree">
+				<div class="row">
+					<DraggableTree mode="mode1" />
+					<DraggableTree mode="mode2" />
+					<DraggableTree mode="mode3" />
+					<DraggableTree mode="mode4" />
+				</div>
+			</Tab>
+			<Tab id="elements" title="Elements List">
+				<div class="row">
+					<ElementList mode="mode1" />
+					<ElementList mode="mode2" />
+					<ElementList mode="mode3" />
+					<ElementList mode="mode4" />
+				</div>
+			</Tab>
 			<Tab id="controls" title="Controls">
 				<div class="col form">
 					Autocomplete
@@ -252,6 +292,51 @@
 						<AutoComplete mode="mode2" items={['mode1', 'mode2', 'mode3', 'mode4']} />
 						<AutoComplete mode="mode3" items={['mode1', 'mode2', 'mode3', 'mode4']} />
 						<AutoComplete mode="mode4" items={['mode1', 'mode2', 'mode3', 'mode4']} />
+					</div>
+					Markdown
+					<div class="col">
+						<MarkdownInput rows={2} mode="mode1" />
+						<MarkdownInput rows={2} mode="mode2" />
+						<MarkdownInput rows={2} mode="mode3" />
+						<MarkdownInput rows={2} mode="mode4" />
+					</div>
+					Modals
+					<div class="row">
+						<Button
+							mode="mode1"
+							on:click={() => {
+								testMode = 'mode1';
+								showModal = true;
+							}}>Open Modal</Button
+						>
+						<Button
+							mode="mode2"
+							on:click={() => {
+								testMode = 'mode2';
+								showModal = true;
+							}}>Open Modal</Button
+						>
+						<Button
+							mode="mode3"
+							on:click={() => {
+								testMode = 'mode3';
+								showModal = true;
+							}}>Open Modal</Button
+						>
+						<Button
+							mode="mode4"
+							on:click={() => {
+								testMode = 'mode4';
+								showModal = true;
+							}}>Open Modal</Button
+						>
+					</div>
+					Progress Bar
+					<div class="row">
+						<ProgressBar mode="mode1" percentage={50} />
+						<ProgressBar mode="mode2" percentage={50} />
+						<ProgressBar mode="mode3" percentage={50} />
+						<ProgressBar mode="mode4" percentage={50} />
 					</div>
 				</div>
 			</Tab>
