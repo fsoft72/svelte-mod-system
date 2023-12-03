@@ -258,3 +258,27 @@ export const system_domain_current = async (  ) => {
 
 	return res.domain;
 };
+
+/**
+ * This endpoint creates an invitation token for a domain.
+ * The invitation can have an `expire` date, so you can create temporary tokens.
+ * The `expire` field is expressed in `minutes`. If you specify a value different that `0`, the token will last the `expire` minutes.
+ * If the `expire` is set to `0` (default), the token does not expire.
+ *
+ * @param id_domain - The Domain ID to create the invite for [req]
+ * @param expire - The amount of minutes the link is valid [opt]
+ *
+ * @return token: str
+ *
+ */
+export const system_domain_create_invite = async ( id_domain: string, expire: number = 0 ) => {
+	const res = await get( `/api/system/domain/create/invite`, { id_domain, expire }, true );
+
+	if (res.error) return res;
+
+	/*=== f2c_start system_domain_create_invite ===*/
+
+	/*=== f2c_end system_domain_create_invite ===*/
+
+	return res.token;
+};

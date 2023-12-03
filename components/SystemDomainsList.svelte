@@ -9,23 +9,37 @@
 	import {
 		system_admin_domain_add,
 		system_admin_domain_update,
-		system_admin_domains_list
+		system_admin_domains_list,
+		system_domain_create_invite
 	} from '../actions';
 	import Modal from '$liwe3/components/Modal.svelte';
 	import SystemDomainEdit from './SystemDomainEdit.svelte';
 	import { PencilSquare, Trash } from 'svelte-hero-icons';
 
 	let currentRow: any = null;
-	let editModalOpen = false;
-	let deleteModalOpen = false;
 	let totRows: number = 0;
 	let maxRowsPerPage = 50;
+	let inv = '';
 
 	let domains: SystemDomain[] = [];
 	let displayDomains: GridDataRow[] = [];
 	let filteredDomains: SystemDomain[] = [];
 
+	let editModalOpen = false;
+	let deleteModalOpen = false;
+	let inviteModalOpen = false;
+
 	let actions: GridAction[] = [
+		{
+			id: 'invite',
+			label: 'Invite',
+			icon: PencilSquare,
+			mode: 'mode3',
+			action: async (row: any) => {
+				inv = await system_domain_create_invite(row.id);
+				inviteModalOpen = true;
+			}
+		},
 		{
 			id: 'edit',
 			label: 'Edit',
@@ -156,6 +170,24 @@
 	</Modal>
 {/if}
 
+{#if inviteModalOpen}
+	<Modal
+		title={$_('Invite token')}
+		size="md"
+		on:confirm={() => {
+			inviteModalOpen = false;
+		}}
+		on:cancel={() => {
+			inviteModalOpen = false;
+		}}
+	>
+		<div class="invite-token">
+			Invite token is:
+			<div class="token">{inv}</div>
+		</div>
+	</Modal>
+{/if}
+
 <style>
 	.container {
 		width: 100%;
@@ -176,5 +208,23 @@
 		padding: 0.3rem 1rem;
 
 		gap: 1rem;
+	}
+
+	.invite-token {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem;
+	}
+
+	.token {
+		font-family: monospace;
+		font-size: 80%;
+		width: 70%;
+		padding: 1rem;
+		background-color: var(--liwe3-dark-400);
+		border-radius: var(--liwe-border-radius);
+		word-wrap: break-word; /* Add this line */
 	}
 </style>
