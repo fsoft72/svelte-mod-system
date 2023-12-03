@@ -16,10 +16,10 @@ import { get, patch, post, delete_ } from '$liwe3/utils/fetcher';
  * @return domains: SystemDomain
  *
  */
-export const system_domains_list = async (  ) => {
+export const system_domains_list = async () => {
 	const res = await get( `/api/system/domains/list`, {}, true );
 
-	if (res.error) return res;
+	if ( res.error ) return res;
 
 	/*=== f2c_start system_domains_list ===*/
 
@@ -39,7 +39,7 @@ export const system_domains_list = async (  ) => {
 export const system_domain_set = async ( code: string ) => {
 	const res = await post( `/api/system/domain/set`, { code }, true );
 
-	if (res.error) return res;
+	if ( res.error ) return res;
 
 	/*=== f2c_start system_domain_set ===*/
 
@@ -61,7 +61,7 @@ export const system_domain_set = async ( code: string ) => {
 export const system_admin_domain_add = async ( code: string, name: string, visible?: boolean ) => {
 	const res = await post( `/api/system/admin/domain/add`, { code, name, visible }, true );
 
-	if (res.error) return res;
+	if ( res.error ) return res;
 
 	/*=== f2c_start system_admin_domain_add ===*/
 
@@ -82,14 +82,14 @@ export const system_admin_domain_add = async ( code: string, name: string, visib
  *
  */
 export const system_admin_domain_update = async ( id: string, code?: string, name?: string, visible?: boolean ) => {
-	const res = await patch( `/api/system/admin/domain/update`, { 
+	const res = await patch( `/api/system/admin/domain/update`, {
 		code,
 		id,
 		name,
 		visible
-	 }, true );
+	}, true );
 
-	if (res.error) return res;
+	if ( res.error ) return res;
 
 	/*=== f2c_start system_admin_domain_update ===*/
 
@@ -110,7 +110,7 @@ export const system_admin_domain_update = async ( id: string, code?: string, nam
 export const system_admin_domain_del = async ( id?: string, code?: string ) => {
 	const res = await delete_( `/api/system/admin/domain/del`, { id, code }, true );
 
-	if (res.error) return res;
+	if ( res.error ) return res;
 
 	/*=== f2c_start system_admin_domain_del ===*/
 
@@ -126,10 +126,10 @@ export const system_admin_domain_del = async ( id?: string, code?: string ) => {
  * @return domains: SystemDomainAdmin
  *
  */
-export const system_admin_domains_list = async (  ) => {
+export const system_admin_domains_list = async () => {
 	const res = await get( `/api/system/admin/domains/list`, {}, true );
 
-	if (res.error) return res;
+	if ( res.error ) return res;
 
 	/*=== f2c_start system_admin_domains_list ===*/
 
@@ -149,7 +149,7 @@ export const system_admin_domains_list = async (  ) => {
 export const system_admin_theme_set = async ( changes?: any ) => {
 	const res = await patch( `/api/system/admin/theme/set`, { changes }, true );
 
-	if (res.error) return res;
+	if ( res.error ) return res;
 
 	/*=== f2c_start system_admin_theme_set ===*/
 
@@ -163,10 +163,10 @@ export const system_admin_theme_set = async ( changes?: any ) => {
  * @return theme: SystemTheme
  *
  */
-export const system_theme_get = async (  ) => {
+export const system_theme_get = async () => {
 	const res = await get( `/api/system/theme/get`, {}, true );
 
-	if (res.error) return res;
+	if ( res.error ) return res;
 
 	/*=== f2c_start system_theme_get ===*/
 
@@ -189,7 +189,7 @@ export const system_theme_get = async (  ) => {
 export const system_admin_reset_id = async ( id: string, new_id: string, collection: string ) => {
 	const res = await patch( `/api/system/admin/reset/id`, { id, new_id, collection }, true );
 
-	if (res.error) return res;
+	if ( res.error ) return res;
 
 	/*=== f2c_start system_admin_reset_id ===*/
 
@@ -210,7 +210,7 @@ export const system_admin_reset_id = async ( id: string, new_id: string, collect
 export const system_email_test = async ( email: string ) => {
 	const res = await post( `/api/system/email/test`, { email }, true );
 
-	if (res.error) return res;
+	if ( res.error ) return res;
 
 	/*=== f2c_start system_email_test ===*/
 
@@ -230,10 +230,10 @@ export const system_email_test = async ( email: string ) => {
  * @return permissions: json
  *
  */
-export const system_admin_permissions_list = async (  ) => {
+export const system_admin_permissions_list = async () => {
 	const res = await get( `/api/system/admin/permissions/list`, {}, true );
 
-	if (res.error) return res;
+	if ( res.error ) return res;
 
 	/*=== f2c_start system_admin_permissions_list ===*/
 
@@ -247,10 +247,10 @@ export const system_admin_permissions_list = async (  ) => {
  * @return domain: SystemDomainPublic
  *
  */
-export const system_domain_current = async (  ) => {
-	const res = await get( `/api/system/domain/current`, {}, false );
+export const system_domain_current = async () => {
+	const res = await get( `/api/system/domain/current`, {}, true );
 
-	if (res.error) return res;
+	if ( res.error ) return res;
 
 	/*=== f2c_start system_domain_current ===*/
 
@@ -274,7 +274,7 @@ export const system_domain_current = async (  ) => {
 export const system_domain_create_invite = async ( id_domain: string, expire: number = 0 ) => {
 	const res = await get( `/api/system/domain/create/invite`, { id_domain, expire }, true );
 
-	if (res.error) return res;
+	if ( res.error ) return res;
 
 	/*=== f2c_start system_domain_create_invite ===*/
 
