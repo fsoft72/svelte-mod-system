@@ -39,3 +39,13 @@ export interface SystemDomainAdmin {
 	visible: boolean;
 }
 
+/** SystemDomainPublic */
+export interface SystemDomainPublic {
+	/** the main id field */
+	id: string;
+	/**  */
+	code: string;
+	/**  */
+	name: string;
+}
+

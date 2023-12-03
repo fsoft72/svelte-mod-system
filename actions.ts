@@ -241,3 +241,20 @@ export const system_admin_permissions_list = async (  ) => {
 
 	return res.permissions;
 };
+
+/**
+ *
+ * @return domain: SystemDomainPublic
+ *
+ */
+export const system_domain_current = async (  ) => {
+	const res = await get( `/api/system/domain/current`, {}, false );
+
+	if (res.error) return res;
+
+	/*=== f2c_start system_domain_current ===*/
+
+	/*=== f2c_end system_domain_current ===*/
+
+	return res.domain;
+};
