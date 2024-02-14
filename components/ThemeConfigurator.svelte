@@ -105,26 +105,9 @@
 
 	let is_ready = false;
 
-	const colors: Record<string, string> = {
-		mode1: '#000000',
-		mode2: '#000000',
-		mode3: '#000000',
-		mode4: '#000000',
-		info: '#000000',
-		error: '#000000',
-		warning: '#000000',
-		success: '#000000',
-		dark: '#000000'
-	};
-
-	let mode1 = colors.mode1;
-	let mode2 = colors.mode2;
-	let mode3 = colors.mode3;
-	let mode4 = colors.mode4;
-
 	let testMode: Color = 'mode1';
 	let showModal = false;
-
+	// define default modes
 	const modes: Color[] = [
 		'mode1',
 		'mode2',
@@ -134,9 +117,19 @@
 		'error',
 		'warning',
 		'success',
-		'dark'
+		'dark',
+		'background',
+		'color',
+		'link',
 	];
-
+	// init light and dark themes
+	let light: Record<string, string> = {};
+	let dark: Record<string, string> = {};
+	// define base colors
+	modes.map((mode) => {
+		light[mode] = '#333333';
+		dark[mode] = '#333333';
+	});
 	// gets a string like '#ff00a0' and returns [ 255, 0, 160 ]
 	const rgbHexToInt = (rgb: string) => {
 		const r = parseInt(rgb.slice(1, 3), 16);
@@ -155,58 +148,85 @@
 	};
 
 	$: {
-		is_ready && themeCreate('colors', { mode1: rgbHexToInt(mode1) });
+		is_ready && themeCreate([
+			{
+				'light': {
+					mode1: rgbHexToInt(light.mode1),
+					mode2: rgbHexToInt(light.mode2),
+					mode3: rgbHexToInt(light.mode3),
+					mode4: rgbHexToInt(light.mode4),
+					background: rgbHexToInt(light.background),
+					color: rgbHexToInt(light.color),
+					link: rgbHexToInt(light.link),
+					info: rgbHexToInt(light.info),
+					error: rgbHexToInt(light.error),
+					warning: rgbHexToInt(light.warning),
+					success: rgbHexToInt(light.success)
+				}
+			},
+			{
+				'dark': {
+					mode1: rgbHexToInt(dark.mode1),
+					mode2: rgbHexToInt(dark.mode2),
+					mode3: rgbHexToInt(dark.mode3),
+					mode4: rgbHexToInt(dark.mode4),
+					background: rgbHexToInt(dark.background),
+					color: rgbHexToInt(dark.color),
+					link: rgbHexToInt(dark.link),
+					info: rgbHexToInt(dark.info),
+					error: rgbHexToInt(dark.error),
+					warning: rgbHexToInt(dark.warning),
+					success: rgbHexToInt(dark.success)
+				}
+			}
+		]);
 	}
-
-	$: {
-		is_ready && themeCreate('colors', { mode2: rgbHexToInt(mode2) });
-	}
-
-	$: {
-		is_ready && themeCreate('colors', { mode3: rgbHexToInt(mode3) });
-	}
-
-	$: {
-		is_ready && themeCreate('colors', { mode4: rgbHexToInt(mode4) });
-	}
-
 	onMount(() => {
 		const tc = themeColors();
-		Object.keys(tc).map((key) => {
-			colors[key] = intToRGBHex(tc[key]);
+		//iterate on tc and set the colors
+		tc.map((theme, idx) => {
+			Object.entries(tc[idx]).map(([themeType, colors]) => {
+				Object.entries(colors).map(([k, v]) => {
+					themeType === 'dark' ? dark[k] = intToRGBHex(v) : light[k] = intToRGBHex(v);
+				});
+			});
 		});
-
-		mode1 = colors.mode1;
-		mode2 = colors.mode2;
-		mode3 = colors.mode3;
-		mode4 = colors.mode4;
-
 		is_ready = true;
 	});
 </script>
 
 <div class="container liwe3-light-theme">
-	<div class="tweekers">
-		<div>
-			Dark Mode: <input type="checkbox" bind:checked={darkMode} />
-		</div>
-		<div>
-			Mode:
-			<select bind:value={mode}>
-				{#each modes as mode}
-					<option value={mode}>{mode}</option>
-				{/each}
-			</select>
-		</div>
-		<div>
-			Colors:
-			<input type="color" bind:value={mode1} />
-			<input type="color" bind:value={mode2} />
-			<input type="color" bind:value={mode3} />
-			<input type="color" bind:value={mode4} />
+	<div class="liwe3-row">
+		<div class="liwe3-col">
+			<h1>Theme Configurator</h1>
 		</div>
 	</div>
-	<div class={darkMode ? 'liwe3-dark-theme' : 'liwe3-light-theme'}>
+	<div class="liwe3-row">
+		<div class="liwe3-col4">
+			<div class="theme-selector">
+				<h4>Theme swicth:</h4> 
+				<div>Dark mode &nbsp;&nbsp;<input type="checkbox" bind:checked={darkMode} /></div>
+			</div>
+		</div>
+		<div class="liwe3-col8 tweekers">
+			<h4>Colors:</h4>
+			<div class="liwe3-row">
+				{#each modes as mode}
+					<div class="liwe3-col2">
+						<span>{mode} </span>
+						<span>
+						{#if darkMode}
+							<input type="color" bind:value={dark[mode]} />
+						{:else}
+							<input type="color" bind:value={light[mode]} />
+						{/if}
+						</span>
+					</div>
+				{/each}
+			</div>
+		</div>
+	</div>
+	<div class="liwe3-row" class:liwe3-dark-theme={darkMode} class:liwe3-light-theme={!darkMode}>
 		{#if showModal}
 			<Modal
 				title="Theme modal test"
@@ -225,32 +245,46 @@
 		{/if}
 		<Tabs {mode}>
 			<Tab id="colors" title="Colors">
-				<div class="colors">
+				<div class="liwe3-row">
 					{#each modes as name}
-						<div class="col">
-							{#each ranges as val}
-								<div class="color" style={`background-color: var(--liwe3-${name}-${val});`}>
-									{name} - {val}
-								</div>
-							{/each}
+						<div class="color">
+								{#each ranges as val}
+									{#if ['background', 'color', 'link'].includes(name)}
+										<div class="color" style={`background-color: var(--liwe3-${darkMode ? 'dark' : 'light'}-${name}-${val});`}>
+											<div class="color-text">{name}<br/>{val}</div>
+										</div>
+									{:else}
+										<div class="color" style={`background-color: var(--liwe3-${name}-${val});`}>
+											<div class="color-text">{name}<br/>{val}</div>
+										</div>
+									{/if}
+								{/each}
 						</div>
 					{/each}
 				</div>
 			</Tab>
 			<Tab id="buttons" title="Buttons">
-				{#each modes as mode}
-					<div class="row">
-						<Button {mode} variant="solid">{mode} - solid - Click me</Button>
-						<Button {mode} variant="outline">{mode} - outline - Click me</Button>
-						<Button {mode} variant="link">{mode} - link - Click me</Button>
-						<Button {mode} disabled>{mode} - disabled</Button>
-					</div>
-				{/each}
+				<div class="liwe3-row">
+					{#each modes.slice(0,9) as mode}
+						<div class="liwe3-col3">
+							<span class="m5"><Button {mode} variant="solid">{mode} - solid - Click me</Button></span>
+						</div>
+						<div class="liwe3-col3">
+							<span class="m5"><Button {mode} variant="outline">{mode} - outline - Click me</Button></span>
+						</div>
+						<div class="liwe3-col3">
+							<span class="m5"><Button {mode} variant="link">{mode} - link - Click me</Button></span>
+						</div>
+						<div class="liwe3-col3">
+							<span class="m5"><Button {mode} disabled>{mode} - disabled</Button></span>
+						</div>
+					{/each}
+				</div>
 			</Tab>
 			<Tab id="inputs" title="Inputs">
-				<div class="row">
+				<div class="liwe3-row">
 					{#each modes as mode}
-						<Input {mode} label="Input" placeholder={mode} />
+						<Input {mode} class="liwe3-form-input" label="Input" placeholder={mode} />
 					{/each}
 				</div>
 			</Tab>
@@ -354,12 +388,26 @@
 
 <style>
 	.color {
-		width: 150px;
-		height: 50px;
+		flex: 0 0 .075%;
+		min-width: 7.5%;
+		max-width: 100%;
+		height: 4rem;
+		min-height: 4rem;
 		margin: 5px;
 		border-radius: 10px;
+		text-align: center;
+		text-overflow: clip;
 
 		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items:stretch; 
+	}
+
+	.color-text {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 	}
@@ -385,10 +433,20 @@
 
 		margin-bottom: 0.5rem;
 	}
+	
+	.m5 {
+		margin: 5px;
+	}
 
 	.tweekers {
+		margin-bottom: 1rem;
+	}
+	.theme-selector {
+		flex: .5;
 		display: flex;
-		flex-direction: row;
-		gap: 2rem;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-start;
+		gap: .5rem;
 	}
 </style>
