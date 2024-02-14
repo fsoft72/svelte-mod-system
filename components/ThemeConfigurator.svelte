@@ -282,11 +282,16 @@
 				</div>
 			</Tab>
 			<Tab id="inputs" title="Inputs">
-				<div class="liwe3-row">
-					{#each modes as mode}
-						<Input {mode} class="liwe3-form-input" label="Input" placeholder={mode} />
-					{/each}
-				</div>
+				{#each modes as mode}
+					<div class="liwe3-row">
+						{ #each ['text', 'number', 'password', 'email', 'url', 'tel', 'search','checkbox'] as type}
+							<Input {mode} divClass="liwe3-col2" class="" size="md" label="Input" placeholder={mode} type={type} />
+						{/each}
+						<div class="liwe3-col4 m5">
+							<textarea class="cform cutom-input-cform" rows="4" placeholder={mode} />
+						</div>
+					</div>
+				{/each}
 			</Tab>
 			<Tab id="selects" title="Selects">
 				<div class="row form">
