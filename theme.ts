@@ -3,7 +3,7 @@ import chroma from 'chroma-js';
 
 const CSS_ID_PREFIX = 'liwe3-colors-';
 const ranges_up = [ 900, 800, 700, 600 ];
-const ranges_down = [  500, 400, 300, 200, 100, 50 ];
+const ranges_down = [ 500, 400, 300, 200, 100, 50 ];
 const ranges = [ ranges_up, ranges_down ];
 
 const calculateColors = ( name: string, r: number, g: number, b: number ) => {
@@ -11,8 +11,8 @@ const calculateColors = ( name: string, r: number, g: number, b: number ) => {
 		[ `${ name }` ]: chroma( r, g, b ).css(),
 		[ `${ name }-900` ]: chroma( r, g, b ).css()
 	};
-	ranges.forEach( ( range:number[], idx:number ) => {
-		const factor:number = (idx === 0) ? 1 : -1; 
+	ranges.forEach( ( range: number[], idx: number ) => {
+		const factor: number = ( idx === 0 ) ? 1 : -1;
 		range.forEach( ( val ) => {
 			const col = chroma( r, g, b ).brighten( ( 500 - val ) / 300 );
 
@@ -23,12 +23,12 @@ const calculateColors = ( name: string, r: number, g: number, b: number ) => {
 
 			// calculate the border color
 			colors[ `${ name }-${ val }-border` ] = chroma( r, g, b )
-				.darken( ( 700 + (val * factor ) ) / 300 )
+				.darken( ( 700 + ( val * factor ) ) / 300 )
 				.css();
 
 			// calculate the hover color
 			colors[ `${ name }-${ val }-hover` ] = chroma( r, g, b )
-				.brighten( ( 300 + (val * factor ) ) / 200 )
+				.brighten( ( 300 + ( val * factor ) ) / 200 )
 				.css();
 
 			// calculate the clicked color
@@ -43,8 +43,8 @@ const calculateColors = ( name: string, r: number, g: number, b: number ) => {
 
 			// calculate the disabled text color
 			colors[ `${ name }-${ val }-disabled-text` ] = '#ccc';
-		});
-	});
+		} );
+	} );
 
 	colors[ `${ name }-variant` ] = colors[ `${ name }-700` ];
 	colors[ `${ name }-accent` ] = colors[ `${ name }-500` ];
@@ -74,7 +74,7 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 };
 
 type CurrentThemeColorsType = Array<Record<string, Record<string, number[]>>>;
-let currentThemeColors: CurrentThemeColorsType= [];
+let currentThemeColors: CurrentThemeColorsType = [];
 
 export const themeColors = (): CurrentThemeColorsType => currentThemeColors;
 
@@ -89,12 +89,12 @@ export const themeCreate = ( colorsArray: CurrentThemeColorsType ) => {
 		name = Object.keys( theme )[ 0 ];
 		colors = theme[ name ];
 		Object.entries( colors ).forEach( ( [ mode, values ] ) => {
-			const mode_colors = calculateColors( `liwe3-${name}-${mode}`, values[ 0 ], values[ 1 ], values[ 2 ] );
+			const mode_colors = calculateColors( `liwe3-${ name }-${ mode }`, values[ 0 ], values[ 1 ], values[ 2 ] );
 			modes = { ...modes, ...mode_colors };
 		} );
 
-		modes = { ...modes, ...calculateColors( 'liwe3-dark', 80, 80, 80 ) };
-		//console.log( 'modes', modes );
+		// modes = { ...modes, ...calculateColors( 'liwe3-dark', 80, 80, 80 ) };
 		injectColors( name, modes );
+		modes = {};
 	} );
 };
