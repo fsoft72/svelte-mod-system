@@ -120,7 +120,7 @@
 		'dark',
 		'background',
 		'color',
-		'link',
+		'link'
 	];
 	// init light and dark themes
 	let light: Record<string, string> = {};
@@ -148,38 +148,39 @@
 	};
 
 	$: {
-		is_ready && themeCreate([
-			{
-				'light': {
-					mode1: rgbHexToInt(light.mode1),
-					mode2: rgbHexToInt(light.mode2),
-					mode3: rgbHexToInt(light.mode3),
-					mode4: rgbHexToInt(light.mode4),
-					background: rgbHexToInt(light.background),
-					color: rgbHexToInt(light.color),
-					link: rgbHexToInt(light.link),
-					info: rgbHexToInt(light.info),
-					error: rgbHexToInt(light.error),
-					warning: rgbHexToInt(light.warning),
-					success: rgbHexToInt(light.success)
+		is_ready &&
+			themeCreate([
+				{
+					light: {
+						mode1: rgbHexToInt(light.mode1),
+						mode2: rgbHexToInt(light.mode2),
+						mode3: rgbHexToInt(light.mode3),
+						mode4: rgbHexToInt(light.mode4),
+						background: rgbHexToInt(light.background),
+						color: rgbHexToInt(light.color),
+						link: rgbHexToInt(light.link),
+						info: rgbHexToInt(light.info),
+						error: rgbHexToInt(light.error),
+						warning: rgbHexToInt(light.warning),
+						success: rgbHexToInt(light.success)
+					}
+				},
+				{
+					dark: {
+						mode1: rgbHexToInt(dark.mode1),
+						mode2: rgbHexToInt(dark.mode2),
+						mode3: rgbHexToInt(dark.mode3),
+						mode4: rgbHexToInt(dark.mode4),
+						background: rgbHexToInt(dark.background),
+						color: rgbHexToInt(dark.color),
+						link: rgbHexToInt(dark.link),
+						info: rgbHexToInt(dark.info),
+						error: rgbHexToInt(dark.error),
+						warning: rgbHexToInt(dark.warning),
+						success: rgbHexToInt(dark.success)
+					}
 				}
-			},
-			{
-				'dark': {
-					mode1: rgbHexToInt(dark.mode1),
-					mode2: rgbHexToInt(dark.mode2),
-					mode3: rgbHexToInt(dark.mode3),
-					mode4: rgbHexToInt(dark.mode4),
-					background: rgbHexToInt(dark.background),
-					color: rgbHexToInt(dark.color),
-					link: rgbHexToInt(dark.link),
-					info: rgbHexToInt(dark.info),
-					error: rgbHexToInt(dark.error),
-					warning: rgbHexToInt(dark.warning),
-					success: rgbHexToInt(dark.success)
-				}
-			}
-		]);
+			]);
 	}
 	onMount(() => {
 		const tc = themeColors();
@@ -187,7 +188,7 @@
 		tc.map((theme, idx) => {
 			Object.entries(tc[idx]).map(([themeType, colors]) => {
 				Object.entries(colors).map(([k, v]) => {
-					themeType === 'dark' ? dark[k] = intToRGBHex(v) : light[k] = intToRGBHex(v);
+					themeType === 'dark' ? (dark[k] = intToRGBHex(v)) : (light[k] = intToRGBHex(v));
 				});
 			});
 		});
@@ -204,7 +205,7 @@
 	<div class="liwe3-row">
 		<div class="liwe3-col4">
 			<div class="theme-selector">
-				<h4>Theme swicth:</h4> 
+				<h4>Theme swicth:</h4>
 				<div>Dark mode &nbsp;&nbsp;<input type="checkbox" bind:checked={darkMode} /></div>
 			</div>
 		</div>
@@ -215,11 +216,11 @@
 					<div class="liwe3-col2">
 						<span>{mode} </span>
 						<span>
-						{#if darkMode}
-							<input type="color" bind:value={dark[mode]} />
-						{:else}
-							<input type="color" bind:value={light[mode]} />
-						{/if}
+							{#if darkMode}
+								<input type="color" bind:value={dark[mode]} />
+							{:else}
+								<input type="color" bind:value={light[mode]} />
+							{/if}
 						</span>
 					</div>
 				{/each}
@@ -248,32 +249,42 @@
 				<div class="liwe3-row">
 					{#each modes as name}
 						<div class="color">
-								{#each ranges as val}
-									{#if ['background', 'color', 'link'].includes(name)}
-										<div class="color" style={`background-color: var(--liwe3-${darkMode ? 'dark' : 'light'}-${name}-${val});`}>
-											<div class="color-text">{name}<br/>{val}</div>
-										</div>
-									{:else}
-										<div class="color" style={`background-color: var(--liwe3-${name}-${val});`}>
-											<div class="color-text">{name}<br/>{val}</div>
-										</div>
-									{/if}
-								{/each}
+							{#each ranges as val}
+								{#if ['background', 'color', 'link'].includes(name)}
+									<div
+										class="color"
+										style={`background-color: var(--liwe3-${
+											darkMode ? 'dark' : 'light'
+										}-${name}-${val});`}
+									>
+										<div class="color-text">{name}<br />{val}</div>
+									</div>
+								{:else}
+									<div class="color" style={`background-color: var(--liwe3-${name}-${val});`}>
+										<div class="color-text">{name}<br />{val}</div>
+									</div>
+								{/if}
+							{/each}
 						</div>
 					{/each}
 				</div>
 			</Tab>
 			<Tab id="buttons" title="Buttons">
 				<div class="liwe3-row">
-					{#each modes.slice(0,9) as mode}
+					{#each modes.slice(0, 9) as mode}
 						<div class="liwe3-col3">
-							<span class="m5"><Button {mode} variant="solid">{mode} - solid - Click me</Button></span>
+							<span class="m5"
+								><Button {mode} variant="solid">{mode} - solid - Click me</Button></span
+							>
 						</div>
 						<div class="liwe3-col3">
-							<span class="m5"><Button {mode} variant="outline">{mode} - outline - Click me</Button></span>
+							<span class="m5"
+								><Button {mode} variant="outline">{mode} - outline - Click me</Button></span
+							>
 						</div>
 						<div class="liwe3-col3">
-							<span class="m5"><Button {mode} variant="link">{mode} - link - Click me</Button></span>
+							<span class="m5"><Button {mode} variant="link">{mode} - link - Click me</Button></span
+							>
 						</div>
 						<div class="liwe3-col3">
 							<span class="m5"><Button {mode} disabled>{mode} - disabled</Button></span>
@@ -284,13 +295,21 @@
 			<Tab id="inputs" title="Inputs">
 				{#each modes as mode}
 					<div class="liwe3-row">
-						{ #each ['text', 'number', 'password', 'email', 'url', 'tel', 'search','checkbox'] as type}
-							<Input {mode} divClass="liwe3-col2" class="" label="Input" placeholder={mode} type={type} />
+						{#each ['text', 'number', 'password', 'email', 'url', 'tel', 'search', 'checkbox'] as type}
+							<Input
+								{mode}
+								divClass="liwe3-col2"
+								class=""
+								label="Input"
+								placeholder={mode}
+								{type}
+							/>
+							&nbsp;
 						{/each}
 						<div class="liwe3-col2 m5">
 							<div class="cform-switch cform-custom-switch">
 								<input type="checkbox" id={`switch-${mode}`} />
-								<label for={`switch-${mode}`}></label>
+								<label for={`switch-${mode}`} />
 							</div>
 						</div>
 						<div class="liwe3-col2 m5">
@@ -304,7 +323,7 @@
 							</div>
 						</div>
 						<div class="liwe3-col2 m5">
-							<fieldset  class="cform cform-custom-input">
+							<fieldset class="cform cform-custom-input">
 								<legend>Textarea</legend>
 								<textarea class="cform cutom-input-cform" rows="4" placeholder={mode} />
 							</fieldset>
@@ -412,7 +431,7 @@
 
 <style>
 	.color {
-		flex: 0 0 .075%;
+		flex: 0 0 0.075%;
 		min-width: 7.5%;
 		max-width: 100%;
 		height: 4rem;
@@ -425,7 +444,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
-		align-items:stretch; 
+		align-items: stretch;
 	}
 
 	.color-text {
@@ -457,7 +476,7 @@
 
 		margin-bottom: 0.5rem;
 	}
-	
+
 	.m5 {
 		margin: 5px;
 	}
@@ -466,11 +485,11 @@
 		margin-bottom: 1rem;
 	}
 	.theme-selector {
-		flex: .5;
+		flex: 0.5;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
 		justify-content: flex-start;
-		gap: .5rem;
+		gap: 0.5rem;
 	}
 </style>
