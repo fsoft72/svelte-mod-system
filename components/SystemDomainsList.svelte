@@ -192,7 +192,7 @@
 	.container {
 		width: 100%;
 		background-color: var(--liwe3-dark-600);
-		border-radius: var(--liwe-border-radius);
+		border-radius: var(--liwe3-border-radius);
 		padding-bottom: 0.01rem;
 	}
 	.delete-domain {
@@ -224,7 +224,7 @@
 		width: 70%;
 		padding: 1rem;
 		background-color: var(--liwe3-dark-400);
-		border-radius: var(--liwe-border-radius);
+		border-radius: var(--liwe3-border-radius);
 		word-wrap: break-word; /* Add this line */
 	}
 </style>
