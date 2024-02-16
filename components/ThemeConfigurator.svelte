@@ -294,7 +294,7 @@
 							</div>
 						</div>
 						<div class="liwe3-col2 m5">
-							<div class="radio-group">
+							<div class="radio-group cform-radio-group">
 								<input type="radio" id="option-one3" name="selector3" checked />
 								<label for="option-one3">Html</label>
 								<input type="radio" id="option-two3" name="selector3" />
