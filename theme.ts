@@ -57,7 +57,6 @@ const calculateColors = ( name: string, r: number, g: number, b: number ) => {
 const injectColors = ( name: string, colors: Record<string, string> ) => {
 	let style = document.getElementById( CSS_ID_PREFIX + name );
 	let is_new = false;
-
 	if ( !style ) {
 		style = document.createElement( 'style' );
 		is_new = true;
@@ -68,7 +67,72 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 		Object.entries( colors )
 			.map( ( [ key, value ] ) => `--${ key }: ${ value };` )
 			.join( '\n' ) +
-		'\n}';
+		'\n}\n';
+	// Inject light and dark theme variables assignements
+	// Inject cform variables assignements. NOTE: mode3 is used as default forms color set 
+	if ( ['light', 'dark'].includes( name ) ) {
+		style.innerHTML += `.liwe3-${ name }-theme {\n` +
+			Object.entries( colors )
+				.map( ( keyVal ) => `--${ keyVal[0].replace( `-${ name }`, '' ) }: var(--${ keyVal[0] });` )
+				.join( '\n' ) +
+				`
+				--cform-radius: var(--liwe3-border-radius);
+				--cform-font-size: var(--liwe3-font-size);
+				--cform-padding: var(--liwe3-padding);
+				--cform-border-width: var(--liwe3-border-width);
+				--cform-border-width-focus: calc(var(--liwe3-border-width)*2);
+				--cform-border-focus-color: var(--liwe3-${ name }-mode4-500-border);
+				--cform-bg: var(--liwe3-${ name }-mode3);
+				--cform-text-color: var(--liwe3-${ name }-mode3-500-text);
+				--cform-accent: var(--liwe3-${ name }-mode4);
+				--cform-accent-color: var(--liwe3-${ name }-mode4-700);
+				--cform-border-color: var(--liwe3-${ name }-mode3-200-border);
+				--cform-focus-bg: var(--liwe3-${ name }-mode3-500-hover);
+				--cform-error: var(--liwe3-${ name }-error-500);
+				.mode1 {
+					--cform-bg: var(--liwe3-${ name }-mode1);
+					--cform-text-color: var(--liwe3-${ name }-mode1-500-text);
+					--cform-border-color: var(--liwe3-${ name }-mode1-200-border);
+					--cform-focus-bg: var(--liwe3-${ name }-mode1-500-hover);
+				}
+				.mode2 {
+					--cform-bg: var(--liwe3-${ name }-mode2);
+					--cform-text-color: var(--liwe3-${ name }-mode2-500-text);
+					--cform-border-color: var(--liwe3-${ name }-mode2-200-border);
+					--cform-focus-bg: var(--liwe3-${ name }-mode2-500-hover);
+				}
+				.mode3 {
+					--cform-bg: var(--liwe3-${ name }-mode3);
+					--cform-text-color: var(--liwe3-${ name }-mode3-500-text);
+					--cform-border-color: var(--liwe3-${ name }-mode3-200-border);
+					--cform-focus-bg: var(--liwe3-${ name }-mode3-500-hover);
+				}
+				.mode4 {
+					--cform-bg: var(--liwe3-${ name }-mode4);
+					--cform-text-color: var(--liwe3-${ name }-mode4-500-text);
+					--cform-border-color: var(--liwe3-${ name }-mode4-200-border);
+					--cform-focus-bg: var(--liwe3-${ name }-mode4-500-hover);
+				}
+				
+				.cform-custom-input {
+					--cform-text-placeholder-color: var(--liwe3-${ name }-mode3-700-text); 
+					--cform-legend: var(--liwe3-${ name }-mode3-200-border); 
+					--cform-text-color: var(--liwe3-${ name }-mode3-500-text);
+				}
+				
+				.cform-custom-switch {
+					--cform-text-placeholder-color: var(--liwe3-${ name }-mode3-700-text);  
+					--cform-radius: var(--liwe3-border-radius);
+				}
+				.cform-custom-btn {
+					--cform-btn-primary: var(--liwe3-${ name }-mode3);
+					--cform-btn-default-text: var(--liwe3-${ name }-mode3-500-text);
+					--cform-radius: var(--liwe3-border-radius);
+				}
+				`
+			'\n}\n';
+		console.log( 'Inject colors', name, style.innerHTML );
+	}
 
 	if ( is_new ) document.head.appendChild( style );
 };

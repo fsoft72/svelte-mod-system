@@ -285,10 +285,29 @@
 				{#each modes as mode}
 					<div class="liwe3-row">
 						{ #each ['text', 'number', 'password', 'email', 'url', 'tel', 'search','checkbox'] as type}
-							<Input {mode} divClass="liwe3-col2" class="" size="md" label="Input" placeholder={mode} type={type} />
+							<Input {mode} divClass="liwe3-col2" class="" label="Input" placeholder={mode} type={type} />
 						{/each}
-						<div class="liwe3-col4 m5">
-							<textarea class="cform cutom-input-cform" rows="4" placeholder={mode} />
+						<div class="liwe3-col2 m5">
+							<div class="cform-switch cform-custom-switch">
+								<input type="checkbox" id={`switch-${mode}`} />
+								<label for={`switch-${mode}`}></label>
+							</div>
+						</div>
+						<div class="liwe3-col2 m5">
+							<div class="radio-group">
+								<input type="radio" id="option-one3" name="selector3" checked />
+								<label for="option-one3">Html</label>
+								<input type="radio" id="option-two3" name="selector3" />
+								<label for="option-two3">Css</label>
+								<input type="radio" id="option-three3" name="selector3" />
+								<label for="option-three3">Javascript</label>
+							</div>
+						</div>
+						<div class="liwe3-col2 m5">
+							<fieldset  class="cform cform-custom-input">
+								<legend>Textarea</legend>
+								<textarea class="cform cutom-input-cform" rows="4" placeholder={mode} />
+							</fieldset>
 						</div>
 					</div>
 				{/each}
