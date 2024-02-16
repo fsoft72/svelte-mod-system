@@ -113,6 +113,36 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-border-color: var(--liwe3-${ name }-mode4-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-mode4-500-hover);
 				}
+				.link {
+					--cform-bg: var(--liwe3-${ name }-link);
+					--cform-text-color: var(--liwe3-${ name }-link-500-text);
+					--cform-border-color: var(--liwe3-${ name }-link-200-border);
+					--cform-focus-bg: var(--liwe3-${ name }-link-500-hover);
+				}
+				.info {
+					--cform-bg: var(--liwe3-${ name }-info);
+					--cform-text-color: var(--liwe3-${ name }-info-500-text);
+					--cform-border-color: var(--liwe3-${ name }-info-200-border);
+					--cform-focus-bg: var(--liwe3-${ name }-info-500-hover);
+				}
+				.success {
+					--cform-bg: var(--liwe3-${ name }-success);
+					--cform-text-color: var(--liwe3-${ name }-success-500-text);
+					--cform-border-color: var(--liwe3-${ name }-success-200-border);
+					--cform-focus-bg: var(--liwe3-${ name }-success-500-hover);
+				}
+				.warning {
+					--cform-bg: var(--liwe3-${ name }-warning);
+					--cform-text-color: var(--liwe3-${ name }-warning-500-text);
+					--cform-border-color: var(--liwe3-${ name }-warning-200-border);
+					--cform-focus-bg: var(--liwe3-${ name }-warning-500-hover);
+				}
+				.error {
+					--cform-bg: var(--liwe3-${ name }-error);
+					--cform-text-color: var(--liwe3-${ name }-error-500-text);
+					--cform-border-color: var(--liwe3-${ name }-error-200-border);
+					--cform-focus-bg: var(--liwe3-${ name }-error-500-hover);
+				}
 				
 				.cform-custom-input {
 					--cform-text-placeholder-color: var(--liwe3-${ name }-mode3-700-text); 
