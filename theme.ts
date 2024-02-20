@@ -94,56 +94,91 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-text-color: var(--liwe3-${ name }-mode1-500-text);
 					--cform-border-color: var(--liwe3-${ name }-mode1-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-mode1-500-hover);
+					&.cform-custom-checkbox-radio {
+						--cform-accent: var(--liwe3-${ name }-mode1);
+						--cform-accent-color: var(--liwe3-${ name }-mode1-500-text);
+					}
 				}
 				.mode2 {
 					--cform-bg: var(--liwe3-${ name }-mode2);
 					--cform-text-color: var(--liwe3-${ name }-mode2-500-text);
 					--cform-border-color: var(--liwe3-${ name }-mode2-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-mode2-500-hover);
+					&.cform-custom-checkbox-radio {
+						--cform-accent: var(--liwe3-${ name }-mode2);
+						--cform-accent-color: var(--liwe3-${ name }-mode2-500-text);
+					}
 				}
 				.mode3 {
 					--cform-bg: var(--liwe3-${ name }-mode3);
 					--cform-text-color: var(--liwe3-${ name }-mode3-500-text);
 					--cform-border-color: var(--liwe3-${ name }-mode3-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-mode3-500-hover);
+					&.cform-custom-checkbox-radio {
+						--cform-accent: var(--liwe3-${ name }-mode3);
+						--cform-accent-color: var(--liwe3-${ name }-mode3-500-text);
+					}
 				}
 				.mode4 {
 					--cform-bg: var(--liwe3-${ name }-mode4);
 					--cform-text-color: var(--liwe3-${ name }-mode4-500-text);
 					--cform-border-color: var(--liwe3-${ name }-mode4-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-mode4-500-hover);
+					&.cform-custom-checkbox-radio {
+						--cform-accent: var(--liwe3-${ name }-mode4);
+						--cform-accent-color: var(--liwe3-${ name }-mode4-500-text);
+					}
 				}
 				.link {
 					--cform-bg: var(--liwe3-${ name }-link);
 					--cform-text-color: var(--liwe3-${ name }-link-500-text);
 					--cform-border-color: var(--liwe3-${ name }-link-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-link-500-hover);
+					&.cform-custom-checkbox-radio {
+						--cform-accent: var(--liwe3-${ name }-link);
+						--cform-accent-color: var(--liwe3-${ name }-link-500-text);
+					}
 				}
 				.info {
 					--cform-bg: var(--liwe3-${ name }-info);
 					--cform-text-color: var(--liwe3-${ name }-info-500-text);
 					--cform-border-color: var(--liwe3-${ name }-info-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-info-500-hover);
+					&.cform-custom-checkbox-radio {
+						--cform-accent: var(--liwe3-${ name }-info);
+						--cform-accent-color: var(--liwe3-${ name }-info-500-text);
+					}
 				}
 				.success {
 					--cform-bg: var(--liwe3-${ name }-success);
 					--cform-text-color: var(--liwe3-${ name }-success-500-text);
 					--cform-border-color: var(--liwe3-${ name }-success-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-success-500-hover);
+					&.cform-custom-checkbox-radio {
+						--cform-accent: var(--liwe3-${ name }-success);
+						--cform-accent-color: var(--liwe3-${ name }-success-500-text);
+					}
 				}
 				.warning {
 					--cform-bg: var(--liwe3-${ name }-warning);
 					--cform-text-color: var(--liwe3-${ name }-warning-500-text);
 					--cform-border-color: var(--liwe3-${ name }-warning-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-warning-500-hover);
+					&.cform-custom-checkbox-radio {
+						--cform-accent: var(--liwe3-${ name }-warning);
+						--cform-accent-color: var(--liwe3-${ name }-warning-500-text);
+					}
 				}
 				.error {
 					--cform-bg: var(--liwe3-${ name }-error);
 					--cform-text-color: var(--liwe3-${ name }-error-500-text);
 					--cform-border-color: var(--liwe3-${ name }-error-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-error-500-hover);
+					&.cform-custom-checkbox-radio {
+						--cform-accent: var(--liwe3-${ name }-error);
+						--cform-accent-color: var(--liwe3-${ name }-error-500-text);
+					}
 				}
-
 				.cform-custom-input {
 					--cform-text-placeholder-color: var(--liwe3-${ name }-mode3-700-text);
 					--cform-legend: var(--liwe3-${ name }-mode3-200-border);

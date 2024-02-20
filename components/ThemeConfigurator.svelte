@@ -295,7 +295,7 @@
 			<Tab id="inputs" title="Inputs">
 				{#each modes as mode}
 					<div class="liwe3-row">
-						{#each ['text', 'number', 'password', 'email', 'url', 'tel', 'search', 'checkbox'] as type}
+						{#each ['text', 'number', 'password', 'email', 'url', 'tel'] as type}
 							<Input
 								{mode}
 								divClass="liwe3-col2"
@@ -304,22 +304,33 @@
 								placeholder={mode}
 								{type}
 							/>
-							&nbsp;
 						{/each}
-						<div class="liwe3-col2 m5">
+					</div>
+					<div class="liwe3-row">
+						{#each ['search', 'checkbox'] as type}
+							<Input
+								{mode}
+								divClass="liwe3-col2"
+								class=""
+								label="Input"
+								placeholder={mode}
+								{type}
+							/>
+						{/each}
+						<div class="liwe3-col2 p5">
 							<div class="cform-switch cform-custom-switch">
-								<input type="checkbox" id={`switch-${mode}`} />
+								<Input type="checkbox" id={`switch-${mode}`} />
 								<label for={`switch-${mode}`} />
 							</div>
 						</div>
-						<div class="liwe3-col2 m5">
-							<div class="radio-group cform-radio-group">
-								<input type="radio" id="option-one3" name="selector3" checked />
-								<label for="option-one3">Html</label>
-								<input type="radio" id="option-two3" name="selector3" />
-								<label for="option-two3">Css</label>
-								<input type="radio" id="option-three3" name="selector3" />
-								<label for="option-three3">Javascript</label>
+						<div class="liwe3-col2 p5">
+							<div class={`${mode} radio-group cform-radio-group`}>
+								<input type="radio" id={`${mode}-option-one3`} name="selector3" checked />
+								<label for={`${mode}-option-one3`}>Html</label>
+								<input type="radio" id={`${mode}-option-two3`} name="selector3" />
+								<label for={`${mode}-option-two3`}>Css</label>
+								<input type="radio" id={`${mode}-option-three3`} name="selector3" />
+								<label for={`${mode}-option-three3`}>Javascript</label>
 							</div>
 						</div>
 						<div class="liwe3-col2 m5">
