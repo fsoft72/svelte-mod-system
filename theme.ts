@@ -78,7 +78,7 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 			`
 				--cform-radius: var(--liwe3-border-radius);
 				--cform-font-size: var(--liwe3-font-size);
-				--cform-padding: var(--liwe3-padding);
+				--cform-padding: var(--liwe3-form-padding-y);
 				--cform-border-width: var(--liwe3-border-width);
 				--cform-border-width-focus: calc(var(--liwe3-border-width)*2);
 				--cform-border-focus-color: var(--liwe3-${ name }-mode4-500-border);
@@ -98,6 +98,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 						--cform-accent: var(--liwe3-${ name }-mode1);
 						--cform-accent-color: var(--liwe3-${ name }-mode1-500-text);
 					}
+					&.cform-radio-group input[type=radio]:checked+label {
+						--cform-accent: var(--liwe3-${ name }-mode1-500-hover);
+						--cform-accent-color: var(--liwe3-${ name }-mode1-500-text);
+					}
 				}
 				.mode2 {
 					--cform-bg: var(--liwe3-${ name }-mode2);
@@ -106,6 +110,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-focus-bg: var(--liwe3-${ name }-mode2-500-hover);
 					&.cform-custom-checkbox-radio {
 						--cform-accent: var(--liwe3-${ name }-mode2);
+						--cform-accent-color: var(--liwe3-${ name }-mode2-500-text);
+					}
+					&.cform-radio-group input[type=radio]:checked+label {
+						--cform-accent: var(--liwe3-${ name }-mode2-500-hover);
 						--cform-accent-color: var(--liwe3-${ name }-mode2-500-text);
 					}
 				}
@@ -118,6 +126,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 						--cform-accent: var(--liwe3-${ name }-mode3);
 						--cform-accent-color: var(--liwe3-${ name }-mode3-500-text);
 					}
+					&.cform-radio-group input[type=radio]:checked+label {
+						--cform-accent: var(--liwe3-${ name }-mode3-500-hover);
+						--cform-accent-color: var(--liwe3-${ name }-mode3-500-text);
+					}
 				}
 				.mode4 {
 					--cform-bg: var(--liwe3-${ name }-mode4);
@@ -126,6 +138,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-focus-bg: var(--liwe3-${ name }-mode4-500-hover);
 					&.cform-custom-checkbox-radio {
 						--cform-accent: var(--liwe3-${ name }-mode4);
+						--cform-accent-color: var(--liwe3-${ name }-mode4-500-text);
+					}
+					&.cform-radio-group input[type=radio]:checked+label {
+						--cform-accent: var(--liwe3-${ name }-mode4-500-hover);
 						--cform-accent-color: var(--liwe3-${ name }-mode4-500-text);
 					}
 				}
@@ -138,6 +154,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 						--cform-accent: var(--liwe3-${ name }-link);
 						--cform-accent-color: var(--liwe3-${ name }-link-500-text);
 					}
+					&.cform-radio-group input[type=radio]:checked+label {
+						--cform-accent: var(--liwe3-${ name }-link-500-hover);
+						--cform-accent-color: var(--liwe3-${ name }-link-500-text);
+					}
 				}
 				.info {
 					--cform-bg: var(--liwe3-${ name }-info);
@@ -146,6 +166,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-focus-bg: var(--liwe3-${ name }-info-500-hover);
 					&.cform-custom-checkbox-radio {
 						--cform-accent: var(--liwe3-${ name }-info);
+						--cform-accent-color: var(--liwe3-${ name }-info-500-text);
+					}
+					&.cform-radio-group input[type=radio]:checked+label {
+						--cform-accent: var(--liwe3-${ name }-info-500-hover);
 						--cform-accent-color: var(--liwe3-${ name }-info-500-text);
 					}
 				}
@@ -158,6 +182,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 						--cform-accent: var(--liwe3-${ name }-success);
 						--cform-accent-color: var(--liwe3-${ name }-success-500-text);
 					}
+					&.cform-radio-group input[type=radio]:checked+label {
+						--cform-accent: var(--liwe3-${ name }-success-500-hover);
+						--cform-accent-color: var(--liwe3-${ name }-success-500-text);
+					}
 				}
 				.warning {
 					--cform-bg: var(--liwe3-${ name }-warning);
@@ -168,6 +196,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 						--cform-accent: var(--liwe3-${ name }-warning);
 						--cform-accent-color: var(--liwe3-${ name }-warning-500-text);
 					}
+					&.cform-radio-group input[type=radio]:checked+label {
+						--cform-accent: var(--liwe3-${ name }-warning-500-hover);
+						--cform-accent-color: var(--liwe3-${ name }-warning-500-text);
+					}
 				}
 				.error {
 					--cform-bg: var(--liwe3-${ name }-error);
@@ -176,6 +208,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-focus-bg: var(--liwe3-${ name }-error-500-hover);
 					&.cform-custom-checkbox-radio {
 						--cform-accent: var(--liwe3-${ name }-error);
+						--cform-accent-color: var(--liwe3-${ name }-error-500-text);
+					}
+					&.cform-radio-group input[type=radio]:checked+label {
+						--cform-accent: var(--liwe3-${ name }-error-500-hover);
 						--cform-accent-color: var(--liwe3-${ name }-error-500-text);
 					}
 				}
@@ -193,6 +229,99 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-btn-primary: var(--liwe3-${ name }-mode3);
 					--cform-btn-default-text: var(--liwe3-${ name }-mode3-500-text);
 					--cform-radius: var(--liwe3-border-radius);
+				}
+				.svelte-select {
+					--input-padding: var(--liwe3-form-padding-y);	
+				}
+				.svelte-select.mode1 {
+					--background: var(--liwe3-${ name }-mode1);
+					--border-radius: var(--liwe3-border-radius);
+					--border: var(--liwe3-border-width) solid var(--liwe3-${ name }-mode1-200-border);
+					--placeholder-color: var(--liwe3-${ name }-mode1-500-text);
+					--item-color: var(--liwe3-${ name }-mode1-500-text);
+					--item-hover-color: var(--liwe3-${ name }-mode1-500-hover);
+					--item-hover-bg: var(--liwe3-${ name }-mode1-700-hover);
+					--list-background: var(--liwe3-${ name }-mode1);
+				}
+				.svelte-select.mode2 {
+					--background: var(--liwe3-${ name }-mode2);
+					--border-radius: var(--liwe3-border-radius);
+					--border: var(--liwe3-border-width) solid var(--liwe3-${ name }-mode2-200-border);
+					--placeholder-color: var(--liwe3-${ name }-mode2-500-text);
+					--item-color: var(--liwe3-${ name }-mode2-500-text);
+					--item-hover-color: var(--liwe3-${ name }-mode2-500-hover);
+					--item-hover-bg: var(--liwe3-${ name }-mode2-700-hover);
+					--list-background: var(--liwe3-${ name }-mode2);
+				}
+				.svelte-select.mode3 {
+					--background: var(--liwe3-${ name }-mode3);
+					--border-radius: var(--liwe3-border-radius);
+					--border: var(--liwe3-border-width) solid var(--liwe3-${ name }-mode3-200-border);
+					--placeholder-color: var(--liwe3-${ name }-mode3-500-text);
+					--item-color: var(--liwe3-${ name }-mode3-500-text);
+					--item-hover-color: var(--liwe3-${ name }-mode3-500-hover);
+					--item-hover-bg: var(--liwe3-${ name }-mode3-700-hover);
+					--list-background: var(--liwe3-${ name }-mode3);
+				}
+				.svelte-select.mode4 {
+					--background: var(--liwe3-${ name }-mode4);
+					--border-radius: var(--liwe3-border-radius);
+					--border: var(--liwe3-border-width) solid var(--liwe3-${ name }-mode4-200-border);
+					--placeholder-color: var(--liwe3-${ name }-mode4-500-text);
+					--item-color: var(--liwe3-${ name }-mode4-500-text);
+					--item-hover-color: var(--liwe3-${ name }-mode4-500-hover);
+					--item-hover-bg: var(--liwe3-${ name }-mode4-700-hover);
+					--list-background: var(--liwe3-${ name }-mode4);
+				}
+				.svelte-select.link {
+					--background: var(--liwe3-${ name }-link);
+					--border-radius: var(--liwe3-border-radius);
+					--border: var(--liwe3-border-width) solid var(--liwe3-${ name }-link-200-border);
+					--placeholder-color: var(--liwe3-${ name }-link-500-text);
+					--item-color: var(--liwe3-${ name }-link-500-text);
+					--item-hover-color: var(--liwe3-${ name }-link-500-hover);
+					--item-hover-bg: var(--liwe3-${ name }-link-700-hover);
+					--list-background: var(--liwe3-${ name }-link);
+				}
+				.svelte-select.info {
+					--background: var(--liwe3-${ name }-info);
+					--border-radius: var(--liwe3-border-radius);
+					--border: var(--liwe3-border-width) solid var(--liwe3-${ name }-info-200-border);
+					--placeholder-color: var(--liwe3-${ name }-info-500-text);
+					--item-color: var(--liwe3-${ name }-info-500-text);
+					--item-hover-color: var(--liwe3-${ name }-info-500-hover);
+					--item-hover-bg: var(--liwe3-${ name }-info-700-hover);
+					--list-background: var(--liwe3-${ name }-info);
+				}
+				.svelte-select.success {
+					--background: var(--liwe3-${ name }-success);
+					--border-radius: var(--liwe3-border-radius);
+					--border: var(--liwe3-border-width) solid var(--liwe3-${ name }-success-200-border);
+					--placeholder-color: var(--liwe3-${ name }-success-500-text);
+					--item-color: var(--liwe3-${ name }-success-500-text);
+					--item-hover-color: var(--liwe3-${ name }-success-500-hover);
+					--item-hover-bg: var(--liwe3-${ name }-success-700-hover);
+					--list-background: var(--liwe3-${ name }-success);
+				}
+				.svelte-select.warning {
+					--background: var(--liwe3-${ name }-warning);
+					--border-radius: var(--liwe3-border-radius);
+					--border: var(--liwe3-border-width) solid var(--liwe3-${ name }-warning-200-border);
+					--placeholder-color: var(--liwe3-${ name }-warning-500-text);
+					--item-color: var(--liwe3-${ name }-warning-500-text);
+					--item-hover-color: var(--liwe3-${ name }-warning-500-hover);
+					--item-hover-bg: var(--liwe3-${ name }-warning-700-hover);
+					--list-background: var(--liwe3-${ name }-warning);
+				}
+				.svelte-select.error {
+					--background: var(--liwe3-${ name }-error);
+					--border-radius: var(--liwe3-border-radius);
+					--border: var(--liwe3-border-width) solid var(--liwe3-${ name }-error-200-border);
+					--placeholder-color: var(--liwe3-${ name }-error-500-text);
+					--item-color: var(--liwe3-${ name }-error-500-text);
+					--item-hover-color: var(--liwe3-${ name }-error-500-hover);
+					--item-hover-bg: var(--liwe3-${ name }-error-700-hover);
+					--list-background: var(--liwe3-${ name }-error);
 				}
 				`;
 		'\n}\n';
