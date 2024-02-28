@@ -127,7 +127,7 @@
 	let dark: Record<string, string> = {};
 	// define base colors
 	modes.map((mode) => {
-		light[mode] = '#333333';
+		light[mode] = '#f2f2f2';
 		dark[mode] = '#333333';
 	});
 	// gets a string like '#ff00a0' and returns [ 255, 0, 160 ]
@@ -196,7 +196,7 @@
 	});
 </script>
 
-<div class="container liwe3-light-theme">
+<div class="container" class:liwe3-dark-theme={darkMode} class:liwe3-light-theme={!darkMode}>
 	<div class="liwe3-row">
 		<div class="liwe3-col">
 			<h1>Theme Configurator</h1>
@@ -227,7 +227,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="liwe3-row" class:liwe3-dark-theme={darkMode} class:liwe3-light-theme={!darkMode}>
+	<div class="liwe3-row">
 		{#if showModal}
 			<Modal
 				title="Theme modal test"
@@ -318,7 +318,7 @@
 							/>
 						{/each}
 						<div class="liwe3-col2 p5">
-							<div class="cform-switch cform-custom-switch">
+							<div class={`${mode} cform-switch cform-custom-switch`}>
 								<Input type="checkbox" id={`switch-${mode}`} />
 								<label for={`switch-${mode}`} />
 							</div>
@@ -334,9 +334,9 @@
 							</div>
 						</div>
 						<div class="liwe3-col2 m5">
-							<fieldset class="cform cform-custom-input">
+							<fieldset class={`cform ${mode} cform-custom-input`}>
 								<legend>Textarea</legend>
-								<textarea class="cform cutom-input-cform" rows="4" placeholder={mode} />
+								<textarea class={`cform ${mode} custom-input-cform`} rows="4" placeholder={mode} />
 							</fieldset>
 						</div>
 					</div>

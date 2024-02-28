@@ -45,7 +45,7 @@
   --liwe3-secondary-font-family: Rozha One, serif;
   --liwe3-font-weight: 400;
   --liwe3-font-size: 20px;
-  --liwe3-border-radius: 0.1rem;
+  --liwe3-border-radius: 0.15rem;
   --liwe3-border-width: 1px;
   --liwe3-border-style: solid;
   --liwe3-button-padding-y: 0.25rem;
@@ -781,7 +781,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: var(--background);
+  background-color: var(--liwe3-background);
   font-family: var(--liwe3-font-family);
   font-size: var(--liwe3-font-size);
   font-weight: var(--liwe3-font-weight);

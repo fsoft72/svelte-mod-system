@@ -19,7 +19,9 @@ const calculateColors = ( name: string, r: number, g: number, b: number ) => {
 			colors[ `${ name }-${ val }` ] = col.css();
 
 			// also calculate the right text color for the background
-			colors[ `${ name }-${ val }-text` ] = col.luminance() > 0.5 ? '#000' : '#fff';
+			colors[ `${ name }-${ val }-text` ] = col.luminance() > 0.6 ? chroma( 48, 48, 48 ).darken( ( 700 + ( val * factor ) ) / 300 ).css()
+				: col.luminance() < 0.4 ? chroma( 242, 242, 242 ).brighten( ( 300 + ( val * factor ) ) / 200 ).css()
+					: chroma( 33, 33, 33 ).darken( ( 500 + ( val * factor ) ) / 300 ).css(); // intermediate color
 
 			// calculate the border color
 			colors[ `${ name }-${ val }-border` ] = chroma( r, g, b )
@@ -94,6 +96,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-text-color: var(--liwe3-${ name }-mode1-500-text);
 					--cform-border-color: var(--liwe3-${ name }-mode1-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-mode1-500-hover);
+					&.cform-custom-input {
+						--cform-text-placeholder-color: var(--liwe3-${ name }-mode1-500-text) !important;
+						--cform-legend: var(--liwe3-${ name }-mode1-200-border);
+					}
 					&.cform-custom-checkbox-radio {
 						--cform-accent: var(--liwe3-${ name }-mode1);
 						--cform-accent-color: var(--liwe3-${ name }-mode1-500-text);
@@ -108,6 +114,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-text-color: var(--liwe3-${ name }-mode2-500-text);
 					--cform-border-color: var(--liwe3-${ name }-mode2-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-mode2-500-hover);
+					&.cform-custom-input {
+						--cform-text-placeholder-color: var(--liwe3-${ name }-mode2-500-text) !important;
+						--cform-legend: var(--liwe3-${ name }-mode2-200-border);
+					}
 					&.cform-custom-checkbox-radio {
 						--cform-accent: var(--liwe3-${ name }-mode2);
 						--cform-accent-color: var(--liwe3-${ name }-mode2-500-text);
@@ -122,6 +132,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-text-color: var(--liwe3-${ name }-mode3-500-text);
 					--cform-border-color: var(--liwe3-${ name }-mode3-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-mode3-500-hover);
+					&.cform-custom-input {
+						--cform-text-placeholder-color: var(--liwe3-${ name }-mode3-500-text) !important;
+						--cform-legend: var(--liwe3-${ name }-mode3-200-border);
+					}
 					&.cform-custom-checkbox-radio {
 						--cform-accent: var(--liwe3-${ name }-mode3);
 						--cform-accent-color: var(--liwe3-${ name }-mode3-500-text);
@@ -136,6 +150,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-text-color: var(--liwe3-${ name }-mode4-500-text);
 					--cform-border-color: var(--liwe3-${ name }-mode4-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-mode4-500-hover);
+					&.cform-custom-input {
+						--cform-text-placeholder-color: var(--liwe3-${ name }-mode4-500-text) !important;
+						--cform-legend: var(--liwe3-${ name }-mode4-200-border);
+					}
 					&.cform-custom-checkbox-radio {
 						--cform-accent: var(--liwe3-${ name }-mode4);
 						--cform-accent-color: var(--liwe3-${ name }-mode4-500-text);
@@ -150,6 +168,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-text-color: var(--liwe3-${ name }-link-500-text);
 					--cform-border-color: var(--liwe3-${ name }-link-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-link-500-hover);
+					&.cform-custom-input {
+						--cform-text-placeholder-color: var(--liwe3-${ name }-link-500-text) !important;
+						--cform-legend: var(--liwe3-${ name }-link-200-border);
+					}
 					&.cform-custom-checkbox-radio {
 						--cform-accent: var(--liwe3-${ name }-link);
 						--cform-accent-color: var(--liwe3-${ name }-link-500-text);
@@ -164,6 +186,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-text-color: var(--liwe3-${ name }-info-500-text);
 					--cform-border-color: var(--liwe3-${ name }-info-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-info-500-hover);
+					&.cform-custom-input {
+						--cform-text-placeholder-color: var(--liwe3-${ name }-info-500-text) !important;
+						--cform-legend: var(--liwe3-${ name }-info-200-border);
+					}
 					&.cform-custom-checkbox-radio {
 						--cform-accent: var(--liwe3-${ name }-info);
 						--cform-accent-color: var(--liwe3-${ name }-info-500-text);
@@ -178,6 +204,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-text-color: var(--liwe3-${ name }-success-500-text);
 					--cform-border-color: var(--liwe3-${ name }-success-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-success-500-hover);
+					&.cform-custom-input {
+						--cform-text-placeholder-color: var(--liwe3-${ name }-success-500-text) !important;
+						--cform-legend: var(--liwe3-${ name }-success-200-border);
+					}
 					&.cform-custom-checkbox-radio {
 						--cform-accent: var(--liwe3-${ name }-success);
 						--cform-accent-color: var(--liwe3-${ name }-success-500-text);
@@ -192,6 +222,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-text-color: var(--liwe3-${ name }-warning-500-text);
 					--cform-border-color: var(--liwe3-${ name }-warning-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-warning-500-hover);
+					&.cform-custom-input {
+						--cform-text-placeholder-color: var(--liwe3-${ name }-warning-500-text);
+						--cform-legend: var(--liwe3-${ name }-warning-200-border);
+					}
 					&.cform-custom-checkbox-radio {
 						--cform-accent: var(--liwe3-${ name }-warning);
 						--cform-accent-color: var(--liwe3-${ name }-warning-500-text);
@@ -206,6 +240,10 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-text-color: var(--liwe3-${ name }-error-500-text);
 					--cform-border-color: var(--liwe3-${ name }-error-200-border);
 					--cform-focus-bg: var(--liwe3-${ name }-error-500-hover);
+					&.cform-custom-input {
+						--cform-text-placeholder-color: var(--liwe3-${ name }-error-500-text);
+						--cform-legend: var(--liwe3-${ name }-error-200-border);
+					}
 					&.cform-custom-checkbox-radio {
 						--cform-accent: var(--liwe3-${ name }-error);
 						--cform-accent-color: var(--liwe3-${ name }-error-500-text);
@@ -215,12 +253,60 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 						--cform-accent-color: var(--liwe3-${ name }-error-500-text);
 					}
 				}
-				.cform-custom-input {
-					--cform-text-placeholder-color: var(--liwe3-${ name }-mode3-700-text);
-					--cform-legend: var(--liwe3-${ name }-mode3-200-border);
-					--cform-text-color: var(--liwe3-${ name }-mode3-500-text);
+				.dark {
+					--cform-bg: var(--liwe3-${ name }-background);
+					--cform-text-color: var(--liwe3-${ name }-background-500-text);
+					--cform-border-color: var(--liwe3-${ name }-background-200-border);
+					--cform-focus-bg: var(--liwe3-${ name }-background-500-hover);
+					&.cform-custom-input {
+						--cform-text-placeholder-color: var(--liwe3-${ name }-background-500-text);
+						--cform-legend: var(--liwe3-${ name }-background-200-border);
+					}
+					&.cform-custom-checkbox-radio {
+						--cform-accent: var(--liwe3-${ name }-background);
+						--cform-accent-color: var(--liwe3-${ name }-background-500-text);
+					}
+					&.cform-radio-group input[type=radio]:checked+label {
+						--cform-accent: var(--liwe3-${ name }-background-500-hover);
+						--cform-accent-color: var(--liwe3-${ name }-background-500-text);
+					}
 				}
-
+				.background {
+					--cform-bg: var(--liwe3-${ name }-background);
+					--cform-text-color: var(--liwe3-${ name }-background-500-text);
+					--cform-border-color: var(--liwe3-${ name }-background-200-border);
+					--cform-focus-bg: var(--liwe3-${ name }-background-500-hover);
+					&.cform-custom-input {
+						--cform-text-placeholder-color: var(--liwe3-${ name }-background-500-text);
+						--cform-legend: var(--liwe3-${ name }-background-200-border);
+					}
+					&.cform-custom-checkbox-radio {
+						--cform-accent: var(--liwe3-${ name }-background);
+						--cform-accent-color: var(--liwe3-${ name }-background-500-text);
+					}
+					&.cform-radio-group input[type=radio]:checked+label {
+						--cform-accent: var(--liwe3-${ name }-background-500-hover);
+						--cform-accent-color: var(--liwe3-${ name }-background-500-text);
+					}
+				}
+				.color {
+					--cform-bg: var(--liwe3-${ name }-text);
+					--cform-text-color: var(--liwe3-${ name }-text-500-text);
+					--cform-border-color: var(--liwe3-${ name }-text-200-border);
+					--cform-focus-bg: var(--liwe3-${ name }-text-500-hover);
+					&.cform-custom-input {
+						--cform-text-placeholder-color: var(--liwe3-${ name }-text-500-text);
+						--cform-legend: var(--liwe3-${ name }-text-200-border);
+					}
+					&.cform-custom-checkbox-radio {
+						--cform-accent: var(--liwe3-${ name }-text);
+						--cform-accent-color: var(--liwe3-${ name }-text-500-text);
+					}
+					&.cform-radio-group input[type=radio]:checked+label {
+						--cform-accent: var(--liwe3-${ name }-text-500-hover);
+						--cform-accent-color: var(--liwe3-${ name }-text-500-text);
+					}
+				}
 				.cform-custom-switch {
 					--cform-text-placeholder-color: var(--liwe3-${ name }-mode3-700-text);
 					--cform-radius: var(--liwe3-border-radius);
@@ -231,7 +317,7 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-radius: var(--liwe3-border-radius);
 				}
 				.svelte-select {
-					--input-padding: var(--liwe3-form-padding-y);	
+					--input-padding: var(--liwe3-form-padding-y);
 				}
 				.svelte-select.mode1 {
 					--background: var(--liwe3-${ name }-mode1);
