@@ -420,7 +420,7 @@
   --liwe3-success-color: var(--liwe3-dark-success);
   --liwe3-warning-color: var(--liwe3-dark-warning);
   --liwe3-error-color: var(--liwe3-dark-danger);
-  --liwe3-paper: var(--liwe3-dark-mode3-50);
+  --liwe3-paper: var(--liwe3-dark-mode3-400);
 
   /* FORM ELEMENTS */
   /* button default */
@@ -747,6 +747,7 @@
   }
 }
 
+/*
 .liwe3-light-theme .form,
 .liwe3-dark-theme .form {
   .mode1 {
@@ -782,9 +783,10 @@
   .mode2::placeholder,
   .mode3::placeholder,
   .mode4::placeholder {
-    color: var(--placeholder);
+    color: red;
   }
 }
+*/
 
 /* BROWSER RESET RULES */
 * {
