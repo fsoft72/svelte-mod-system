@@ -81,6 +81,8 @@
   --liwe3-warning-color: var(--liwe3-light-warning);
   --liwe3-error-color: var(--liwe3-light-danger);
   --liwe3-paper: var(--liwe3-light-mode3-400);
+  --liwe3-lighter-paper: var(--liwe3-light-mode3-200);
+  --liwe3-darker-paper: var(--liwe3-light-mode3-500);
 
   /* FORM ELEMENTS */
   /* button default */
@@ -421,6 +423,8 @@
   --liwe3-warning-color: var(--liwe3-dark-warning);
   --liwe3-error-color: var(--liwe3-dark-danger);
   --liwe3-paper: var(--liwe3-dark-mode3-400);
+  --liwe3-lighter-paper: var(--liwe3-dark-mode3-200);
+  --liwe3-darker-paper: var(--liwe3-dark-mode3-500);
 
   /* FORM ELEMENTS */
   /* button default */
