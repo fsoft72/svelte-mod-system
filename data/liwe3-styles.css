@@ -83,6 +83,7 @@
   --liwe3-paper: var(--liwe3-light-mode3-400);
   --liwe3-lighter-paper: var(--liwe3-light-mode3-200);
   --liwe3-darker-paper: var(--liwe3-light-mode3-500);
+  --liwe3-border-color: var(--liwe3-light-mode1-500-border);
 
   /* FORM ELEMENTS */
   /* button default */
@@ -425,6 +426,7 @@
   --liwe3-paper: var(--liwe3-dark-mode3-400);
   --liwe3-lighter-paper: var(--liwe3-dark-mode3-200);
   --liwe3-darker-paper: var(--liwe3-dark-mode3-500);
+  --liwe3-border-color: var(--liwe3-dark-mode1-500-border);
 
   /* FORM ELEMENTS */
   /* button default */
