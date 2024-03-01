@@ -246,48 +246,37 @@
 		{/if}
 		<Tabs {mode}>
 			<Tab id="colors" title="Colors">
-				<div class="liwe3-row">
 					{#each modes as name}
-						<div class="color">
+						<div class="liwe3-row color">
+							<div class="liwe3-col12"><b>{name}</b></div>
 							{#each ranges as val}
-								{#if ['background', 'color', 'link'].includes(name)}
-									<div
-										class="color"
-										style={`background-color: var(--liwe3-${
-											darkMode ? 'dark' : 'light'
-										}-${name}-${val});`}
-									>
-										<div class="color-text">{name}<br />{val}</div>
-									</div>
-								{:else}
-									<div class="color" style={`background-color: var(--liwe3-${name}-${val});`}>
-										<div class="color-text">{name}<br />{val}</div>
-									</div>
-								{/if}
+								<div
+									class={ val === 500 ? "liwe3-col3" : "liwe3-col1" }
+									style={`background-color: var(--liwe3-${
+										darkMode ? 'dark' : 'light'
+									}-${name}-${val});`}
+								>
+									<div class="color-text"><p>{val}</p></div>
+								</div>
 							{/each}
 						</div>
 					{/each}
-				</div>
 			</Tab>
 			<Tab id="buttons" title="Buttons">
-				<div class="liwe3-row">
+				<div class="liwe3-row color">
 					{#each modes.slice(0, 9) as mode}
+						<div class="liwe3-col12"><b>{mode}</b></div>
 						<div class="liwe3-col3">
-							<span class="m5"
-								><Button {mode} variant="solid">{mode} - solid - Click me</Button></span
-							>
+							<Button {mode} variant="solid">{mode} - solid - Click me</Button>
 						</div>
 						<div class="liwe3-col3">
-							<span class="m5"
-								><Button {mode} variant="outline">{mode} - outline - Click me</Button></span
-							>
+							<Button {mode} variant="outline">{mode} - outline - Click me</Button>
 						</div>
 						<div class="liwe3-col3">
-							<span class="m5"><Button {mode} variant="link">{mode} - link - Click me</Button></span
-							>
+							<Button {mode} variant="link">{mode} - link - Click me</Button>
 						</div>
 						<div class="liwe3-col3">
-							<span class="m5"><Button {mode} disabled>{mode} - disabled</Button></span>
+							<Button {mode} disabled>{mode} - disabled</Button>
 						</div>
 					{/each}
 				</div>
@@ -320,7 +309,7 @@
 						<div class="liwe3-col2 p5">
 							<div class={`${mode} cform-switch cform-custom-switch`}>
 								<Input type="checkbox" id={`switch-${mode}`} />
-								<label for={`switch-${mode}`} />
+								<label for={`switch-${mode}`}>{mode}</label>
 							</div>
 						</div>
 						<div class="liwe3-col2 p5">
@@ -348,6 +337,72 @@
 						<Select class={mode} items={['mode1', 'mode2', 'mode3', 'mode4']} />
 					{/each}
 				</div>
+			</Tab>
+			<Tab id="form" title="Form">
+				<div class="liwe3-container liwe3-paper spacer">
+					<div class="liwe3-row">
+						<div class="liwe3-col12">
+							<p class="liwe3-lead">Example Form</p>
+						</div>
+						<div class="liwe3-col8">
+							<div class="liwe3-row">
+								<div class="liwe3-col6">
+									<Input label="First Name" placeholder="First Name" />
+								</div>
+								<div class="liwe3-col6">
+									<Input label="Last Name" placeholder="Last Name" />
+								</div>
+								<div class="liwe3-col6 liwe3-offset-6">
+									<div class="mode3 radio-group cform-radio-group">
+										<input type="radio" id="mode3-option-one3" name="selector3" checked />
+										<label for="mode3-option-one3">Male</label>
+										<input type="radio" id="mode3-option-two3" name="selector3" />
+										<label for="mode3-option-two3">Female</label>
+									</div>
+								</div>
+								<div class="liwe3-col6">
+									<Select class="mode3" items={['mode1', 'mode2', 'mode3', 'mode4']} />
+								</div>
+								<div class="liwe3-col6">
+									<Input
+										mode="mode3"
+										class=""
+										label="Subscribe to newsletter"
+										placeholder={mode}
+										type="checkbox"
+									/>
+									<Input
+										mode="mode3"
+										class=""
+										label="I accept the terms and conditions"
+										placeholder={mode}
+										type="checkbox"
+									/>
+									<Input
+										mode="mode3"
+										class=""
+										label="This is a checkbox"
+										placeholder={mode}
+										type="checkbox"
+									/>
+								</div>
+								<div class="liwe3-col6 input-container">
+									<label class="label" for="textarea1">Textarea</label>
+									<textarea id="textarea1" class={`cform mode3 custom-input-cform`} rows="5" placeholder="Your text here" />
+								</div>
+							</div>
+						</div>
+						<div class="liwe3-col4">
+							<div class="liwe3-row" style="align-items:flex-end">
+								<div class="liwe3-col-offset2 liwe3-col8">
+									<Button mode="mode4" variant="solid">Submit</Button>
+								</div>
+								<div class="liwe3-col-offset2 liwe3-col8">
+									<Button mode="warning" variant="solid">reset</Button>
+								</div>
+							</div>
+						</div>
+					</div>
 			</Tab>
 			<Tab id="grids" title="DataGrids">
 				<div class="col">
@@ -441,30 +496,27 @@
 </div>
 
 <style>
-	.color {
-		flex: 0 0 0.075%;
-		min-width: 7.5%;
-		max-width: 100%;
-		height: 4rem;
-		min-height: 4rem;
-		margin: 5px;
-		border-radius: 10px;
-		text-align: center;
-		text-overflow: clip;
-
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		align-items: stretch;
+	.color  div{
+		padding: 0.5rem 0;
 	}
 
 	.color-text {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.color-text  > p {
 		flex: 1;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		padding: 0.5rem 0;
+		text-overflow: clip;
+		overflow-wrap: break-word;
 	}
+
 
 	.colors {
 		display: flex;
@@ -478,6 +530,10 @@
 		flex-direction: column;
 
 		gap: 1rem;
+	}
+
+	.spacer [class^="liwe3-col"] {
+		padding: var(--liwe3-space-2) 0;
 	}
 
 	.row {

@@ -316,6 +316,9 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					--cform-btn-default-text: var(--liwe3-${ name }-mode3-500-text);
 					--cform-radius: var(--liwe3-border-radius);
 				}
+				.cform-radio-group {
+					max-width: fit-content;
+				}
 				.svelte-select {
 					--input-padding: var(--liwe3-form-padding-y);
 				}

@@ -1070,7 +1070,69 @@ button:hover:not(:disabled) {
   margin-left: -0;
 }
 
-.liwe3-col {
+.liwe3-p1 {
+  padding: var(--liwe3-space-1);
+}
+
+.liwe3-p2 {
+  padding: var(--liwe3-space-2);
+}
+
+.liwe3-p3 {
+  padding: var(--liwe3-space-3);
+}
+
+.liwe3-p4 {
+  padding: var(--liwe3-space-4);
+}
+
+.liwe3-m1 {
+  margin: var(--liwe3-space-1);
+}
+
+.liwe3-m2 {
+  margin: var(--liwe3-space-2);
+}
+
+.liwe3-m3 {
+  margin: var(--liwe3-space-3);
+}
+
+.liwe3-m4 {
+  margin: var(--liwe3-space-4);
+}
+
+.liwe3-p1,
+.liwe3-p2,
+.liwe3-p3,
+.liwe3-p4 {
+  &.x {
+    padding-top: none;
+    padding-bottom: none;
+  }
+
+  &.y {
+    padding-left: none;
+    padding-right: none;
+  }
+}
+
+.liwe3-m1,
+.liwe3-m2,
+.liwe3-m3,
+.liwe3-m4 {
+  &.x {
+    margin-top: none;
+    margin-bottom: none;
+  }
+
+  &.y {
+    margin-left: none;
+    margin-right: none;
+  }
+}
+
+.liwe3-row .liwe3-col {
   position: relative;
   width: 100%;
 }
@@ -2282,6 +2344,14 @@ button:hover:not(:disabled) {
 }
 
 /* COLORS */
+.liwe3-paper {
+  background-color: var(--liwe3-paper);
+  color: var(--liwe3-color);
+  padding: var(--liwe3-space-3);
+  border-radius: var(--liwe3-border-radius);
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
+}
+
 .liwe3-scheme-primary {
   background-color: var(--liwe3-primary-color);
   color: var(--liwe3-default-color);
