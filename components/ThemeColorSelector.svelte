@@ -16,17 +16,14 @@
 	<div class="liwe3-row">
 		<div class="liwe3-col4">
 			<div class="theme-selector">
-				<h4>Theme switch:</h4>
-				<div>
-					Dark mode &nbsp;&nbsp;<input
-						type="checkbox"
-						on:change={(e) => setDarkMode(e.target.checked)}
-					/>
-				</div>
+				Dark mode &nbsp;&nbsp;<input
+					type="checkbox"
+					checked={$theme.theme === 'dark'}
+					on:change={(e) => setDarkMode(e.target.checked)}
+				/>
 			</div>
 		</div>
 		<div class="liwe3-col8 tweekers">
-			<h4>Colors:</h4>
 			<div class="liwe3-row">
 				{#each themeModes as mode}
 					<div class="liwe3-col2">
@@ -52,3 +49,9 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.container {
+		padding: 20px;
+	}
+</style>
