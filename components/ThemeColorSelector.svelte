@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { themeSetMode } from '../theme';
 	import { theme, themeModes, themeSetDarkMode, themeSetModeColor } from '../theme_store';
 
 	const setColor = (mode: string, color: string) => {
@@ -7,6 +8,7 @@
 
 	const setDarkMode = (darkMode: boolean) => {
 		themeSetDarkMode(darkMode);
+		themeSetMode(darkMode ? 'dark' : 'light');
 	};
 </script>
 

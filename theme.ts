@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { rgbHexToInt } from '$liwe3/utils/utils';
 import chroma from 'chroma-js';
-import { liwe3Theme } from './theme_store';
+import { theme, themeModeSet, themeSetModeColors } from './theme_store';
+import { get } from 'svelte/store';
+import { browser } from '$app/environment';
 
 const CSS_ID_PREFIX = 'liwe3-colors-';
 const ranges_up = [ 900, 800, 700, 600 ];
@@ -430,8 +432,6 @@ export const themeCreate = ( colorsDefinitions: ThemeColorsDefinitions ) => {
 	let modes: any = {};
 	let colors: Record<string, string> = {};
 
-	// console.log( "=== THEME CREATE: ", colorsDefinitions );
-
 	Object.keys( colorsDefinitions ).forEach( ( name ) => {
 		colors = colorsDefinitions[ name ];
 		Object.entries( colors ).forEach( ( [ mode, col ] ) => {
@@ -446,8 +446,38 @@ export const themeCreate = ( colorsDefinitions: ThemeColorsDefinitions ) => {
 };
 
 export const themeCreateDefault = () => {
+	const themeStore = get( theme );
+
+	if ( browser ) {
+		// check if the user has saved a theme in local storage
+		const lightTheme = localStorage.getItem( `liwe3-light-theme` );
+		if ( lightTheme ) themeSetModeColors( 'light', JSON.parse( lightTheme ) );
+
+		const darkTheme = localStorage.getItem( `liwe3-dark-theme` );
+		if ( darkTheme ) themeSetModeColors( 'dark', JSON.parse( darkTheme ) );
+
+		const themeMode = localStorage.getItem( `liwe3-theme-mode` );
+		themeSetMode( themeMode == 'dark' ? 'dark' : 'light' );
+	}
+
 	themeCreate( {
-		light: liwe3Theme.light,
-		dark: liwe3Theme.dark
+		light: themeStore.light,
+		dark: themeStore.dark
 	} );
+
+
+};
+
+export const themeSetMode = ( mode: 'light' | 'dark' ) => {
+	if ( browser ) {
+		// remove 'liwe3-dark|light-theme' class
+		document.body.classList.remove( `liwe3-light-theme` );
+		document.body.classList.remove( `liwe3-dark-theme` );
+
+		document.body.classList.add( `liwe3-${ mode }-theme` );
+
+		localStorage.setItem( `liwe3-theme-mode`, mode );
+
+		themeModeSet( mode );
+	}
 };

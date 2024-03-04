@@ -1,6 +1,7 @@
 import type { Color } from '$liwe3/types/types';
 import { get, writable } from 'svelte/store';
 import { themeCreate } from './theme';
+import { browser } from '$app/environment';
 
 type ThemeStore = {
 	theme: 'light' | 'dark';
@@ -72,7 +73,14 @@ export const themeSetDarkMode = ( dark: boolean ) => {
 	theme.set( store );
 };
 
-export const themeSetMode = ( mode: 'light' | 'dark' ) => {
+export const themeModeGet = () => {
+	const store = get( theme );
+	if ( !store ) return 'light';
+
+	return store.theme;
+};
+
+export const themeModeSet = ( mode: 'light' | 'dark' ) => {
 	const store = get( theme );
 	if ( !store ) return;
 
@@ -80,11 +88,12 @@ export const themeSetMode = ( mode: 'light' | 'dark' ) => {
 	theme.set( store );
 };
 
-export const themeModeGet = () => {
+export const themeSetModeColors = ( mode: 'light' | 'dark', color: Record<string, string> ) => {
 	const store = get( theme );
-	if ( !store ) return 'light';
+	if ( !store ) return;
 
-	return store.theme;
+	store[ mode ] = color;
+	theme.set( store );
 };
 
 export const themeSetModeColor = ( type: 'light' | 'dark', mode: string, color: string ) => {
@@ -95,12 +104,19 @@ export const themeSetModeColor = ( type: 'light' | 'dark', mode: string, color: 
 	theme.set( store );
 
 	themeCreate( { [ type ]: store[ type ] } );
+
+	if ( browser ) {
+		// save the theme to local storage
+		localStorage.setItem( `liwe3-${ store.theme }-theme`, JSON.stringify( store[ store.theme ] ) );
+	}
 };
 
 
+/*
 export let liwe3Theme: ThemeStore;
 
 // subscribe to the user store
 theme.subscribe( ( value ) => {
 	liwe3Theme = value;
 } );
+*/
