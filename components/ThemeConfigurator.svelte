@@ -11,8 +11,7 @@
 		type GridField
 	} from '$liwe3/components/DataGrid.svelte';
 	import type { Color } from '$liwe3/types/types';
-	import { themeColors, themeCreate } from '../theme';
-	import { onMount } from 'svelte';
+	import { themeCreate } from '../theme';
 	import AutoComplete from '$liwe3/components/AutoComplete.svelte';
 	import MarkdownInput from '$liwe3/components/MarkdownInput.svelte';
 	import Modal from '$liwe3/components/Modal.svelte';
@@ -20,6 +19,8 @@
 	import DraggableTree from '$liwe3/components/DraggableTree.svelte';
 	import ElementList from '$liwe3/components/ElementList.svelte';
 	import TagInput from '$liwe3/components/TagInput.svelte';
+	import { theme, themeModes } from '../theme_store';
+	import ThemeColorSelector from './ThemeColorSelector.svelte';
 
 	const ranges = [900, 800, 700, 600, 500, 400, 300, 200, 100, 50];
 	const fields: GridField[] = [
@@ -100,90 +101,14 @@
 		}
 	];
 
-	let darkMode = false;
 	let mode: Color = 'mode1';
-
-	let is_ready = false;
 
 	let testMode: Color = 'mode1';
 	let showModal = false;
-	// define default modes
-	const modes: Color[] = [
-		'mode1',
-		'mode2',
-		'mode3',
-		'mode4',
-		'info',
-		'error',
-		'warning',
-		'success',
-		'dark',
-		'background',
-		'color',
-		'link'
-	];
-	// init light and dark themes
-	let light: Record<string, string> = {};
-	let dark: Record<string, string> = {};
-	// define base colors
-	modes.map((mode) => {
-		light[mode] = '#f2f2f2';
-		dark[mode] = '#333333';
-	});
-	// gets a string like '#ff00a0' and returns [ 255, 0, 160 ]
-	const rgbHexToInt = (rgb: string) => {
-		const r = parseInt(rgb.slice(1, 3), 16);
-		const g = parseInt(rgb.slice(3, 5), 16);
-		const b = parseInt(rgb.slice(5, 7), 16);
 
-		return [r, g, b];
-	};
-
-	const intToRGBHex = (rgb: number[]) => {
-		const r = rgb[0].toString(16).padStart(2, '0');
-		const g = rgb[1].toString(16).padStart(2, '0');
-		const b = rgb[2].toString(16).padStart(2, '0');
-
-		return `#${r}${g}${b}`;
-	};
-
-	$: {
-		is_ready &&
-			themeCreate([
-				{
-					light: {
-						mode1: rgbHexToInt(light.mode1),
-						mode2: rgbHexToInt(light.mode2),
-						mode3: rgbHexToInt(light.mode3),
-						mode4: rgbHexToInt(light.mode4),
-						background: rgbHexToInt(light.background),
-						color: rgbHexToInt(light.color),
-						link: rgbHexToInt(light.link),
-						info: rgbHexToInt(light.info),
-						error: rgbHexToInt(light.error),
-						warning: rgbHexToInt(light.warning),
-						success: rgbHexToInt(light.success)
-					}
-				},
-				{
-					dark: {
-						mode1: rgbHexToInt(dark.mode1),
-						mode2: rgbHexToInt(dark.mode2),
-						mode3: rgbHexToInt(dark.mode3),
-						mode4: rgbHexToInt(dark.mode4),
-						background: rgbHexToInt(dark.background),
-						color: rgbHexToInt(dark.color),
-						link: rgbHexToInt(dark.link),
-						info: rgbHexToInt(dark.info),
-						error: rgbHexToInt(dark.error),
-						warning: rgbHexToInt(dark.warning),
-						success: rgbHexToInt(dark.success)
-					}
-				}
-			]);
-	}
+	/*
 	onMount(() => {
-		const tc = themeColors();
+		// const tc = themeColors();
 		//iterate on tc and set the colors
 		tc.map((theme, idx) => {
 			Object.entries(tc[idx]).map(([themeType, colors]) => {
@@ -194,39 +119,16 @@
 		});
 		is_ready = true;
 	});
+	*/
 </script>
 
-<div class="container" class:liwe3-dark-theme={darkMode} class:liwe3-light-theme={!darkMode}>
+<div class={`container liwe3-${$theme.theme}-theme`}>
 	<div class="liwe3-row">
 		<div class="liwe3-col">
-			<h1>Theme Configurator</h1>
+			<h1>Theme Configurator {$theme.theme}</h1>
 		</div>
 	</div>
-	<div class="liwe3-row">
-		<div class="liwe3-col4">
-			<div class="theme-selector">
-				<h4>Theme swicth:</h4>
-				<div>Dark mode &nbsp;&nbsp;<input type="checkbox" bind:checked={darkMode} /></div>
-			</div>
-		</div>
-		<div class="liwe3-col8 tweekers">
-			<h4>Colors:</h4>
-			<div class="liwe3-row">
-				{#each modes as mode}
-					<div class="liwe3-col2">
-						<span>{mode} </span>
-						<span>
-							{#if darkMode}
-								<input type="color" bind:value={dark[mode]} />
-							{:else}
-								<input type="color" bind:value={light[mode]} />
-							{/if}
-						</span>
-					</div>
-				{/each}
-			</div>
-		</div>
-	</div>
+	<ThemeColorSelector />
 	<div class="liwe3-row">
 		{#if showModal}
 			<Modal
@@ -246,25 +148,25 @@
 		{/if}
 		<Tabs {mode}>
 			<Tab id="colors" title="Colors">
-					{#each modes as name}
-						<div class="liwe3-row color">
-							<div class="liwe3-col12"><b>{name}</b></div>
-							{#each ranges as val}
-								<div
-									class={ val === 500 ? "liwe3-col3" : "liwe3-col1" }
-									style={`background-color: var(--liwe3-${
-										darkMode ? 'dark' : 'light'
-									}-${name}-${val});`}
-								>
-									<div class="color-text"><p>{val}</p></div>
-								</div>
-							{/each}
-						</div>
-					{/each}
+				{#each themeModes as name}
+					<div class="liwe3-row color">
+						<div class="liwe3-col12"><b>{name}</b></div>
+						{#each ranges as val}
+							<div
+								class={val === 500 ? 'liwe3-col3' : 'liwe3-col1'}
+								style={`background-color: var(--liwe3-${
+									$theme.theme ? 'dark' : 'light'
+								}-${name}-${val});`}
+							>
+								<div class="color-text"><p>{val}</p></div>
+							</div>
+						{/each}
+					</div>
+				{/each}
 			</Tab>
 			<Tab id="buttons" title="Buttons">
 				<div class="liwe3-row color">
-					{#each modes.slice(0, 9) as mode}
+					{#each themeModes.slice(0, 9) as mode}
 						<div class="liwe3-col12"><b>{mode}</b></div>
 						<div class="liwe3-col3">
 							<Button {mode} variant="solid">{mode} - solid - Click me</Button>
@@ -282,7 +184,7 @@
 				</div>
 			</Tab>
 			<Tab id="inputs" title="Inputs">
-				{#each modes as mode}
+				{#each themeModes as mode}
 					<div class="liwe3-row">
 						{#each ['text', 'number', 'password', 'email', 'url', 'tel'] as type}
 							<Input
@@ -388,7 +290,12 @@
 								</div>
 								<div class="liwe3-col6 input-container">
 									<label class="label" for="textarea1">Textarea</label>
-									<textarea id="textarea1" class={`cform mode3 custom-input-cform`} rows="5" placeholder="Your text here" />
+									<textarea
+										id="textarea1"
+										class={`cform mode3 custom-input-cform`}
+										rows="5"
+										placeholder="Your text here"
+									/>
 								</div>
 							</div>
 						</div>
@@ -403,7 +310,8 @@
 							</div>
 						</div>
 					</div>
-			</Tab>
+				</div></Tab
+			>
 			<Tab id="grids" title="DataGrids">
 				<div class="col">
 					<DataGrid mode="mode1" {fields} {data} {actions} />
@@ -496,7 +404,7 @@
 </div>
 
 <style>
-	.color  div{
+	.color div {
 		padding: 0.5rem 0;
 	}
 
@@ -506,7 +414,7 @@
 		align-items: center;
 	}
 
-	.color-text  > p {
+	.color-text > p {
 		flex: 1;
 		display: flex;
 		flex-direction: column;
@@ -516,7 +424,6 @@
 		text-overflow: clip;
 		overflow-wrap: break-word;
 	}
-
 
 	.colors {
 		display: flex;
@@ -532,7 +439,7 @@
 		gap: 1rem;
 	}
 
-	.spacer [class^="liwe3-col"] {
+	.spacer [class^='liwe3-col'] {
 		padding: var(--liwe3-space-2) 0;
 	}
 
