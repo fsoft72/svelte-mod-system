@@ -326,7 +326,48 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					max-width: fit-content;
 				}
 				.svelte-select {
+					--border: var(--liwe3-border-width) solid var(--liwe3-${ name }-mode3-200-border);
 					--input-padding: var(--liwe3-form-padding-y);
+					--value-container-padding: calc(var(--input-padding) * 5) var(--input-padding);
+					.value-container > input {
+						padding-block: clamp(1px,var(--input-padding) * 2.5,15px);
+						padding-inline: clamp(5px,var(--input-padding) * 4,20px);
+					}
+					&.xxs {
+						padding: 0.12rem 0.2rem !important;
+						font-size: 0.75rem;
+						min-width: calc(var(--liwe3-input-w-unit) * 4);
+					}
+					&.xs {
+						padding: 0.15rem 0.22rem !important;
+						font-size: 0.75rem;
+						min-width: calc(var(--liwe3-input-w-unit) * 5);
+					}
+					&.sm {
+						padding: 0.18rem 0.24rem !important;
+						font-size: 0.875rem;
+						min-width: calc(var(--liwe3-input-w-unit) * 6);
+					}
+					&.md {
+						/* padding is the default value defined in css variables */
+						font-size: 1rem;
+						min-width: calc(var(--liwe3-input-w-unit) * 7);
+					}
+					&.lg {
+						padding: 0.22rem 0.28rem !important;
+						font-size: 1.12rem;
+						min-width: calc(var(--liwe3-input-w-unit) * 8);
+					}
+					&.xl {
+						padding: 0.24rem 0.4rem !important;
+						font-size: 1.25rem;
+						min-width: calc(var(--liwe3-input-w-unit) * 9);
+					}
+					&.xxl {
+						padding: 0.28rem 0.45rem !important;
+						font-size: 1.5rem;
+						min-width: calc(var(--liwe3-input-w-unit) * 10);
+					}
 				}
 				.svelte-select.mode1 {
 					--background: var(--liwe3-${ name }-mode1);
