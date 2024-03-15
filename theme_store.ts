@@ -1,4 +1,4 @@
-import type { Color } from '$liwe3/types/types';
+import type { Color, LayoutVars, LayoutVarsUnit } from '$liwe3/types/types';
 import { get, writable } from 'svelte/store';
 import { themeCreate } from './theme';
 import { browser } from '$app/environment';
@@ -7,6 +7,7 @@ type ThemeStore = {
 	theme: 'light' | 'dark';
 	light: Record<string, string>;
 	dark: Record<string, string>;
+	vars: Record<string, string>;
 };
 
 // define default modes
@@ -24,6 +25,32 @@ export const themeModes: Color[] = [
 	'color',
 	'link'
 ];
+// define default layout vars
+export const themeLayoutVars: LayoutVars[] = [
+	'font-size',
+	'font-weight',
+	'line-height',
+	'border-radius',
+	'border-width',
+	'border-style',
+	'button-padding-y',
+	'button-padding-x',
+	'form-padding-y',
+	'form-padding-x'
+];
+
+export const themeLayoutUnits: Record<LayoutVars, string> = {
+	'font-size': 'px',
+	'font-weight': 'number',
+	'line-height': 'rem',
+	'border-radius': 'rem',
+	'border-width': 'px',
+	'border-style': 'string',
+	'button-padding-y': 'rem',
+	'button-padding-x': 'rem',
+	'form-padding-y': 'rem',
+	'form-padding-x': 'rem'
+};
 
 // create a writable store for the LiWEUser
 export const theme = writable<ThemeStore>( {
@@ -55,6 +82,18 @@ export const theme = writable<ThemeStore>( {
 		background: '#000000',
 		color: '#ffffff',
 		link: '#0000ff'
+	},
+	vars: {
+		'font-size': '20px',
+		'font-weight': '400',
+		'line-height': '1.2rem',
+		'border-radius': '0.15rem',
+		'border-width': '1px',
+		'border-style': 'solid',
+		'button-padding-y': '0.25rem',
+		'button-padding-x': '0.1rem',
+		'form-padding-y': '0.15rem',
+		'form-padding-x': '0.15rem'
 	}
 } );
 
@@ -111,6 +150,26 @@ export const themeSetModeColor = ( type: 'light' | 'dark', mode: string, color: 
 	}
 };
 
+export const themeSetLayoutVars = ( vars: Record<string, string> ) => {
+	const store = get( theme );
+	if ( !store ) return;
+
+	store.vars = vars;
+	theme.set( store );
+};
+
+export const themeSetLayoutVar = ( name: string, value: string ) => {
+	const store = get( theme );
+	if ( !store ) return;
+
+	store.vars[ name ] = value;
+	theme.set( store );
+
+	themeCreate( { vars: store.vars } );
+	if ( browser ) {
+		localStorage.setItem( 'liwe3-layout-vars', JSON.stringify( store.vars ) );
+	}
+}
 
 /*
 export let liwe3Theme: ThemeStore;

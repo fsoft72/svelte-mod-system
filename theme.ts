@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { rgbHexToInt } from '$liwe3/utils/utils';
 import chroma from 'chroma-js';
-import { theme, themeModeSet, themeSetModeColors } from './theme_store';
+import { theme, themeModeSet, themeSetModeColors, themeSetLayoutVars } from './theme_store';
 import { get } from 'svelte/store';
 import { browser } from '$app/environment';
 
@@ -467,6 +467,26 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 	if ( is_new ) document.head.appendChild( style );
 };
 
+const injectVars = ( values: Record<string, string> ) => {
+	const name = CSS_ID_PREFIX + 'layout';
+	let style = document.getElementById( name );
+	let is_new = false;
+
+	if ( !style ) {
+		style = document.createElement( 'style' );
+		style.id = name;
+		is_new = true;
+	}
+
+	style.innerHTML =
+		`:root {\n` +
+		Object.entries( values )
+			.map( ( [ key, value ] ) => `--liwe3-${ key }: ${ value };` )
+			.join( '\n' ) +
+		'\n}\n';
+	if ( is_new ) document.head.appendChild( style );
+};
+
 type ThemeColorsDefinitions = Record<string, Record<string, string>>;
 
 export const themeCreate = ( colorsDefinitions: ThemeColorsDefinitions ) => {
@@ -474,6 +494,10 @@ export const themeCreate = ( colorsDefinitions: ThemeColorsDefinitions ) => {
 	let colors: Record<string, string> = {};
 
 	Object.keys( colorsDefinitions ).forEach( ( name ) => {
+		if ( name === 'vars' ) {
+			injectVars( colorsDefinitions[ name ] );
+			return;
+		}
 		colors = colorsDefinitions[ name ];
 		Object.entries( colors ).forEach( ( [ mode, col ] ) => {
 			const values = rgbHexToInt( col );
@@ -497,16 +521,19 @@ export const themeCreateDefault = () => {
 		const darkTheme = localStorage.getItem( `liwe3-dark-theme` );
 		if ( darkTheme ) themeSetModeColors( 'dark', JSON.parse( darkTheme ) );
 
+		const layoutVars = localStorage.getItem( `liwe3-layout-vars` );
+		if ( layoutVars ) themeSetLayoutVars( JSON.parse( layoutVars ) );
+
 		const themeMode = localStorage.getItem( `liwe3-theme-mode` );
 		themeSetMode( themeMode == 'dark' ? 'dark' : 'light' );
 	}
 
 	themeCreate( {
 		light: themeStore.light,
-		dark: themeStore.dark
+		dark: themeStore.dark,
+		vars: themeStore.vars
 	} );
-
-
+	//injectVars( themeStore.vars );
 };
 
 export const themeSetMode = ( mode: 'light' | 'dark' ) => {

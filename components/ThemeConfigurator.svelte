@@ -21,6 +21,7 @@
 	import TagInput from '$liwe3/components/TagInput.svelte';
 	import { theme, themeModes } from '../theme_store';
 	import ThemeColorSelector from './ThemeColorSelector.svelte';
+	import ThemeVarsSelector from './ThemeVarsSelector.svelte';
 
 	const ranges = [900, 800, 700, 600, 500, 400, 300, 200, 100, 50];
 	const fields: GridField[] = [
@@ -129,6 +130,7 @@
 		</div>
 	</div>
 	<ThemeColorSelector />
+	<ThemeVarsSelector />
 	<div class="liwe3-row">
 		{#if showModal}
 			<Modal
