@@ -1,4 +1,4 @@
-import type { Color, LayoutVars, LayoutVarsUnit } from '$liwe3/types/types';
+import type { Color } from '$liwe3/types/types';
 import { get, writable } from 'svelte/store';
 import { themeCreate } from './theme';
 import { browser } from '$app/environment';
@@ -25,6 +25,8 @@ export const themeModes: Color[] = [
 	'color',
 	'link'
 ];
+
+/*
 // define default layout vars
 export const themeLayoutVars: LayoutVars[] = [
 	'font-size',
@@ -38,8 +40,9 @@ export const themeLayoutVars: LayoutVars[] = [
 	'form-padding-y',
 	'form-padding-x'
 ];
+*/
 
-export const themeLayoutUnits: Record<LayoutVars, string> = {
+export const themeLayoutUnits: Record<string, string> = {
 	'font-size': 'px',
 	'font-weight': 'number',
 	'line-height': 'rem',
