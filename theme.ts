@@ -86,7 +86,7 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 			`
 				--cform-radius: var(--liwe3-border-radius);
 				--cform-font-size: var(--liwe3-font-size);
-				--cform-padding: var(--liwe3-form-padding-y);
+				--cform-padding: var(--liwe3-input-padding-y);
 				--cform-border-width: var(--liwe3-border-width);
 				--cform-border-width-focus: calc(var(--liwe3-border-width)*2);
 				--cform-border-focus-color: var(--liwe3-${ name }-mode4-500-border);
@@ -327,7 +327,7 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 				}
 				.svelte-select {
 					--border: var(--liwe3-border-width) solid var(--liwe3-${ name }-mode3-200-border);
-					--input-padding: var(--liwe3-form-padding-y);
+					--input-padding: var(--liwe3-input-padding-y);
 					--value-container-padding: calc(var(--input-padding) * 5) var(--input-padding);
 					.value-container > input {
 						padding-block: clamp(1px,var(--input-padding) * 2.5,15px);

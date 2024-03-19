@@ -37,8 +37,8 @@ export const themeLayoutVars: LayoutVars[] = [
 	'border-style',
 	'button-padding-y',
 	'button-padding-x',
-	'form-padding-y',
-	'form-padding-x'
+	'input-padding-y',
+	'input-padding-x'
 ];
 */
 
@@ -51,8 +51,8 @@ export const themeLayoutUnits: Record<string, string> = {
 	'border-style': 'string',
 	'button-padding-y': 'rem',
 	'button-padding-x': 'rem',
-	'form-padding-y': 'rem',
-	'form-padding-x': 'rem'
+	'input-padding-y': 'rem',
+	'input-padding-x': 'rem'
 };
 
 // create a writable store for the LiWEUser
@@ -95,8 +95,8 @@ export const theme = writable<ThemeStore>( {
 		'border-style': 'solid',
 		'button-padding-y': '0.25rem',
 		'button-padding-x': '0.1rem',
-		'form-padding-y': '0.15rem',
-		'form-padding-x': '0.15rem'
+		'input-padding-y': '0.15rem',
+		'input-padding-x': '0.15rem'
 	}
 } );
 
