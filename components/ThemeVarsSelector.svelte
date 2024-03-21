@@ -5,7 +5,7 @@
 
 	const formatValue = {
 		clean: (name: string, value: string) => {
-			const val = value.replace(themeLayoutUnits[name], '').trim();
+			const val = value ? value.replace(themeLayoutUnits[name], '').trim() : '';
 			return val;
 		},
 		full: (name: string, value: string) =>
@@ -15,6 +15,7 @@
 	const setVar = (rule: string, value: string) => {
 		themeSetLayoutVar(rule, value);
 	};
+	console.log(themeLayoutUnits);
 </script>
 
 <div class="container">
