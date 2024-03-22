@@ -2422,106 +2422,1132 @@ button:hover:not(:disabled) {
   display: block;
 }
 
-.liwe3-select-container .liwe3-select-button,
-.liwe3-form-textarea,
-.liwe3-form-input {
-  width: 100%;
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--liwe3-default-color);
+.hide-input,
+.radio-group input[type=radio],
+.liwe3-form-switch input[type=checkbox] {
+  position: absolute;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  overflow: hidden;
+  box-shadow: unset !important;
+}
+
+.hide-input:focus,
+.radio-group input[type=radio]:focus,
+.liwe3-form-switch input[type=checkbox]:focus {
+  box-shadow: unset !important;
+}
+
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]) {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: unset;
+  font-size: clamp(12px, var(--liwe3-font-size), 20px);
+  min-height: clamp(10px, (var(--liwe3-font-size)), 60px);
   border-radius: var(--liwe3-border-radius);
-  background-color: var(--liwe3-lighter-secondary-color);
-  color: var(--liwe3-default-color);
-  font-size: var(--liwe3-font-size);
-  font-weight: var(--liwe3-font-weight);
+  /*padding: var(--liwe3-input-padding-y) calc(var(--liwe3-input-padding-y) * 3);*/
+  padding: var(--liwe3-input-padding-y) var(--liwe3-input-padding-x);
+  padding-block: clamp(1px, var(--liwe3-input-padding-y) * 2.5, 15px);
+  /*padding-inline: clamp(5px, var(--liwe3-input-padding-y) * 4, 20px);*/
+  padding-inline: clamp(5px, var(--liwe3-input-padding-x) * 4, 50px);
+  color: var(--liwe3-form-text-color);
+  background-color: var(--liwe3-form-bg);
+  box-shadow: 0 0 0 var(--liwe3-border-width) var(--liwe3-form-border-color);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  display: inline-block;
+  font-weight: 500;
+  transition: filter 0.3s linear, box-shadow 0.35s ease-in-out, background-color 0.35s ease-in-out;
+  max-width: 100%;
+}
+
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list])[disabled] {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.6;
+  color: color-mix(in srgb, var(--liwe3-form-text-color) 85%, transparent);
+}
+
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]):focus,
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]).focus,
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]):focus-within,
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]):focus-visible {
+  background-color: var(--liwe3-form-focus-bg);
+  outline: unset;
+  box-shadow: 0 0 var(--liwe3-form-border-blur) calc(var(--liwe3-border-width-focus) + var(--liwe3-border-width)) var(--liwe3-border-focus-color);
+}
+
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list])::-webkit-inner-spin-button {
+  margin-right: 0;
+  padding: 10px 5px;
+}
+
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]):invalid,
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]).invalid {
+  box-shadow: 0 0 0 clamp(1px, var(--liwe3-border-width-focus) + var(--liwe3-border-width), 5px) var(--liwe3-form-error);
+  color: var(--liwe3-form-error);
+}
+
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]):invalid::-moz-placeholder,
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]).invalid::-moz-placeholder {
+  color: var(--liwe3-form-error);
+}
+
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]):invalid::placeholder,
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]).invalid::placeholder {
+  color: var(--liwe3-form-error);
+}
+
+.liwe3-form:is(textarea, select[multiple]) {
   line-height: 1.2;
-  letter-spacing: 0;
-  text-align: left;
+  scrollbar-width: thin;
+  border-radius: clamp(0px, var(--liwe3-border-radius), 15px);
+  position: relative;
+  min-height: 50px;
 }
 
-.liwe3-select-container .liwe3-select-button::placeholder,
-.liwe3-form-textarea::placeholder,
-.liwe3-form-input::placeholder {
-  color: var(--liwe3-darker-secondary-color);
+.liwe3-form:is(textarea, select[multiple])::-webkit-scrollbar {
+  background: transparent;
+  width: 8px;
+  height: 8px;
 }
 
-.liwe3-form-textarea:focus,
-.liwe3-form-input:focus {
+.liwe3-form:is(textarea, select[multiple])::-webkit-scrollbar-thumb {
+  background: var(--liwe3-form-text-placeholder-color);
+  border-radius: 50em;
+}
+
+.liwe3-form:is(textarea, select[multiple])::-webkit-scrollbar-corner,
+.liwe3-form:is(textarea, select[multiple])::-webkit-resizer {
+  display: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.liwe3-form:is(textarea):hover,
+.liwe3-form:is(textarea):focus {
+  background-image: linear-gradient(315deg, var(--liwe3-form-text-color) 50%, transparent 50%);
+  background-position: calc(100% - 8px) calc(100% - 8px);
+  background-size: 8px 8px;
+  background-repeat: no-repeat;
+}
+
+.liwe3-form:is(input, textarea)::-moz-placeholder {
+  color: color-mix(in srgb, var(--liwe3-form-text-placeholder-color) 75%, transparent);
+  font-weight: 200;
+}
+
+.liwe3-form:is(input, textarea)::placeholder {
+  color: color-mix(in srgb, var(--liwe3-form-text-placeholder-color) 75%, transparent);
+  font-weight: 200;
+}
+
+.liwe3-form:is(select[multiple]) {
+  line-height: 20px;
+}
+
+.liwe3-form:is(select[multiple]) option {
+  padding: 3px 5px;
+  margin: 1px 0;
+}
+
+.liwe3-form:is(select[multiple]) option:checked {
+  background-color: var(--liwe3-form-accent);
+  color: var(--liwe3-form-accent-color);
+}
+
+.liwe3-form:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week])::-webkit-datetime-edit {
+  color: var(--liwe3-form-text-color);
+}
+
+.liwe3-form:focus-within::-webkit-calendar-picker-indicator {
+  opacity: 0.8;
+}
+
+.liwe3-form::-webkit-calendar-picker-indicator {
+  opacity: 0.4;
+  cursor: pointer;
+  -webkit-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+  scale: 1.2;
+}
+
+.liwe3-form::-webkit-calendar-picker-indicator:hover {
+  opacity: 0.8;
+}
+
+.liwe3-form::-webkit-datetime-edit-fields-wrapper {
+  padding: 0;
+}
+
+.liwe3-form::-webkit-date-and-time-value {
+  min-height: 1.5em;
+}
+
+.liwe3-form:is(input[list])::-webkit-calendar-picker-indicator {
+  display: none !important;
+}
+
+.liwe3-form:is(select:not([multiple]), input[list]) {
+  padding-right: clamp(30px, var(--liwe3-input-padding-y) * 9, 60px);
+  background-image: linear-gradient(45deg, transparent 50%, color-mix(in srgb, var(--liwe3-form-text-placeholder-color) 70%, transparent) 50%), linear-gradient(135deg, color-mix(in srgb, var(--liwe3-form-text-placeholder-color) 70%, transparent) 50%, transparent 50%);
+  background-position: calc(100% - clamp(15px, var(--liwe3-input-padding-y) + 13px, 25px)) 50%, calc(100% - clamp(10px, var(--liwe3-input-padding-y) + 8px, 20px)) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+}
+
+.liwe3-form:is(textarea) {
+  resize: vertical;
+  min-height: clamp(50px, 3rem, 99999px);
+}
+
+.liwe3-form[type=search]::-webkit-search-decoration,
+.liwe3-form[type=search]::-webkit-search-cancel-button,
+.liwe3-form[type=search]::-webkit-search-results-button,
+.liwe3-form[type=search]::-webkit-search-results-decoration {
+  display: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  opacity: 0 !important;
+}
+
+.liwe3-form[type=checkbox],
+.liwe3-form[type=radio] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  display: inline-block;
+  vertical-align: middle;
+  background-origin: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  flex-shrink: 0;
+  height: clamp(16px, var(--liwe3-form-checkbox-width), 40px);
+  width: clamp(16px, var(--liwe3-form-checkbox-width), 40px);
+  cursor: pointer;
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 2px, 8px);
+  margin: 0;
+  background-color: var(--liwe3-form-accent);
+  background-size: 0;
+  border-color: transparent;
+  box-shadow: unset;
+  transition: background-size 0.15s ease-in-out, box-shadow 0.3s linear;
+}
+
+.liwe3-form[type=checkbox]:focus-visible,
+.liwe3-form[type=radio]:focus-visible {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
+  outline-offset: 2px;
+}
+
+.liwe3-form[type=checkbox][disabled],
+.liwe3-form[type=radio][disabled] {
+  cursor: default;
+  opacity: 0.5;
+  box-shadow: unset;
+}
+
+.liwe3-form[type=checkbox] {
+  position: relative;
+}
+
+.liwe3-form[type=checkbox]:before {
+  content: "";
+  transition: scale 0.2s ease-in-out;
+  border-left: 0 solid var(--liwe3-form-accent-color);
+  border-bottom: 0 solid var(--liwe3-form-accent-color);
+  border-left-width: clamp(2px, var(--liwe3-border-width), 3px);
+  border-bottom-width: clamp(2px, var(--liwe3-border-width), 3px);
+  position: absolute;
+  width: clamp(10px, var(--liwe3-form-checkbox-width) / 2, 28px);
+  height: clamp(6px, var(--liwe3-form-checkbox-width) / 4, 23px);
+  top: 50%;
+  left: 50%;
+  transform: rotate(-50deg) translateY(-60%) translateX(-40%);
+  transform-origin: left top;
+  scale: 0;
+}
+
+.liwe3-form[type=checkbox]:checked {
+  border-color: transparent;
+  box-shadow: unset;
+}
+
+.liwe3-form[type=checkbox]:checked:before {
+  scale: 1;
+}
+
+.liwe3-form[type=radio] {
+  border-radius: 100%;
+  height: clamp(16px, var(--liwe3-form-checkbox-width) - 4px, 40px);
+  width: clamp(16px, var(--liwe3-form-checkbox-width) - 4px, 40px);
+  position: relative;
+}
+
+.liwe3-form[type=radio]:before {
+  transition: scale 0.25s ease-in-out;
+  content: "";
+  height: clamp(8px, var(--liwe3-form-checkbox-width) - 16px, 15px);
+  width: clamp(8px, var(--liwe3-form-checkbox-width) - 16px, 15px);
+  border-radius: 100%;
+  background: var(--liwe3-form-accent-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  scale: 0;
+  transform-origin: top left;
+}
+
+.liwe3-form[type=radio]:checked:before {
+  scale: 1;
+}
+
+.liwe3-form-switch {
+  --switch-width: clamp(15px, calc(var(--liwe3-form-checkbox-width) - 6px), 30px);
+  overflow: hidden;
+  padding: 4px;
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+.liwe3-form-switch input[type=checkbox]+label {
+  cursor: pointer;
+  width: calc(var(--switch-width) * 2.3);
+  height: calc(var(--switch-width) + 4px);
+  max-width: 100%;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: calc(var(--liwe3-border-radius) + 2px);
+  position: relative;
+  vertical-align: bottom;
+  background-color: color-mix(in srgb, var(--liwe3-form-bg) 90%, #000);
+  transition: background 0.2s ease-in-out;
+}
+
+.liwe3-form-switch input[type=checkbox]+label:after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  left: 2px;
+  width: var(--switch-width);
+  height: var(--switch-width);
+  top: 2px;
+  background-color: var(--liwe3-form-text-placeholder-color);
+  border-radius: var(--liwe3-border-radius);
+  box-sizing: border-box;
+  transition: left 0.2s ease-in-out;
+}
+
+.liwe3-form-switch input[type=checkbox]:checked+label {
+  background-color: var(--liwe3-form-accent);
+}
+
+.liwe3-form-switch input[type=checkbox]:checked+label:after {
+  left: calc(100% - (var(--switch-width) + 2px));
+  background-color: var(--liwe3-form-accent-color);
+}
+
+.liwe3-form-switch:has(:focus-visible):focus-within label {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
+  outline-offset: 2px;
+}
+
+.liwe3-form-switch:has([disabled]) {
+  opacity: 0.5;
+}
+
+.liwe3-form::-webkit-calendar-picker-indicator:focus-visible {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
+  outline-offset: 2px;
+  border-radius: clamp(0px, var(--liwe3-border-radius) / 2, 5px);
+}
+
+.liwe3-form-switch-small {
+  --switch-width: clamp(10px, calc(var(--liwe3-form-checkbox-width) - 15px), 20px);
+}
+
+.liwe3-form-switch-big {
+  --switch-width: clamp(20px, calc(var(--liwe3-form-checkbox-width) - 2px), 40px);
+}
+
+.radio-group {
+  border-radius: var(--liwe3-border-radius);
+  overflow: hidden;
+  background: var(--liwe3-form-bg);
+  padding: clamp(3px, (var(--liwe3-input-padding-y)), 8px);
+  display: inline-flex !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  color: var(--liwe3-form-text-color);
+}
+
+.radio-group input[type=radio]:checked+label {
+  color: var(--liwe3-form-accent-color);
+  background: var(--liwe3-form-accent);
+}
+
+.radio-group input[type=radio]:focus+label {
+  box-shadow: 0 0 0 1px var(--form-color) !important;
+}
+
+.radio-group:has(:focus-visible):focus-within {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
+  outline-offset: 2px;
+}
+
+.radio-group label {
+  color: var(--gray-65);
+  cursor: pointer;
+  padding-block: clamp(3px, var(--liwe3-input-padding-y) + 3px, 10px);
+  padding-inline: clamp(10px, var(--liwe3-input-padding-y) * 4, 20px);
+  transition: background 0.1s ease-in-out, color 0.2s linear;
+  border-radius: calc(var(--liwe3-border-radius) - 2px);
+  white-space: nowrap;
+  font-size: clamp(12px, var(--liwe3-font-size) - 1px, 20px);
+}
+
+.radio-group label:hover {
+  color: var(--gray-90);
+}
+
+.radio-group.radio-group-small {
+  padding: clamp(3px, var(--liwe3-input-padding-y) - 1px, 6px);
+}
+
+.radio-group.radio-group-small label {
+  padding-block: clamp(3px, (var(--liwe3-input-padding-y)), 5px);
+  padding-inline: clamp(10px, var(--liwe3-input-padding-y) + 10px, 15px);
+  font-size: clamp(12px, var(--liwe3-font-size) - 3px, 18px);
+}
+
+input.liwe3-form:-webkit-autofill {
+  box-shadow: inset 0 0 0 100px var(--liwe3-form-bg);
+}
+
+input.liwe3-form:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 100px var(--liwe3-form-bg), 0 0 var(--liwe3-form-border-blur) calc(var(--liwe3-border-width-focus) + var(--liwe3-border-width)) var(--liwe3-border-focus-color);
+}
+
+input[type=range].liwe3-form {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 10px 0;
+  width: 100%;
+  background: unset;
   outline: none;
-  border: 1px solid var(--liwe3-primary-color);
 }
 
-.liwe3-form-textarea.error,
-.liwe3-form-input.error {
-  border: 1px solid var(--liwe3-error-color);
+input[type=range].liwe3-form::-webkit-slider-runnable-track {
+  height: clamp(10px, var(--liwe3-form-checkbox-width) / 2 + var(--liwe3-border-width), 30px);
+  background: var(--liwe3-form-bg);
+  border: var(--liwe3-border-width) solid color-mix(in srgb, var(--liwe3-form-bg) 97%, #000000);
+  border-radius: clamp(0px, var(--liwe3-border-radius) / 2, 20px);
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
 }
 
-.liwe3-form-textarea.error:focus,
-.liwe3-form-input.error:focus {
-  outline: none;
-  border: 1px solid var(--liwe3-error-color);
+input[type=range].liwe3-form::-webkit-slider-runnable-track:focus {
+  outline: 0;
 }
 
-.liwe3-form-textarea.success,
-.liwe3-form-input.success {
-  border: 1px solid var(--liwe3-success-color);
+input[type=range].liwe3-form::-webkit-slider-runnable-track:focus-visible {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
+  outline-offset: 2px;
 }
 
-.liwe3-form-textarea.success:focus,
-.liwe3-form-input.success:focus {
-  outline: none;
-  border: 1px solid var(--liwe3-success-color);
+input[type=range].liwe3-form::-moz-range-track {
+  height: clamp(10px, var(--liwe3-form-checkbox-width) / 2 + var(--liwe3-border-width), 30px);
+  background: var(--liwe3-form-bg);
+  border: var(--liwe3-border-width) solid color-mix(in srgb, var(--liwe3-form-bg) 97%, #000000);
+  border-radius: clamp(0px, var(--liwe3-border-radius) / 2, 20px);
+  -moz-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
 }
 
-.liwe3-form-textarea.warning,
-.liwe3-form-input.warning {
-  border: 1px solid var(--liwe3-warning-color);
+input[type=range].liwe3-form::-moz-range-track:focus {
+  outline: 0;
 }
 
-.liwe3-form-textarea.warning:focus,
-.liwe3-form-input.warning:focus {
-  outline: none;
-  border: 1px solid var(--liwe3-warning-color);
+input[type=range].liwe3-form::-moz-range-track:focus-visible {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
+  outline-offset: 2px;
 }
 
-.liwe3-form-textarea.info,
-.liwe3-form-input.info {
-  border: 1px solid var(--liwe3-info-color);
+input[type=range].liwe3-form::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  height: clamp(10px, var(--liwe3-form-checkbox-width) / 2 + var(--liwe3-border-width), 30px);
+  width: clamp(10px, var(--liwe3-form-checkbox-width) / 2 + var(--liwe3-border-width), 30px);
+  cursor: pointer;
+  border-radius: clamp(0px, var(--liwe3-border-radius) / 2.5, 20px);
+  background: var(--liwe3-form-accent);
+  margin-top: calc(0px - var(--liwe3-border-width));
+  scale: 1.4;
 }
 
-.liwe3-form-textarea.info:focus,
-.liwe3-form-input.info:focus {
-  outline: none;
-  border: 1px solid var(--liwe3-info-color);
+input[type=range].liwe3-form::-moz-range-thumb {
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  height: clamp(10px, var(--liwe3-form-checkbox-width) / 2 + var(--liwe3-border-width), 30px);
+  width: clamp(10px, var(--liwe3-form-checkbox-width) / 2 + var(--liwe3-border-width), 30px);
+  cursor: pointer;
+  border-radius: clamp(0px, var(--liwe3-border-radius) / 2.5, 20px);
+  background: var(--liwe3-form-accent);
+  margin-top: calc(0px - var(--liwe3-border-width));
+  scale: 1.4;
 }
 
-.liwe3-form-textarea.disabled,
-.liwe3-form-textarea:disabled,
-.liwe3-form-input:disabled,
-.liwe3-form-input.disabled {
-  border: 1px solid var(--liwe3-light-color);
-  background-color: var(--liwe3-light-color);
-  color: var(--liwe3-default-color);
+input[type=range].liwe3-form:focus-visible::-webkit-slider-runnable-track {
+  outline: 3px solid var(--liwe3-form-text-placeholder-color);
+  outline-offset: 4px;
 }
 
-.liwe3-form-textarea.disabled:focus,
-.liwe3-form-input.disabled:focus {
-  outline: none;
-  border: 1px solid var(--liwe3-light-color);
+input[type=range].liwe3-form:focus-visible::-moz-range-track {
+  outline: 3px solid var(--liwe3-form-text-placeholder-color);
+  outline-offset: 4px;
 }
 
-.liwe3-form-textarea.disabled::placeholder,
-.liwe3-form-textarea:disabled::placeholder,
-.liwe3-form-input:disabled::placeholder,
-.liwe3-form-input.disabled::placeholder {
-  color: var(--liwe3-lighter-primary-color);
+.liwe3-form.custom-checkbox {
+  position: relative;
+  cursor: pointer;
 }
 
-/* Override default border-radius sass variable*/
-.liwe3-form-textarea.rounded,
-.liwe3-form-textarea.rounded,
-.liwe3-form-input.rounded,
-.liwe3-form-input.rounded {
-  border-radius: 100px;
+.liwe3-form.custom-checkbox input[type=checkbox] {
+  position: relative;
+  cursor: pointer;
+  height: clamp(16px, var(--liwe3-form-checkbox-width) - clamp(2px, var(--liwe3-border-width), 100px), 40px);
+  width: clamp(16px, var(--liwe3-form-checkbox-width) - clamp(2px, var(--liwe3-border-width), 100px), 40px);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+.liwe3-form.custom-checkbox input[type=checkbox][disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+
+.liwe3-form.custom-checkbox input[type=checkbox]:focus {
+  outline: 0;
+}
+
+.liwe3-form.custom-checkbox input[type=checkbox]:focus-visible:after {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
+  outline-offset: 2px;
+}
+
+.liwe3-form.custom-checkbox input[type=checkbox]:after {
+  content: "";
+  position: absolute;
+  height: clamp(16px, var(--liwe3-form-checkbox-width) - clamp(2px, var(--liwe3-border-width), 100px), 40px);
+  width: clamp(16px, var(--liwe3-form-checkbox-width) - clamp(2px, var(--liwe3-border-width), 100px), 40px);
+  cursor: pointer;
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 2px, 6px);
+}
+
+.liwe3-form.custom-checkbox input[type=checkbox]:before {
+  transition: border-left-width 0.3s ease-in-out, border-bottom-width 0.3s ease-in-out, border-color 0.3s ease-in-out, transform 0.1s ease-in-out;
+  content: "";
+  position: absolute;
+  height: clamp(16px, var(--liwe3-form-checkbox-width) - clamp(2px, var(--liwe3-border-width), 100px), 40px);
+  width: clamp(16px, var(--liwe3-form-checkbox-width) - clamp(2px, var(--liwe3-border-width), 100px), 40px);
+  cursor: pointer;
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 2px, 6px);
+  border: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-form-accent);
+}
+
+.liwe3-form.custom-checkbox input[type=checkbox]:checked:before {
+  transform: rotate(-50deg) scale(0.99);
+  height: clamp(9px, var(--liwe3-form-checkbox-width) / 2, 20px);
+  width: clamp(15px, var(--liwe3-form-checkbox-width) / 1.2, 35px);
+  border-color: var(--liwe3-form-accent);
+  border-top-style: none;
+  border-right-style: none;
+  transform-origin: 70% 50%;
+  border-radius: 0;
+}
+
+.liwe3-form:is([type=file]) {
+  background: unset !important;
+  border: unset;
+  font-size: clamp(10px, var(--liwe3-font-size) - 2px, 20px);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 !important;
+  box-shadow: unset !important;
+  margin: 0 !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.liwe3-form:is([type=file])::file-selector-button,
+.liwe3-form:is([type=file])::-webkit-file-upload-button {
+  margin-right: 15px;
+  background-color: var(--liwe3-form-accent);
+  border: unset;
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 2px, 30px);
+  padding: var(--liwe3-input-padding-y) calc(var(--liwe3-input-padding-y) * 3);
+  padding-block: clamp(5px, var(--liwe3-input-padding-y) * 2.5, 15px);
+  padding-inline: clamp(10px, var(--liwe3-input-padding-y) * 3, 20px);
+  font-size: clamp(10px, var(--liwe3-font-size) - 1px, 20px);
+  line-height: 1;
+  cursor: pointer;
+  color: var(--liwe3-form-accent-color);
+}
+
+.liwe3-form:is([type=file]):focus-within {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
+  outline-offset: 2px;
+}
+
+.liwe3-form:is([type=file]):has(:focus-within) {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
+  outline-offset: 2px;
+}
+
+input[type=color].liwe3-form {
+  background-color: var(--liwe3-form-bg);
+  border: clamp(0px, var(--liwe3-border-width), 2px) solid color-mix(in srgb, var(--liwe3-form-bg) 97%, #000000);
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 2px, 30px);
+  border: unset;
+  margin: 0 !important;
+  padding: 2px !important;
+  box-sizing: unset;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  inline-size: clamp(20px, (var(--liwe3-form-checkbox-width)), 55px);
+  block-size: clamp(20px, (var(--liwe3-form-checkbox-width)), 55px);
+}
+
+input[type=color].liwe3-form::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type=color].liwe3-form::-webkit-color-swatch {
+  border-color: color-mix(in srgb, var(--liwe3-form-bg) 92%, #000000);
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 4px, 30px);
+  cursor: pointer;
+}
+
+input[type=color].liwe3-form:focus-visible {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
+  outline-offset: 2px;
+}
+
+fieldset.liwe3-form {
+  border: clamp(1px, var(--liwe3-border-width), 1px) solid color-mix(in srgb, var(--liwe3-form-bg) 97%, #000000);
+  box-sizing: border-box;
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 2px, 20px);
+  padding: var(--liwe3-input-padding-y) calc(var(--liwe3-input-padding-y) * 3);
+  padding-block: clamp(20px, var(--liwe3-input-padding-y) * 4, 35px);
+  padding-inline: clamp(10px, var(--liwe3-input-padding-y) * 3, 30px);
+  overflow: hidden;
+}
+
+fieldset.liwe3-form * {
+  max-width: 100%;
+}
+
+fieldset.liwe3-form legend {
+  color: var(--liwe3-form-legend);
+  font-weight: 300;
+  padding-inline: 20px;
+  font-size: clamp(11px, var(--liwe3-font-size) - 2px, 20px);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.liwe3-form-btn {
+  display: inline-block;
+  margin: 0;
+  color: var(--liwe3-form-btn-default-text);
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: none;
+  white-space: nowrap;
+  line-height: 1.42857;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  padding: clamp(5px, var(--liwe3-input-padding-y) * 2, 10px) clamp(10px, var(--liwe3-input-padding-y) * 6, 50px);
+  font-size: clamp(12px, var(--liwe3-font-size) - 1px, 20px);
+  transition: background 0.1s linear, box-shadow 0.15s linear, color 0.1s linear;
+  flex-shrink: 0;
+  text-decoration: none;
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 2px, 30px);
+  background-color: var(--liwe3-form-btn-default);
+  box-sizing: border-box;
+  min-width: 90px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.liwe3-form-btn:hover {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-default) 80%, #fff);
+}
+
+.liwe3-form-btn:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-default) 97%, #000);
+}
+
+.liwe3-form-btn:focus-visible {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
+  outline-offset: 2px;
+}
+
+.liwe3-form-btn[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.liwe3-form-btn.liwe3-form-btn-xl {
+  padding-block: clamp(10px, var(--liwe3-input-padding-y) * 2.7, 20px);
+  padding-inline: clamp(15px, var(--liwe3-input-padding-y) * 6, 50px);
+  font-size: clamp(12px, var(--liwe3-font-size) + 1px, 20px);
+  min-width: 120px;
+}
+
+.liwe3-form-btn.liwe3-form-btn-l {
+  padding-block: clamp(10px, var(--liwe3-input-padding-y) * 2.5, 13px);
+  padding-inline: clamp(15px, var(--liwe3-input-padding-y) * 5.5, 40px);
+  min-width: 70px;
+}
+
+.liwe3-form-btn.liwe3-form-btn-sm {
+  padding-block: clamp(5px, var(--liwe3-input-padding-y) - 10px, 7px);
+  padding-inline: clamp(10px, var(--liwe3-input-padding-y) * 3, 20px);
+  font-size: clamp(10px, var(--liwe3-font-size) - 3px, 20px);
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 4px, 30px);
+  min-width: 50px;
+}
+
+.liwe3-form-btn.liwe3-form-btn-primary {
+  background-color: var(--liwe3-form-btn-primary);
+  color: var(--liwe3-form-primary-color);
+}
+
+.liwe3-form-btn.liwe3-form-btn-primary:hover {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-primary) 80%, #fff);
+}
+
+.liwe3-form-btn.liwe3-form-btn-primary:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-primary) 80%, #000);
+}
+
+.liwe3-form-btn.liwe3-form-btn-secondary {
+  background-color: var(--liwe3-form-btn-secondary);
+  color: var(--liwe3-form-secondary-color);
+}
+
+.liwe3-form-btn.liwe3-form-btn-secondary:hover {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-secondary) 80%, #fff);
+}
+
+.liwe3-form-btn.liwe3-form-btn-secondary:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-secondary) 80%, #000);
+}
+
+.liwe3-form-btn.liwe3-form-btn-info {
+  background-color: var(--liwe3-form-btn-info);
+  color: var(--liwe3-form-info-color);
+}
+
+.liwe3-form-btn.liwe3-form-btn-info:hover {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-info) 80%, #fff);
+}
+
+.liwe3-form-btn.liwe3-form-btn-info:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-info) 80%, #000);
+}
+
+.liwe3-form-btn.liwe3-form-btn-error {
+  background-color: var(--liwe3-form-error);
+  color: var(--liwe3-form-error-color);
+}
+
+.liwe3-form-btn.liwe3-form-btn-error:hover {
+  background-color: color-mix(in srgb, var(--liwe3-form-error) 90%, #fff);
+}
+
+.liwe3-form-btn.liwe3-form-btn-error:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-error) 80%, #000);
+}
+
+.liwe3-form-btn.liwe3-form-btn-accent {
+  background-color: var(--liwe3-form-accent);
+  color: var(--liwe3-form-accent-color-btn);
+}
+
+.liwe3-form-btn.liwe3-form-btn-accent:hover {
+  background-color: color-mix(in srgb, var(--liwe3-form-accent) 90%, #fff);
+}
+
+.liwe3-form-btn.liwe3-form-btn-accent:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-accent) 80%, #000);
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined {
+  margin: 0;
+  background-color: transparent;
+  color: var(--liwe3-form-border-color);
+  border: clamp(2px, var(--liwe3-border-width), 4px) solid var(--liwe3-form-border-color);
+  padding-block: clamp(5px - clamp(2px, var(--liwe3-border-width), 4px), var(--liwe3-input-padding-y) * 2 - clamp(2px, var(--liwe3-border-width), 4px), 10px - clamp(2px, var(--liwe3-border-width), 4px));
+  padding-inline: clamp(10px - clamp(2px, var(--liwe3-border-width), 4px), var(--liwe3-input-padding-y) * 6 - clamp(2px, var(--liwe3-border-width), 4px), 50px - clamp(2px, var(--liwe3-border-width), 4px));
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-xl {
+  padding-block: clamp(10px - clamp(2px, var(--liwe3-border-width), 4px), var(--liwe3-input-padding-y) * 2.7 - clamp(2px, var(--liwe3-border-width), 4px), 20px - clamp(2px, var(--liwe3-border-width), 4px));
+  padding-inline: clamp(15px - clamp(2px, var(--liwe3-border-width), 4px), var(--liwe3-input-padding-y) * 6 - clamp(2px, var(--liwe3-border-width), 4px), 50px - clamp(2px, var(--liwe3-border-width), 4px));
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-l {
+  padding-block: clamp(10px - clamp(2px, var(--liwe3-border-width), 4px), var(--liwe3-input-padding-y) * 2.5 - clamp(2px, var(--liwe3-border-width), 4px), 13px - clamp(2px, var(--liwe3-border-width), 4px));
+  padding-inline: clamp(15px - clamp(2px, var(--liwe3-border-width), 4px), var(--liwe3-input-padding-y) * 5.5 - clamp(2px, var(--liwe3-border-width), 4px), 40px - clamp(2px, var(--liwe3-border-width), 4px));
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-sm {
+  padding-block: clamp(5px - clamp(2px, var(--liwe3-border-width), 4px), var(--liwe3-input-padding-y) - 10px - clamp(2px, var(--liwe3-border-width), 4px), 7px - clamp(2px, var(--liwe3-border-width), 4px));
+  padding-inline: clamp(10px - clamp(2px, var(--liwe3-border-width), 4px), var(--liwe3-input-padding-y) * 3 - clamp(2px, var(--liwe3-border-width), 4px), 20px - clamp(2px, var(--liwe3-border-width), 4px));
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-primary {
+  background-color: unset;
+  border-color: var(--liwe3-form-btn-primary);
+  color: var(--liwe3-form-btn-primary);
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-primary:hover {
+  background-color: var(--liwe3-form-btn-primary);
+  color: var(--liwe3-form-accent-color);
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-primary:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-primary) 80%, #fff);
+  border-color: color-mix(in srgb, var(--liwe3-form-btn-primary) 80%, #fff);
+  color: var(--liwe3-form-accent-color);
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-secondary {
+  background-color: unset;
+  border-color: var(--liwe3-form-btn-secondary);
+  color: var(--liwe3-form-btn-secondary);
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-secondary:hover {
+  background-color: var(--liwe3-form-btn-secondary);
+  color: var(--liwe3-form-accent-color);
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-secondary:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-secondary) 80%, #fff);
+  border-color: color-mix(in srgb, var(--liwe3-form-btn-secondary) 80%, #fff);
+  color: var(--liwe3-form-accent-color);
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-info {
+  background-color: unset;
+  border-color: var(--liwe3-form-btn-info);
+  color: var(--liwe3-form-btn-info);
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-info:hover {
+  background-color: var(--liwe3-form-btn-info);
+  color: var(--liwe3-form-accent-color);
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-info:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-info) 80%, #fff);
+  border-color: color-mix(in srgb, var(--liwe3-form-btn-info) 80%, #fff);
+  color: var(--liwe3-form-accent-color);
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-error {
+  background-color: unset;
+  border-color: var(--liwe3-form-error);
+  color: var(--liwe3-form-error);
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-error:hover {
+  background-color: var(--liwe3-form-error);
+  color: var(--liwe3-form-accent-color);
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-error:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-error) 80%, #fff);
+  border-color: color-mix(in srgb, var(--liwe3-form-error) 80%, #fff);
+  color: var(--liwe3-form-accent-color);
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-accent {
+  background-color: unset;
+  border-color: var(--liwe3-form-accent);
+  color: var(--liwe3-form-accent);
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-accent:hover {
+  background-color: var(--liwe3-form-accent);
+  color: var(--liwe3-form-accent-color);
+}
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-accent:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-accent) 80%, #fff);
+  border-color: color-mix(in srgb, var(--liwe3-form-accent) 80%, #fff);
+  color: var(--liwe3-form-accent-color);
+}
+
+.liwe3-form-btn.liwe3-form-btn-link {
+  background-color: transparent !important;
+  border: unset !important;
+  color: var(--liwe3-form-accent);
+}
+
+.liwe3-form-btn.liwe3-form-btn-rounded {
+  border-radius: 50em;
+}
+
+.liwe3-form-btn.liwe3-form-btn-block {
+  display: block;
+  width: 100%;
 }
 
 button:disabled {

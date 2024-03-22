@@ -33,8 +33,8 @@ const defaultLayoutVars: Record<string, string> = {
 	'border-radius': '0.15rem',
 	'border-width': '1px',
 	'border-style': 'solid',
-	'button-padding-y': '0.25rem',
-	'button-padding-x': '0.1rem',
+	'button-padding-y': '0.35rem',
+	'button-padding-x': '0.5rem',
 	'input-padding-y': '0.15rem',
 	'input-padding-x': '0.15rem'
 };
