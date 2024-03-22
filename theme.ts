@@ -505,7 +505,7 @@ export const themeCreate = ( colorsDefinitions: ThemeColorsDefinitions ) => {
 	} );
 };
 
-export const themeCreateDefault = () => {
+export const themeCreateDefault = ( themeData: any ) => {
 	const themeStore = get( theme );
 
 	if ( browser ) {
@@ -519,16 +519,15 @@ export const themeCreateDefault = () => {
 		const layoutVars = localStorage.getItem( `liwe3-layout-vars` );
 		if ( layoutVars ) themeSetLayoutVars( JSON.parse( layoutVars ) );
 
-		const themeMode = localStorage.getItem( `liwe3-theme-mode` );
+		const themeMode = localStorage.getItem( `liwe3-theme-mode` ) || themeData.mode || 'light';
 		themeSetMode( themeMode == 'dark' ? 'dark' : 'light' );
 	}
 
 	themeCreate( {
-		light: themeStore.light,
-		dark: themeStore.dark,
-		vars: themeStore.vars
+		light: themeData.light || themeStore.light,
+		dark: themeData.dark || themeStore.dark,
+		vars: themeData.vars || themeStore.vars
 	} );
-	//injectVars( themeStore.vars );
 };
 
 export const themeSetMode = ( mode: 'light' | 'dark' ) => {
