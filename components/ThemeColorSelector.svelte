@@ -17,7 +17,8 @@
 	const exportJSON = () => {
 		const data = {
 			light: $theme.light,
-			dark: $theme.dark
+			dark: $theme.dark,
+			vars: $theme.vars
 		};
 		console.log('=== EXPORT: ', data);
 		const json = JSON.stringify(data, null, 2);
