@@ -18,9 +18,9 @@
 		const data = {
 			light: $theme.light,
 			dark: $theme.dark,
-			vars: $theme.vars
+			vars: $theme.vars,
+			mode: $theme.theme
 		};
-		console.log('=== EXPORT: ', data);
 		const json = JSON.stringify(data, null, 2);
 		downloadFile(json, 'theme.json', 'application/json');
 	};
