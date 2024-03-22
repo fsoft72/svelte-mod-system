@@ -1,7 +1,9 @@
 <script lang="ts">
-	import { theme, themeLayoutUnits, themeSetLayoutVar, themeSetLayoutVars } from '../theme_store';
+	import { theme, themeLayoutUnits, themeSetLayoutVar, themeSetLayoutVars, themeResetLayoutVars } from '../theme_store';
 	import Input from '$liwe3/components/Input.svelte';
 	import { keys } from '$liwe3/utils/utils';
+	import { ArrowUturnLeft } from 'svelte-hero-icons';
+	import Button from '$liwe3/components/Button.svelte';
 
 	const formatValue = {
 		clean: (name: string, value: string) => {
@@ -15,20 +17,25 @@
 	const setVar = (rule: string, value: string) => {
 		themeSetLayoutVar(rule, value);
 	};
+	const resetVars = () => {
+		confirm("Are you sure you want to reset the variables?") ?
+		themeResetLayoutVars() : null;
+	};
 	console.log(themeLayoutUnits);
 </script>
 
 <div class="container">
 	<div class="liwe3-row">
 		<div class="liwe3-col12">
-			<div class="liwe3-row liwe3-flex-between">
+			<div class="liwe3-row liwe3-flex-bottom">
 				{#each keys(themeLayoutUnits) as rule, idx}
-					<div class="liwe3-col1 liwe3-p1 x">
+					<div class="liwe3-col-xxl1 liwe3-col-xs2">
 						<span>
 							{#if ['rem', 'number'].includes(themeLayoutUnits[rule])}
 								<Input
 									type="number"
 									step=".05"
+									min="0"
 									on:change={(e) => setVar(rule, formatValue.full(rule, e.target?.value))}
 									value={formatValue.clean(rule, $theme.vars[rule])}
 									label={`${rule} (${themeLayoutUnits[rule]})`}
@@ -37,6 +44,7 @@
 								<Input
 									type="number"
 									step="1"
+									min="0"
 									on:change={(e) => setVar(rule, formatValue.full(rule, e.target?.value))}
 									value={formatValue.clean(rule, $theme.vars[rule])}
 									label={`${rule} (${themeLayoutUnits[rule]})`}
@@ -62,6 +70,18 @@
 						</span>
 					</div>
 				{/each}
+				<div class="liwe3-offset-xxl1 liwe3-col-xxl1 liwe3-offset-xs2 liwe3-col-xs2">
+					<Button
+						on:click={resetVars}
+						placeholder="Reset"
+						mode="warning"
+						label="Reset"
+						size="sm"
+						iconRight= {ArrowUturnLeft}
+					>
+					Reset
+					</Button>
+				</div>
 			</div>
 		</div>
 	</div>

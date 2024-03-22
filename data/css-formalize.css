@@ -1,35 +1,37 @@
 :root {
-  --cform-checkbox-width: 26px;
-  --cform-radius: 10px;
-  --cform-font-size: 16px;
-  --cform-padding: 5px;
-  --cform-border-width: 0px;
-  --cform-border-width-focus: 3px;
-  --cform-border-blur: 0px;
-  --cform-focus-bg: rgba(255,255,255,1);
-  --cform-btn-default-text: rgba(75, 50, 107, 0.75);
+  --liwe3-form-checkbox-width: 26px;
+  --liwe3-border-radius: 10px;
+  --liwe3-font-size: 16px;
+  --liwe3-input-padding-y: 5px;
+  --liwe3-border-width: 0px;
+  --liwe3-border-width-focus: 3px;
+  --liwe3-form-border-blur: 0px;
+  --liwe3-form-focus-bg: rgba(255, 255, 255, 1);
+  --liwe3-form-btn-default-text: rgba(75, 50, 107, 0.75);
   --demo-bg: rgba(255, 255, 255, 0);
-  --cform-accent-color: rgba(255, 255, 255, 1);
-  --cform-border-focus-color: rgba(199, 188, 212, 1.00);
-  --cform-bg: rgba(240, 239, 242, 1.00);
-  --cform-text-color: rgba(75, 50, 107, 1.00);
-  --cform-error: rgba(232, 112, 112, 1.00);
-  --cform-accent: rgba(104, 73, 145, 1.00);
-  --cform-border-color: rgba(199, 188, 212, 0.8);
-  --cform-legend: rgba(104, 73, 145, 1.00);
-  --cform-text-placeholder-color: rgba(75, 50, 107, 0.5);
-  --cform-btn-default: var(--cform-bg);
-  --cform-accent-color-btn: var(--cform-accent-color);
-  --cform-error-color: var(--cform-accent-color);
-  --cform-info-color: var(--cform-accent-color);
-  --cform-secondary-color: var(--cform-accent-color);
-  --cform-primary-color: var(--cform-accent-color);
-  --cform-btn-primary: rgba(104, 73, 145, 0.7);
-  --cform-btn-secondary: rgba(255, 100, 134, 1.00);
-  --cform-btn-info: rgba(251, 195, 111, 1);
+  --liwe3-form-accent-color: rgba(255, 255, 255, 1);
+  --liwe3-border-focus-color: rgba(199, 188, 212, 1.00);
+  --liwe3-form-bg: rgba(240, 239, 242, 1.00);
+  --liwe3-form-text-color: rgba(75, 50, 107, 1.00);
+  --liwe3-form-error: rgba(232, 112, 112, 1.00);
+  --liwe3-form-accent: rgba(104, 73, 145, 1.00);
+  --liwe3-form-border-color: rgba(199, 188, 212, 0.8);
+  --liwe3-form-legend: rgba(104, 73, 145, 1.00);
+  --liwe3-form-text-placeholder-color: rgba(75, 50, 107, 0.5);
+  --liwe3-form-btn-default: var(--liwe3-form-bg);
+  --liwe3-form-accent-color-btn: var(--liwe3-form-accent-color);
+  --liwe3-form-error-color: var(--liwe3-form-accent-color);
+  --liwe3-form-info-color: var(--liwe3-form-accent-color);
+  --liwe3-form-secondary-color: var(--liwe3-form-accent-color);
+  --liwe3-form-primary-color: var(--liwe3-form-accent-color);
+  --liwe3-form-btn-primary: rgba(104, 73, 145, 0.7);
+  --liwe3-form-btn-secondary: rgba(255, 100, 134, 1.00);
+  --liwe3-form-btn-info: rgba(251, 195, 111, 1);
 }
 
-.hide-input, .radio-group input[type=radio], .cform-switch input[type=checkbox] {
+.hide-input,
+.radio-group input[type=radio],
+.liwe3-form-switch input[type=checkbox] {
   position: absolute;
   z-index: -1;
   width: 0;
@@ -40,42 +42,47 @@
   overflow: hidden;
   box-shadow: unset !important;
 }
-.hide-input:focus, .radio-group input[type=radio]:focus, .cform-switch input[type=checkbox]:focus {
+
+.hide-input:focus,
+.radio-group input[type=radio]:focus,
+.liwe3-form-switch input[type=checkbox]:focus {
   box-shadow: unset !important;
 }
 
-.cform:is([type=text],
-[type=email],
-[type=url],
-[type=password],
-[type=number],
-[type=date],
-[type=datetime-local],
-[type=month],
-[type=search],
-[type=tel],
-[type=time],
-[type=week],
-[type=file],
-select[multiple],
-textarea,
-select,
-input[list]) {
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]) {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border: unset;
-  font-size: clamp(12px, var(--cform-font-size), 20px);
-  min-height: clamp(10px, (var(--cform-font-size)), 60px);
-  border-radius: var(--cform-radius);
-  padding: var(--cform-padding) calc(var(--cform-padding) * 3);
-  padding-block: clamp(1px, var(--cform-padding) * 2.5, 15px);
-  padding-inline: clamp(5px, var(--cform-padding) * 4, 20px);
-  color: var(--cform-text-color);
-  background-color: var(--cform-bg);
-  box-shadow: 0 0 0 var(--cform-border-width) var(--cform-border-color);
+  font-size: clamp(12px, var(--liwe3-font-size), 20px);
+  min-height: clamp(10px, (var(--liwe3-font-size)), 60px);
+  border-radius: var(--liwe3-border-radius);
+  /*padding: var(--liwe3-input-padding-y) calc(var(--liwe3-input-padding-y) * 3);*/
+  padding: var(--liwe3-input-padding-y) var(--liwe3-input-padding-x);
+  padding-block: clamp(1px, var(--liwe3-input-padding-y) * 2.5, 15px);
+  /*padding-inline: clamp(5px, var(--liwe3-input-padding-y) * 4, 20px);*/
+  padding-inline: clamp(5px, var(--liwe3-input-padding-x) * 4, 50px);
+  color: var(--liwe3-form-text-color);
+  background-color: var(--liwe3-form-bg);
+  box-shadow: 0 0 0 var(--liwe3-border-width) var(--liwe3-form-border-color);
   -webkit-print-color-adjust: exact;
-          print-color-adjust: exact;
+  print-color-adjust: exact;
   box-sizing: border-box;
   font-family: sans-serif;
   display: inline-block;
@@ -83,308 +90,330 @@ input[list]) {
   transition: filter 0.3s linear, box-shadow 0.35s ease-in-out, background-color 0.35s ease-in-out;
   max-width: 100%;
 }
-.cform:is([type=text],
-[type=email],
-[type=url],
-[type=password],
-[type=number],
-[type=date],
-[type=datetime-local],
-[type=month],
-[type=search],
-[type=tel],
-[type=time],
-[type=week],
-[type=file],
-select[multiple],
-textarea,
-select,
-input[list])[disabled] {
+
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list])[disabled] {
   cursor: default;
   pointer-events: none;
   opacity: 0.6;
-  color: color-mix(in srgb, var(--cform-text-color) 85%, transparent);
+  color: color-mix(in srgb, var(--liwe3-form-text-color) 85%, transparent);
 }
-.cform:is([type=text],
-[type=email],
-[type=url],
-[type=password],
-[type=number],
-[type=date],
-[type=datetime-local],
-[type=month],
-[type=search],
-[type=tel],
-[type=time],
-[type=week],
-[type=file],
-select[multiple],
-textarea,
-select,
-input[list]):focus, .cform:is([type=text],
-[type=email],
-[type=url],
-[type=password],
-[type=number],
-[type=date],
-[type=datetime-local],
-[type=month],
-[type=search],
-[type=tel],
-[type=time],
-[type=week],
-[type=file],
-select[multiple],
-textarea,
-select,
-input[list]).focus, .cform:is([type=text],
-[type=email],
-[type=url],
-[type=password],
-[type=number],
-[type=date],
-[type=datetime-local],
-[type=month],
-[type=search],
-[type=tel],
-[type=time],
-[type=week],
-[type=file],
-select[multiple],
-textarea,
-select,
-input[list]):focus-within, .cform:is([type=text],
-[type=email],
-[type=url],
-[type=password],
-[type=number],
-[type=date],
-[type=datetime-local],
-[type=month],
-[type=search],
-[type=tel],
-[type=time],
-[type=week],
-[type=file],
-select[multiple],
-textarea,
-select,
-input[list]):focus-visible {
-  background-color: var(--cform-focus-bg);
+
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]):focus,
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]).focus,
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]):focus-within,
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]):focus-visible {
+  background-color: var(--liwe3-form-focus-bg);
   outline: unset;
-  box-shadow: 0 0 var(--cform-border-blur) calc(var(--cform-border-width-focus) + var(--cform-border-width)) var(--cform-border-focus-color);
+  box-shadow: 0 0 var(--liwe3-form-border-blur) calc(var(--liwe3-border-width-focus) + var(--liwe3-border-width)) var(--liwe3-border-focus-color);
 }
-.cform:is([type=text],
-[type=email],
-[type=url],
-[type=password],
-[type=number],
-[type=date],
-[type=datetime-local],
-[type=month],
-[type=search],
-[type=tel],
-[type=time],
-[type=week],
-[type=file],
-select[multiple],
-textarea,
-select,
-input[list])::-webkit-inner-spin-button {
+
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list])::-webkit-inner-spin-button {
   margin-right: 0;
   padding: 10px 5px;
 }
-.cform:is([type=text],
-[type=email],
-[type=url],
-[type=password],
-[type=number],
-[type=date],
-[type=datetime-local],
-[type=month],
-[type=search],
-[type=tel],
-[type=time],
-[type=week],
-[type=file],
-select[multiple],
-textarea,
-select,
-input[list]):invalid, .cform:is([type=text],
-[type=email],
-[type=url],
-[type=password],
-[type=number],
-[type=date],
-[type=datetime-local],
-[type=month],
-[type=search],
-[type=tel],
-[type=time],
-[type=week],
-[type=file],
-select[multiple],
-textarea,
-select,
-input[list]).invalid {
-  box-shadow: 0 0 0 clamp(1px, var(--cform-border-width-focus) + var(--cform-border-width), 5px) var(--cform-error);
-  color: var(--cform-error);
-}
-.cform:is([type=text],
-[type=email],
-[type=url],
-[type=password],
-[type=number],
-[type=date],
-[type=datetime-local],
-[type=month],
-[type=search],
-[type=tel],
-[type=time],
-[type=week],
-[type=file],
-select[multiple],
-textarea,
-select,
-input[list]):invalid::-moz-placeholder, .cform:is([type=text],
-[type=email],
-[type=url],
-[type=password],
-[type=number],
-[type=date],
-[type=datetime-local],
-[type=month],
-[type=search],
-[type=tel],
-[type=time],
-[type=week],
-[type=file],
-select[multiple],
-textarea,
-select,
-input[list]).invalid::-moz-placeholder {
-  color: var(--cform-error);
-}
-.cform:is([type=text],
-[type=email],
-[type=url],
-[type=password],
-[type=number],
-[type=date],
-[type=datetime-local],
-[type=month],
-[type=search],
-[type=tel],
-[type=time],
-[type=week],
-[type=file],
-select[multiple],
-textarea,
-select,
-input[list]):invalid::placeholder, .cform:is([type=text],
-[type=email],
-[type=url],
-[type=password],
-[type=number],
-[type=date],
-[type=datetime-local],
-[type=month],
-[type=search],
-[type=tel],
-[type=time],
-[type=week],
-[type=file],
-select[multiple],
-textarea,
-select,
-input[list]).invalid::placeholder {
-  color: var(--cform-error);
+
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]):invalid,
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]).invalid {
+  box-shadow: 0 0 0 clamp(1px, var(--liwe3-border-width-focus) + var(--liwe3-border-width), 5px) var(--liwe3-form-error);
+  color: var(--liwe3-form-error);
 }
 
-.cform:is(textarea, select[multiple]) {
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]):invalid::-moz-placeholder,
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]).invalid::-moz-placeholder {
+  color: var(--liwe3-form-error);
+}
+
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]):invalid::placeholder,
+.liwe3-form:is([type=text],
+  [type=email],
+  [type=url],
+  [type=password],
+  [type=number],
+  [type=date],
+  [type=datetime-local],
+  [type=month],
+  [type=search],
+  [type=tel],
+  [type=time],
+  [type=week],
+  [type=file],
+  select[multiple],
+  textarea,
+  select,
+  input[list]).invalid::placeholder {
+  color: var(--liwe3-form-error);
+}
+
+.liwe3-form:is(textarea, select[multiple]) {
   line-height: 1.2;
   scrollbar-width: thin;
-  border-radius: clamp(0px, var(--cform-radius), 15px);
+  border-radius: clamp(0px, var(--liwe3-border-radius), 15px);
   position: relative;
   min-height: 50px;
 }
-.cform:is(textarea, select[multiple])::-webkit-scrollbar {
+
+.liwe3-form:is(textarea, select[multiple])::-webkit-scrollbar {
   background: transparent;
   width: 8px;
   height: 8px;
 }
-.cform:is(textarea, select[multiple])::-webkit-scrollbar-thumb {
-  background: var(--cform-text-placeholder-color);
+
+.liwe3-form:is(textarea, select[multiple])::-webkit-scrollbar-thumb {
+  background: var(--liwe3-form-text-placeholder-color);
   border-radius: 50em;
 }
-.cform:is(textarea, select[multiple])::-webkit-scrollbar-corner, .cform:is(textarea, select[multiple])::-webkit-resizer {
+
+.liwe3-form:is(textarea, select[multiple])::-webkit-scrollbar-corner,
+.liwe3-form:is(textarea, select[multiple])::-webkit-resizer {
   display: none;
   -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
 }
 
-.cform:is(textarea):hover, .cform:is(textarea):focus {
-  background-image: linear-gradient(315deg, var(--cform-text-color) 50%, transparent 50%);
+.liwe3-form:is(textarea):hover,
+.liwe3-form:is(textarea):focus {
+  background-image: linear-gradient(315deg, var(--liwe3-form-text-color) 50%, transparent 50%);
   background-position: calc(100% - 8px) calc(100% - 8px);
   background-size: 8px 8px;
   background-repeat: no-repeat;
 }
 
-.cform:is(input, textarea)::-moz-placeholder {
-  color: color-mix(in srgb, var(--cform-text-placeholder-color) 75%, transparent);
+.liwe3-form:is(input, textarea)::-moz-placeholder {
+  color: color-mix(in srgb, var(--liwe3-form-text-placeholder-color) 75%, transparent);
   font-weight: 200;
 }
 
-.cform:is(input, textarea)::placeholder {
-  color: color-mix(in srgb, var(--cform-text-placeholder-color) 75%, transparent);
+.liwe3-form:is(input, textarea)::placeholder {
+  color: color-mix(in srgb, var(--liwe3-form-text-placeholder-color) 75%, transparent);
   font-weight: 200;
 }
 
-.cform:is(select[multiple]) {
+.liwe3-form:is(select[multiple]) {
   line-height: 20px;
 }
-.cform:is(select[multiple]) option {
+
+.liwe3-form:is(select[multiple]) option {
   padding: 3px 5px;
   margin: 1px 0;
 }
-.cform:is(select[multiple]) option:checked {
-  background-color: var(--cform-accent);
-  color: var(--cform-accent-color);
+
+.liwe3-form:is(select[multiple]) option:checked {
+  background-color: var(--liwe3-form-accent);
+  color: var(--liwe3-form-accent-color);
 }
 
-.cform:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week])::-webkit-datetime-edit {
-  color: var(--cform-text-color);
+.liwe3-form:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week])::-webkit-datetime-edit {
+  color: var(--liwe3-form-text-color);
 }
 
-.cform:focus-within::-webkit-calendar-picker-indicator {
+.liwe3-form:focus-within::-webkit-calendar-picker-indicator {
   opacity: 0.8;
 }
-.cform::-webkit-calendar-picker-indicator {
+
+.liwe3-form::-webkit-calendar-picker-indicator {
   opacity: 0.4;
   cursor: pointer;
   -webkit-transition: opacity 0.2s linear;
   transition: opacity 0.2s linear;
   scale: 1.2;
 }
-.cform::-webkit-calendar-picker-indicator:hover {
+
+.liwe3-form::-webkit-calendar-picker-indicator:hover {
   opacity: 0.8;
 }
 
-.cform::-webkit-datetime-edit-fields-wrapper {
+.liwe3-form::-webkit-datetime-edit-fields-wrapper {
   padding: 0;
 }
-.cform::-webkit-date-and-time-value {
+
+.liwe3-form::-webkit-date-and-time-value {
   min-height: 1.5em;
 }
 
-.cform:is(input[list])::-webkit-calendar-picker-indicator {
+.liwe3-form:is(input[list])::-webkit-calendar-picker-indicator {
   display: none !important;
 }
 
-.cform:is(select:not([multiple]), input[list]) {
-  padding-right: clamp(30px, var(--cform-padding) * 9, 60px);
-  background-image: linear-gradient(45deg, transparent 50%, color-mix(in srgb, var(--cform-text-placeholder-color) 70%, transparent) 50%), linear-gradient(135deg, color-mix(in srgb, var(--cform-text-placeholder-color) 70%, transparent) 50%, transparent 50%);
-  background-position: calc(100% - clamp(15px, var(--cform-padding) + 13px, 25px)) 50%, calc(100% - clamp(10px, var(--cform-padding) + 8px, 20px)) 50%;
+.liwe3-form:is(select:not([multiple]), input[list]) {
+  padding-right: clamp(30px, var(--liwe3-input-padding-y) * 9, 60px);
+  background-image: linear-gradient(45deg, transparent 50%, color-mix(in srgb, var(--liwe3-form-text-placeholder-color) 70%, transparent) 50%), linear-gradient(135deg, color-mix(in srgb, var(--liwe3-form-text-placeholder-color) 70%, transparent) 50%, transparent 50%);
+  background-position: calc(100% - clamp(15px, var(--liwe3-input-padding-y) + 13px, 25px)) 50%, calc(100% - clamp(10px, var(--liwe3-input-padding-y) + 8px, 20px)) 50%;
   background-size: 5px 5px, 5px 5px;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -395,93 +424,105 @@ input[list]).invalid::placeholder {
   position: relative;
 }
 
-.cform:is(textarea) {
+.liwe3-form:is(textarea) {
   resize: vertical;
   min-height: clamp(50px, 3rem, 99999px);
 }
 
-.cform[type=search]::-webkit-search-decoration, .cform[type=search]::-webkit-search-cancel-button, .cform[type=search]::-webkit-search-results-button, .cform[type=search]::-webkit-search-results-decoration {
+.liwe3-form[type=search]::-webkit-search-decoration,
+.liwe3-form[type=search]::-webkit-search-cancel-button,
+.liwe3-form[type=search]::-webkit-search-results-button,
+.liwe3-form[type=search]::-webkit-search-results-decoration {
   display: none !important;
   -webkit-appearance: none !important;
-          appearance: none !important;
+  appearance: none !important;
   opacity: 0 !important;
 }
 
-.cform[type=checkbox], .cform[type=radio] {
+.liwe3-form[type=checkbox],
+.liwe3-form[type=radio] {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   padding: 0;
   -webkit-print-color-adjust: exact;
-          print-color-adjust: exact;
+  print-color-adjust: exact;
   display: inline-block;
   vertical-align: middle;
   background-origin: border-box;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
   flex-shrink: 0;
-  height: clamp(16px, var(--cform-checkbox-width), 40px);
-  width: clamp(16px, var(--cform-checkbox-width), 40px);
+  height: clamp(16px, var(--liwe3-form-checkbox-width), 40px);
+  width: clamp(16px, var(--liwe3-form-checkbox-width), 40px);
   cursor: pointer;
-  border-radius: clamp(0px, var(--cform-radius) - 2px, 8px);
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 2px, 8px);
   margin: 0;
-  background-color: var(--cform-accent);
+  background-color: var(--liwe3-form-accent);
   background-size: 0;
   border-color: transparent;
   box-shadow: unset;
   transition: background-size 0.15s ease-in-out, box-shadow 0.3s linear;
 }
-.cform[type=checkbox]:focus-visible, .cform[type=radio]:focus-visible {
-  outline: clamp(2px, var(--cform-border-width), 5px) solid var(--cform-border-focus-color);
+
+.liwe3-form[type=checkbox]:focus-visible,
+.liwe3-form[type=radio]:focus-visible {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
   outline-offset: 2px;
 }
-.cform[type=checkbox][disabled], .cform[type=radio][disabled] {
+
+.liwe3-form[type=checkbox][disabled],
+.liwe3-form[type=radio][disabled] {
   cursor: default;
   opacity: 0.5;
   box-shadow: unset;
 }
 
-.cform[type=checkbox] {
+.liwe3-form[type=checkbox] {
   position: relative;
 }
-.cform[type=checkbox]:before {
+
+.liwe3-form[type=checkbox]:before {
   content: "";
   transition: scale 0.2s ease-in-out;
-  border-left: 0 solid var(--cform-accent-color);
-  border-bottom: 0 solid var(--cform-accent-color);
-  border-left-width: clamp(2px, var(--cform-border-width), 3px);
-  border-bottom-width: clamp(2px, var(--cform-border-width), 3px);
+  border-left: 0 solid var(--liwe3-form-accent-color);
+  border-bottom: 0 solid var(--liwe3-form-accent-color);
+  border-left-width: clamp(2px, var(--liwe3-border-width), 3px);
+  border-bottom-width: clamp(2px, var(--liwe3-border-width), 3px);
   position: absolute;
-  width: clamp(10px, var(--cform-checkbox-width) / 2, 28px);
-  height: clamp(6px, var(--cform-checkbox-width) / 4, 23px);
+  width: clamp(10px, var(--liwe3-form-checkbox-width) / 2, 28px);
+  height: clamp(6px, var(--liwe3-form-checkbox-width) / 4, 23px);
   top: 50%;
   left: 50%;
   transform: rotate(-50deg) translateY(-60%) translateX(-40%);
   transform-origin: left top;
   scale: 0;
 }
-.cform[type=checkbox]:checked {
+
+.liwe3-form[type=checkbox]:checked {
   border-color: transparent;
   box-shadow: unset;
 }
-.cform[type=checkbox]:checked:before {
+
+.liwe3-form[type=checkbox]:checked:before {
   scale: 1;
 }
 
-.cform[type=radio] {
+.liwe3-form[type=radio] {
   border-radius: 100%;
-  height: clamp(16px, var(--cform-checkbox-width) - 4px, 40px);
-  width: clamp(16px, var(--cform-checkbox-width) - 4px, 40px);
+  height: clamp(16px, var(--liwe3-form-checkbox-width) - 4px, 40px);
+  width: clamp(16px, var(--liwe3-form-checkbox-width) - 4px, 40px);
   position: relative;
 }
-.cform[type=radio]:before {
+
+.liwe3-form[type=radio]:before {
   transition: scale 0.25s ease-in-out;
   content: "";
-  height: clamp(8px, var(--cform-checkbox-width) - 16px, 15px);
-  width: clamp(8px, var(--cform-checkbox-width) - 16px, 15px);
+  height: clamp(8px, var(--liwe3-form-checkbox-width) - 16px, 15px);
+  width: clamp(8px, var(--liwe3-form-checkbox-width) - 16px, 15px);
   border-radius: 100%;
-  background: var(--cform-accent-color);
+  background: var(--liwe3-form-accent-color);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -489,31 +530,34 @@ input[list]).invalid::placeholder {
   scale: 0;
   transform-origin: top left;
 }
-.cform[type=radio]:checked:before {
+
+.liwe3-form[type=radio]:checked:before {
   scale: 1;
 }
 
-.cform-switch {
-  --switch-width: clamp(15px, calc(var(--cform-checkbox-width) - 6px), 30px);
+.liwe3-form-switch {
+  --switch-width: clamp(15px, calc(var(--liwe3-form-checkbox-width) - 6px), 30px);
   overflow: hidden;
   padding: 4px;
   display: inline-flex;
   align-items: flex-start;
 }
-.cform-switch input[type=checkbox] + label {
+
+.liwe3-form-switch input[type=checkbox]+label {
   cursor: pointer;
   width: calc(var(--switch-width) * 2.3);
   height: calc(var(--switch-width) + 4px);
   max-width: 100%;
   display: inline-block;
   overflow: hidden;
-  border-radius: calc(var(--cform-radius) + 2px);
+  border-radius: calc(var(--liwe3-border-radius) + 2px);
   position: relative;
   vertical-align: bottom;
-  background-color: color-mix(in srgb, var(--cform-bg) 90%, #000);
+  background-color: color-mix(in srgb, var(--liwe3-form-bg) 90%, #000);
   transition: background 0.2s ease-in-out;
 }
-.cform-switch input[type=checkbox] + label:after {
+
+.liwe3-form-switch input[type=checkbox]+label:after {
   content: "";
   position: absolute;
   display: inline-block;
@@ -521,311 +565,347 @@ input[list]).invalid::placeholder {
   width: var(--switch-width);
   height: var(--switch-width);
   top: 2px;
-  background-color: var(--cform-text-placeholder-color);
-  border-radius: var(--cform-radius);
+  background-color: var(--liwe3-form-text-placeholder-color);
+  border-radius: var(--liwe3-border-radius);
   box-sizing: border-box;
   transition: left 0.2s ease-in-out;
 }
-.cform-switch input[type=checkbox]:checked + label {
-  background-color: var(--cform-accent);
+
+.liwe3-form-switch input[type=checkbox]:checked+label {
+  background-color: var(--liwe3-form-accent);
 }
-.cform-switch input[type=checkbox]:checked + label:after {
+
+.liwe3-form-switch input[type=checkbox]:checked+label:after {
   left: calc(100% - (var(--switch-width) + 2px));
-  background-color: var(--cform-accent-color);
+  background-color: var(--liwe3-form-accent-color);
 }
-.cform-switch:has(:focus-visible):focus-within label {
-  outline: clamp(2px, var(--cform-border-width), 5px) solid var(--cform-border-focus-color);
+
+.liwe3-form-switch:has(:focus-visible):focus-within label {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
   outline-offset: 2px;
 }
-.cform-switch:has([disabled]) {
+
+.liwe3-form-switch:has([disabled]) {
   opacity: 0.5;
 }
 
-.cform::-webkit-calendar-picker-indicator:focus-visible {
-  outline: clamp(2px, var(--cform-border-width), 5px) solid var(--cform-border-focus-color);
+.liwe3-form::-webkit-calendar-picker-indicator:focus-visible {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
   outline-offset: 2px;
-  border-radius: clamp(0px, var(--cform-radius) / 2, 5px);
+  border-radius: clamp(0px, var(--liwe3-border-radius) / 2, 5px);
 }
 
-.cform-switch-small {
-  --switch-width: clamp(10px, calc(var(--cform-checkbox-width) - 15px), 20px);
+.liwe3-form-switch-small {
+  --switch-width: clamp(10px, calc(var(--liwe3-form-checkbox-width) - 15px), 20px);
 }
 
-.cform-switch-big {
-  --switch-width: clamp(20px, calc(var(--cform-checkbox-width) - 2px ), 40px);
+.liwe3-form-switch-big {
+  --switch-width: clamp(20px, calc(var(--liwe3-form-checkbox-width) - 2px), 40px);
 }
 
 .radio-group {
-  border-radius: var(--cform-radius);
+  border-radius: var(--liwe3-border-radius);
   overflow: hidden;
-  background: var(--cform-bg);
-  padding: clamp(3px, (var(--cform-padding)), 8px);
+  background: var(--liwe3-form-bg);
+  padding: clamp(3px, (var(--liwe3-input-padding-y)), 8px);
   display: inline-flex !important;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-  color: var(--cform-text-color);
+  -moz-user-select: none;
+  user-select: none;
+  color: var(--liwe3-form-text-color);
 }
-.radio-group input[type=radio]:checked + label {
-  color: var(--cform-accent-color);
-  background: var(--cform-accent);
+
+.radio-group input[type=radio]:checked+label {
+  color: var(--liwe3-form-accent-color);
+  background: var(--liwe3-form-accent);
 }
-.radio-group input[type=radio]:focus + label {
+
+.radio-group input[type=radio]:focus+label {
   box-shadow: 0 0 0 1px var(--form-color) !important;
 }
+
 .radio-group:has(:focus-visible):focus-within {
-  outline: clamp(2px, var(--cform-border-width), 5px) solid var(--cform-border-focus-color);
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
   outline-offset: 2px;
 }
+
 .radio-group label {
   color: var(--gray-65);
   cursor: pointer;
-  padding-block: clamp(3px, var(--cform-padding) + 3px, 10px);
-  padding-inline: clamp(10px, var(--cform-padding) * 4, 20px);
+  padding-block: clamp(3px, var(--liwe3-input-padding-y) + 3px, 10px);
+  padding-inline: clamp(10px, var(--liwe3-input-padding-y) * 4, 20px);
   transition: background 0.1s ease-in-out, color 0.2s linear;
-  border-radius: calc(var(--cform-radius) - 2px);
+  border-radius: calc(var(--liwe3-border-radius) - 2px);
   white-space: nowrap;
-  font-size: clamp(12px, var(--cform-font-size) - 1px, 20px);
+  font-size: clamp(12px, var(--liwe3-font-size) - 1px, 20px);
 }
+
 .radio-group label:hover {
   color: var(--gray-90);
 }
+
 .radio-group.radio-group-small {
-  padding: clamp(3px, var(--cform-padding) - 1px, 6px);
+  padding: clamp(3px, var(--liwe3-input-padding-y) - 1px, 6px);
 }
+
 .radio-group.radio-group-small label {
-  padding-block: clamp(3px, (var(--cform-padding)), 5px);
-  padding-inline: clamp(10px, var(--cform-padding) + 10px, 15px);
-  font-size: clamp(12px, var(--cform-font-size) - 3px, 18px);
+  padding-block: clamp(3px, (var(--liwe3-input-padding-y)), 5px);
+  padding-inline: clamp(10px, var(--liwe3-input-padding-y) + 10px, 15px);
+  font-size: clamp(12px, var(--liwe3-font-size) - 3px, 18px);
 }
 
-input.cform:-webkit-autofill {
-  box-shadow: inset 0 0 0 100px var(--cform-bg);
-}
-input.cform:-webkit-autofill:focus {
-  box-shadow: inset 0 0 0 100px var(--cform-bg), 0 0 var(--cform-border-blur) calc(var(--cform-border-width-focus) + var(--cform-border-width)) var(--cform-border-focus-color);
+input.liwe3-form:-webkit-autofill {
+  box-shadow: inset 0 0 0 100px var(--liwe3-form-bg);
 }
 
-input[type=range].cform {
+input.liwe3-form:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 100px var(--liwe3-form-bg), 0 0 var(--liwe3-form-border-blur) calc(var(--liwe3-border-width-focus) + var(--liwe3-border-width)) var(--liwe3-border-focus-color);
+}
+
+input[type=range].liwe3-form {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   margin: 10px 0;
   width: 100%;
   background: unset;
   outline: none;
 }
 
-input[type=range].cform::-webkit-slider-runnable-track {
-  height: clamp(10px, var(--cform-checkbox-width) / 2 + var(--cform-border-width), 30px);
-  background: var(--cform-bg);
-  border: var(--cform-border-width) solid color-mix(in srgb, var(--cform-bg) 97%, #000000);
-  border-radius: clamp(0px, var(--cform-radius) / 2, 20px);
+input[type=range].liwe3-form::-webkit-slider-runnable-track {
+  height: clamp(10px, var(--liwe3-form-checkbox-width) / 2 + var(--liwe3-border-width), 30px);
+  background: var(--liwe3-form-bg);
+  border: var(--liwe3-border-width) solid color-mix(in srgb, var(--liwe3-form-bg) 97%, #000000);
+  border-radius: clamp(0px, var(--liwe3-border-radius) / 2, 20px);
   -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   box-sizing: border-box;
 }
-input[type=range].cform::-webkit-slider-runnable-track:focus {
+
+input[type=range].liwe3-form::-webkit-slider-runnable-track:focus {
   outline: 0;
 }
-input[type=range].cform::-webkit-slider-runnable-track:focus-visible {
-  outline: clamp(2px, var(--cform-border-width), 5px) solid var(--cform-border-focus-color);
+
+input[type=range].liwe3-form::-webkit-slider-runnable-track:focus-visible {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
   outline-offset: 2px;
 }
-input[type=range].cform::-moz-range-track {
-  height: clamp(10px, var(--cform-checkbox-width) / 2 + var(--cform-border-width), 30px);
-  background: var(--cform-bg);
-  border: var(--cform-border-width) solid color-mix(in srgb, var(--cform-bg) 97%, #000000);
-  border-radius: clamp(0px, var(--cform-radius) / 2, 20px);
+
+input[type=range].liwe3-form::-moz-range-track {
+  height: clamp(10px, var(--liwe3-form-checkbox-width) / 2 + var(--liwe3-border-width), 30px);
+  background: var(--liwe3-form-bg);
+  border: var(--liwe3-border-width) solid color-mix(in srgb, var(--liwe3-form-bg) 97%, #000000);
+  border-radius: clamp(0px, var(--liwe3-border-radius) / 2, 20px);
   -moz-appearance: none;
-       appearance: none;
+  appearance: none;
   box-sizing: border-box;
 }
-input[type=range].cform::-moz-range-track:focus {
+
+input[type=range].liwe3-form::-moz-range-track:focus {
   outline: 0;
 }
-input[type=range].cform::-moz-range-track:focus-visible {
-  outline: clamp(2px, var(--cform-border-width), 5px) solid var(--cform-border-focus-color);
+
+input[type=range].liwe3-form::-moz-range-track:focus-visible {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
   outline-offset: 2px;
 }
-input[type=range].cform::-webkit-slider-thumb {
+
+input[type=range].liwe3-form::-webkit-slider-thumb {
   -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   border: none;
-  height: clamp(10px, var(--cform-checkbox-width) / 2 + var(--cform-border-width), 30px);
-  width: clamp(10px, var(--cform-checkbox-width) / 2 + var(--cform-border-width), 30px);
+  height: clamp(10px, var(--liwe3-form-checkbox-width) / 2 + var(--liwe3-border-width), 30px);
+  width: clamp(10px, var(--liwe3-form-checkbox-width) / 2 + var(--liwe3-border-width), 30px);
   cursor: pointer;
-  border-radius: clamp(0px, var(--cform-radius) / 2.5, 20px);
-  background: var(--cform-accent);
-  margin-top: calc(0px - var(--cform-border-width));
-  scale: 1.4;
-}
-input[type=range].cform::-moz-range-thumb {
-  -moz-appearance: none;
-       appearance: none;
-  border: none;
-  height: clamp(10px, var(--cform-checkbox-width) / 2 + var(--cform-border-width), 30px);
-  width: clamp(10px, var(--cform-checkbox-width) / 2 + var(--cform-border-width), 30px);
-  cursor: pointer;
-  border-radius: clamp(0px, var(--cform-radius) / 2.5, 20px);
-  background: var(--cform-accent);
-  margin-top: calc(0px - var(--cform-border-width));
+  border-radius: clamp(0px, var(--liwe3-border-radius) / 2.5, 20px);
+  background: var(--liwe3-form-accent);
+  margin-top: calc(0px - var(--liwe3-border-width));
   scale: 1.4;
 }
 
-input[type=range].cform:focus-visible::-webkit-slider-runnable-track {
-  outline: 3px solid var(--cform-text-placeholder-color);
-  outline-offset: 4px;
+input[type=range].liwe3-form::-moz-range-thumb {
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  height: clamp(10px, var(--liwe3-form-checkbox-width) / 2 + var(--liwe3-border-width), 30px);
+  width: clamp(10px, var(--liwe3-form-checkbox-width) / 2 + var(--liwe3-border-width), 30px);
+  cursor: pointer;
+  border-radius: clamp(0px, var(--liwe3-border-radius) / 2.5, 20px);
+  background: var(--liwe3-form-accent);
+  margin-top: calc(0px - var(--liwe3-border-width));
+  scale: 1.4;
 }
-input[type=range].cform:focus-visible::-moz-range-track {
-  outline: 3px solid var(--cform-text-placeholder-color);
+
+input[type=range].liwe3-form:focus-visible::-webkit-slider-runnable-track {
+  outline: 3px solid var(--liwe3-form-text-placeholder-color);
   outline-offset: 4px;
 }
 
-.cform.custom-checkbox {
+input[type=range].liwe3-form:focus-visible::-moz-range-track {
+  outline: 3px solid var(--liwe3-form-text-placeholder-color);
+  outline-offset: 4px;
+}
+
+.liwe3-form.custom-checkbox {
   position: relative;
   cursor: pointer;
 }
-.cform.custom-checkbox input[type=checkbox] {
+
+.liwe3-form.custom-checkbox input[type=checkbox] {
   position: relative;
   cursor: pointer;
-  height: clamp(16px, var(--cform-checkbox-width) - clamp(2px, var(--cform-border-width), 100px), 40px);
-  width: clamp(16px, var(--cform-checkbox-width) - clamp(2px, var(--cform-border-width), 100px), 40px);
+  height: clamp(16px, var(--liwe3-form-checkbox-width) - clamp(2px, var(--liwe3-border-width), 100px), 40px);
+  width: clamp(16px, var(--liwe3-form-checkbox-width) - clamp(2px, var(--liwe3-border-width), 100px), 40px);
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   outline: 0;
   box-sizing: border-box;
 }
-.cform.custom-checkbox input[type=checkbox][disabled] {
+
+.liwe3-form.custom-checkbox input[type=checkbox][disabled] {
   opacity: 0.5;
   pointer-events: none;
   cursor: default;
 }
-.cform.custom-checkbox input[type=checkbox]:focus {
+
+.liwe3-form.custom-checkbox input[type=checkbox]:focus {
   outline: 0;
 }
-.cform.custom-checkbox input[type=checkbox]:focus-visible:after {
-  outline: clamp(2px, var(--cform-border-width), 5px) solid var(--cform-border-focus-color);
+
+.liwe3-form.custom-checkbox input[type=checkbox]:focus-visible:after {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
   outline-offset: 2px;
 }
-.cform.custom-checkbox input[type=checkbox]:after {
+
+.liwe3-form.custom-checkbox input[type=checkbox]:after {
   content: "";
   position: absolute;
-  height: clamp(16px, var(--cform-checkbox-width) - clamp(2px, var(--cform-border-width), 100px), 40px);
-  width: clamp(16px, var(--cform-checkbox-width) - clamp(2px, var(--cform-border-width), 100px), 40px);
+  height: clamp(16px, var(--liwe3-form-checkbox-width) - clamp(2px, var(--liwe3-border-width), 100px), 40px);
+  width: clamp(16px, var(--liwe3-form-checkbox-width) - clamp(2px, var(--liwe3-border-width), 100px), 40px);
   cursor: pointer;
-  border-radius: clamp(0px, var(--cform-radius) - 2px, 6px);
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 2px, 6px);
 }
-.cform.custom-checkbox input[type=checkbox]:before {
+
+.liwe3-form.custom-checkbox input[type=checkbox]:before {
   transition: border-left-width 0.3s ease-in-out, border-bottom-width 0.3s ease-in-out, border-color 0.3s ease-in-out, transform 0.1s ease-in-out;
   content: "";
   position: absolute;
-  height: clamp(16px, var(--cform-checkbox-width) - clamp(2px, var(--cform-border-width), 100px), 40px);
-  width: clamp(16px, var(--cform-checkbox-width) - clamp(2px, var(--cform-border-width), 100px), 40px);
+  height: clamp(16px, var(--liwe3-form-checkbox-width) - clamp(2px, var(--liwe3-border-width), 100px), 40px);
+  width: clamp(16px, var(--liwe3-form-checkbox-width) - clamp(2px, var(--liwe3-border-width), 100px), 40px);
   cursor: pointer;
-  border-radius: clamp(0px, var(--cform-radius) - 2px, 6px);
-  border: clamp(2px, var(--cform-border-width), 5px) solid var(--cform-accent);
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 2px, 6px);
+  border: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-form-accent);
 }
-.cform.custom-checkbox input[type=checkbox]:checked:before {
+
+.liwe3-form.custom-checkbox input[type=checkbox]:checked:before {
   transform: rotate(-50deg) scale(0.99);
-  height: clamp(9px, var(--cform-checkbox-width) / 2, 20px);
-  width: clamp(15px, var(--cform-checkbox-width) / 1.2, 35px);
-  border-color: var(--cform-accent);
+  height: clamp(9px, var(--liwe3-form-checkbox-width) / 2, 20px);
+  width: clamp(15px, var(--liwe3-form-checkbox-width) / 1.2, 35px);
+  border-color: var(--liwe3-form-accent);
   border-top-style: none;
   border-right-style: none;
   transform-origin: 70% 50%;
   border-radius: 0;
 }
 
-.cform:is([type=file]) {
+.liwe3-form:is([type=file]) {
   background: unset !important;
   border: unset;
-  font-size: clamp(10px, var(--cform-font-size) - 2px, 20px);
+  font-size: clamp(10px, var(--liwe3-font-size) - 2px, 20px);
   cursor: pointer;
   line-height: 1;
   padding: 0 !important;
   box-shadow: unset !important;
   margin: 0 !important;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
-.cform:is([type=file])::file-selector-button, .cform:is([type=file])::-webkit-file-upload-button {
+
+.liwe3-form:is([type=file])::file-selector-button,
+.liwe3-form:is([type=file])::-webkit-file-upload-button {
   margin-right: 15px;
-  background-color: var(--cform-accent);
+  background-color: var(--liwe3-form-accent);
   border: unset;
-  border-radius: clamp(0px, var(--cform-radius) - 2px, 30px);
-  padding: var(--cform-padding) calc(var(--cform-padding) * 3);
-  padding-block: clamp(5px, var(--cform-padding) * 2.5, 15px);
-  padding-inline: clamp(10px, var(--cform-padding) * 3, 20px);
-  font-size: clamp(10px, var(--cform-font-size) - 1px, 20px);
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 2px, 30px);
+  padding: var(--liwe3-input-padding-y) calc(var(--liwe3-input-padding-y) * 3);
+  padding-block: clamp(5px, var(--liwe3-input-padding-y) * 2.5, 15px);
+  padding-inline: clamp(10px, var(--liwe3-input-padding-y) * 3, 20px);
+  font-size: clamp(10px, var(--liwe3-font-size) - 1px, 20px);
   line-height: 1;
   cursor: pointer;
-  color: var(--cform-accent-color);
+  color: var(--liwe3-form-accent-color);
 }
-.cform:is([type=file]):focus-within {
-  outline: clamp(2px, var(--cform-border-width), 5px) solid var(--cform-border-focus-color);
-  outline-offset: 2px;
-}
-.cform:is([type=file]):has(:focus-within) {
-  outline: clamp(2px, var(--cform-border-width), 5px) solid var(--cform-border-focus-color);
+
+.liwe3-form:is([type=file]):focus-within {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
   outline-offset: 2px;
 }
 
-input[type=color].cform {
-  background-color: var(--cform-bg);
-  border: clamp(0px, var(--cform-border-width), 2px) solid color-mix(in srgb, var(--cform-bg) 97%, #000000);
-  border-radius: clamp(0px, var(--cform-radius) - 2px, 30px);
+.liwe3-form:is([type=file]):has(:focus-within) {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
+  outline-offset: 2px;
+}
+
+input[type=color].liwe3-form {
+  background-color: var(--liwe3-form-bg);
+  border: clamp(0px, var(--liwe3-border-width), 2px) solid color-mix(in srgb, var(--liwe3-form-bg) 97%, #000000);
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 2px, 30px);
   border: unset;
   margin: 0 !important;
   padding: 2px !important;
   box-sizing: unset;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  inline-size: clamp(20px, (var(--cform-checkbox-width)), 55px);
-  block-size: clamp(20px, (var(--cform-checkbox-width)), 55px);
+  -moz-appearance: none;
+  appearance: none;
+  inline-size: clamp(20px, (var(--liwe3-form-checkbox-width)), 55px);
+  block-size: clamp(20px, (var(--liwe3-form-checkbox-width)), 55px);
 }
-input[type=color].cform::-webkit-color-swatch-wrapper {
+
+input[type=color].liwe3-form::-webkit-color-swatch-wrapper {
   padding: 0;
 }
-input[type=color].cform::-webkit-color-swatch {
-  border-color: color-mix(in srgb, var(--cform-bg) 92%, #000000);
-  border-radius: clamp(0px, var(--cform-radius) - 4px, 30px);
+
+input[type=color].liwe3-form::-webkit-color-swatch {
+  border-color: color-mix(in srgb, var(--liwe3-form-bg) 92%, #000000);
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 4px, 30px);
   cursor: pointer;
 }
-input[type=color].cform:focus-visible {
-  outline: clamp(2px, var(--cform-border-width), 5px) solid var(--cform-border-focus-color);
+
+input[type=color].liwe3-form:focus-visible {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
   outline-offset: 2px;
 }
 
-fieldset.cform {
-  border: clamp(1px, var(--cform-border-width), 1px) solid color-mix(in srgb, var(--cform-bg) 97%, #000000);
+fieldset.liwe3-form {
+  border: clamp(1px, var(--liwe3-border-width), 1px) solid color-mix(in srgb, var(--liwe3-form-bg) 97%, #000000);
   box-sizing: border-box;
-  border-radius: clamp(0px, var(--cform-radius) - 2px, 20px);
-  padding: var(--cform-padding) calc(var(--cform-padding) * 3);
-  padding-block: clamp(20px, var(--cform-padding) * 4, 35px);
-  padding-inline: clamp(10px, var(--cform-padding) * 3, 30px);
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 2px, 20px);
+  padding: var(--liwe3-input-padding-y) calc(var(--liwe3-input-padding-y) * 3);
+  padding-block: clamp(20px, var(--liwe3-input-padding-y) * 4, 35px);
+  padding-inline: clamp(10px, var(--liwe3-input-padding-y) * 3, 30px);
   overflow: hidden;
 }
-fieldset.cform * {
+
+fieldset.liwe3-form * {
   max-width: 100%;
 }
-fieldset.cform legend {
-  color: var(--cform-legend);
+
+fieldset.liwe3-form legend {
+  color: var(--liwe3-form-legend);
   font-weight: 300;
   padding-inline: 20px;
-  font-size: clamp(11px, var(--cform-font-size) - 2px, 20px);
+  font-size: clamp(11px, var(--liwe3-font-size) - 2px, 20px);
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
-.cform-btn {
+.liwe3-form-btn {
   display: inline-block;
   margin: 0;
-  color: var(--cform-btn-default-text);
+  color: var(--liwe3-form-btn-default-text);
   text-align: center;
   vertical-align: middle;
   touch-action: manipulation;
@@ -835,200 +915,244 @@ fieldset.cform legend {
   white-space: nowrap;
   line-height: 1.42857;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-  padding: clamp(5px, var(--cform-padding) * 2, 10px) clamp(10px, var(--cform-padding) * 6, 50px);
-  font-size: clamp(12px, var(--cform-font-size) - 1px, 20px);
+  -moz-user-select: none;
+  user-select: none;
+  padding: clamp(5px, var(--liwe3-input-padding-y) * 2, 10px) clamp(10px, var(--liwe3-input-padding-y) * 6, 50px);
+  font-size: clamp(12px, var(--liwe3-font-size) - 1px, 20px);
   transition: background 0.1s linear, box-shadow 0.15s linear, color 0.1s linear;
   flex-shrink: 0;
   text-decoration: none;
-  border-radius: clamp(0px, var(--cform-radius) - 2px, 30px);
-  background-color: var(--cform-btn-default);
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 2px, 30px);
+  background-color: var(--liwe3-form-btn-default);
   box-sizing: border-box;
   min-width: 90px;
   -webkit-tap-highlight-color: transparent;
 }
-.cform-btn:hover {
-  background-color: color-mix(in srgb, var(--cform-btn-default) 80%, #fff);
+
+.liwe3-form-btn:hover {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-default) 80%, #fff);
 }
-.cform-btn:active {
-  background-color: color-mix(in srgb, var(--cform-btn-default) 97%, #000);
+
+.liwe3-form-btn:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-default) 97%, #000);
 }
-.cform-btn:focus-visible {
-  outline: clamp(2px, var(--cform-border-width), 5px) solid var(--cform-border-focus-color);
+
+.liwe3-form-btn:focus-visible {
+  outline: clamp(2px, var(--liwe3-border-width), 5px) solid var(--liwe3-border-focus-color);
   outline-offset: 2px;
 }
-.cform-btn[disabled] {
+
+.liwe3-form-btn[disabled] {
   opacity: 0.5;
   pointer-events: none;
 }
-.cform-btn.cform-btn-xl {
-  padding-block: clamp(10px, var(--cform-padding) * 2.7, 20px);
-  padding-inline: clamp(15px, var(--cform-padding) * 6, 50px);
-  font-size: clamp(12px, var(--cform-font-size) + 1px, 20px);
+
+.liwe3-form-btn.liwe3-form-btn-xl {
+  padding-block: clamp(10px, var(--liwe3-input-padding-y) * 2.7, 20px);
+  padding-inline: clamp(15px, var(--liwe3-input-padding-y) * 6, 50px);
+  font-size: clamp(12px, var(--liwe3-font-size) + 1px, 20px);
   min-width: 120px;
 }
-.cform-btn.cform-btn-l {
-  padding-block: clamp(10px, var(--cform-padding) * 2.5, 13px);
-  padding-inline: clamp(15px, var(--cform-padding) * 5.5, 40px);
+
+.liwe3-form-btn.liwe3-form-btn-l {
+  padding-block: clamp(10px, var(--liwe3-input-padding-y) * 2.5, 13px);
+  padding-inline: clamp(15px, var(--liwe3-input-padding-y) * 5.5, 40px);
   min-width: 70px;
 }
-.cform-btn.cform-btn-sm {
-  padding-block: clamp(5px, var(--cform-padding) - 10px, 7px);
-  padding-inline: clamp(10px, var(--cform-padding) * 3, 20px);
-  font-size: clamp(10px, var(--cform-font-size) - 3px, 20px);
-  border-radius: clamp(0px, var(--cform-radius) - 4px, 30px);
+
+.liwe3-form-btn.liwe3-form-btn-sm {
+  padding-block: clamp(5px, var(--liwe3-input-padding-y) - 10px, 7px);
+  padding-inline: clamp(10px, var(--liwe3-input-padding-y) * 3, 20px);
+  font-size: clamp(10px, var(--liwe3-font-size) - 3px, 20px);
+  border-radius: clamp(0px, var(--liwe3-border-radius) - 4px, 30px);
   min-width: 50px;
 }
-.cform-btn.cform-btn-primary {
-  background-color: var(--cform-btn-primary);
-  color: var(--cform-primary-color);
+
+.liwe3-form-btn.liwe3-form-btn-primary {
+  background-color: var(--liwe3-form-btn-primary);
+  color: var(--liwe3-form-primary-color);
 }
-.cform-btn.cform-btn-primary:hover {
-  background-color: color-mix(in srgb, var(--cform-btn-primary) 80%, #fff);
+
+.liwe3-form-btn.liwe3-form-btn-primary:hover {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-primary) 80%, #fff);
 }
-.cform-btn.cform-btn-primary:active {
-  background-color: color-mix(in srgb, var(--cform-btn-primary) 80%, #000);
+
+.liwe3-form-btn.liwe3-form-btn-primary:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-primary) 80%, #000);
 }
-.cform-btn.cform-btn-secondary {
-  background-color: var(--cform-btn-secondary);
-  color: var(--cform-secondary-color);
+
+.liwe3-form-btn.liwe3-form-btn-secondary {
+  background-color: var(--liwe3-form-btn-secondary);
+  color: var(--liwe3-form-secondary-color);
 }
-.cform-btn.cform-btn-secondary:hover {
-  background-color: color-mix(in srgb, var(--cform-btn-secondary) 80%, #fff);
+
+.liwe3-form-btn.liwe3-form-btn-secondary:hover {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-secondary) 80%, #fff);
 }
-.cform-btn.cform-btn-secondary:active {
-  background-color: color-mix(in srgb, var(--cform-btn-secondary) 80%, #000);
+
+.liwe3-form-btn.liwe3-form-btn-secondary:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-secondary) 80%, #000);
 }
-.cform-btn.cform-btn-info {
-  background-color: var(--cform-btn-info);
-  color: var(--cform-info-color);
+
+.liwe3-form-btn.liwe3-form-btn-info {
+  background-color: var(--liwe3-form-btn-info);
+  color: var(--liwe3-form-info-color);
 }
-.cform-btn.cform-btn-info:hover {
-  background-color: color-mix(in srgb, var(--cform-btn-info) 80%, #fff);
+
+.liwe3-form-btn.liwe3-form-btn-info:hover {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-info) 80%, #fff);
 }
-.cform-btn.cform-btn-info:active {
-  background-color: color-mix(in srgb, var(--cform-btn-info) 80%, #000);
+
+.liwe3-form-btn.liwe3-form-btn-info:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-info) 80%, #000);
 }
-.cform-btn.cform-btn-error {
-  background-color: var(--cform-error);
-  color: var(--cform-error-color);
+
+.liwe3-form-btn.liwe3-form-btn-error {
+  background-color: var(--liwe3-form-error);
+  color: var(--liwe3-form-error-color);
 }
-.cform-btn.cform-btn-error:hover {
-  background-color: color-mix(in srgb, var(--cform-error) 90%, #fff);
+
+.liwe3-form-btn.liwe3-form-btn-error:hover {
+  background-color: color-mix(in srgb, var(--liwe3-form-error) 90%, #fff);
 }
-.cform-btn.cform-btn-error:active {
-  background-color: color-mix(in srgb, var(--cform-error) 80%, #000);
+
+.liwe3-form-btn.liwe3-form-btn-error:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-error) 80%, #000);
 }
-.cform-btn.cform-btn-accent {
-  background-color: var(--cform-accent);
-  color: var(--cform-accent-color-btn);
+
+.liwe3-form-btn.liwe3-form-btn-accent {
+  background-color: var(--liwe3-form-accent);
+  color: var(--liwe3-form-accent-color-btn);
 }
-.cform-btn.cform-btn-accent:hover {
-  background-color: color-mix(in srgb, var(--cform-accent) 90%, #fff);
+
+.liwe3-form-btn.liwe3-form-btn-accent:hover {
+  background-color: color-mix(in srgb, var(--liwe3-form-accent) 90%, #fff);
 }
-.cform-btn.cform-btn-accent:active {
-  background-color: color-mix(in srgb, var(--cform-accent) 80%, #000);
+
+.liwe3-form-btn.liwe3-form-btn-accent:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-accent) 80%, #000);
 }
-.cform-btn.cform-btn-outlined {
+
+.liwe3-form-btn.liwe3-form-btn-outlined {
   margin: 0;
   background-color: transparent;
-  color: var(--cform-border-color);
-  border: clamp(2px, var(--cform-border-width), 4px) solid var(--cform-border-color);
-  padding-block: clamp(5px - clamp(2px, var(--cform-border-width), 4px), var(--cform-padding) * 2 - clamp(2px, var(--cform-border-width), 4px), 10px - clamp(2px, var(--cform-border-width), 4px));
-  padding-inline: clamp(10px - clamp(2px, var(--cform-border-width), 4px), var(--cform-padding) * 6 - clamp(2px, var(--cform-border-width), 4px), 50px - clamp(2px, var(--cform-border-width), 4px));
+  color: var(--liwe3-form-border-color);
+  border: clamp(2px, var(--liwe3-border-width), 4px) solid var(--liwe3-form-border-color);
+  padding-block: clamp(5px - clamp(2px, var(--liwe3-border-width), 4px), var(--liwe3-input-padding-y) * 2 - clamp(2px, var(--liwe3-border-width), 4px), 10px - clamp(2px, var(--liwe3-border-width), 4px));
+  padding-inline: clamp(10px - clamp(2px, var(--liwe3-border-width), 4px), var(--liwe3-input-padding-y) * 6 - clamp(2px, var(--liwe3-border-width), 4px), 50px - clamp(2px, var(--liwe3-border-width), 4px));
 }
-.cform-btn.cform-btn-outlined.cform-btn-xl {
-  padding-block: clamp(10px - clamp(2px, var(--cform-border-width), 4px), var(--cform-padding) * 2.7 - clamp(2px, var(--cform-border-width), 4px), 20px - clamp(2px, var(--cform-border-width), 4px));
-  padding-inline: clamp(15px - clamp(2px, var(--cform-border-width), 4px), var(--cform-padding) * 6 - clamp(2px, var(--cform-border-width), 4px), 50px - clamp(2px, var(--cform-border-width), 4px));
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-xl {
+  padding-block: clamp(10px - clamp(2px, var(--liwe3-border-width), 4px), var(--liwe3-input-padding-y) * 2.7 - clamp(2px, var(--liwe3-border-width), 4px), 20px - clamp(2px, var(--liwe3-border-width), 4px));
+  padding-inline: clamp(15px - clamp(2px, var(--liwe3-border-width), 4px), var(--liwe3-input-padding-y) * 6 - clamp(2px, var(--liwe3-border-width), 4px), 50px - clamp(2px, var(--liwe3-border-width), 4px));
 }
-.cform-btn.cform-btn-outlined.cform-btn-l {
-  padding-block: clamp(10px - clamp(2px, var(--cform-border-width), 4px), var(--cform-padding) * 2.5 - clamp(2px, var(--cform-border-width), 4px), 13px - clamp(2px, var(--cform-border-width), 4px));
-  padding-inline: clamp(15px - clamp(2px, var(--cform-border-width), 4px), var(--cform-padding) * 5.5 - clamp(2px, var(--cform-border-width), 4px), 40px - clamp(2px, var(--cform-border-width), 4px));
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-l {
+  padding-block: clamp(10px - clamp(2px, var(--liwe3-border-width), 4px), var(--liwe3-input-padding-y) * 2.5 - clamp(2px, var(--liwe3-border-width), 4px), 13px - clamp(2px, var(--liwe3-border-width), 4px));
+  padding-inline: clamp(15px - clamp(2px, var(--liwe3-border-width), 4px), var(--liwe3-input-padding-y) * 5.5 - clamp(2px, var(--liwe3-border-width), 4px), 40px - clamp(2px, var(--liwe3-border-width), 4px));
 }
-.cform-btn.cform-btn-outlined.cform-btn-sm {
-  padding-block: clamp(5px - clamp(2px, var(--cform-border-width), 4px), var(--cform-padding) - 10px - clamp(2px, var(--cform-border-width), 4px), 7px - clamp(2px, var(--cform-border-width), 4px));
-  padding-inline: clamp(10px - clamp(2px, var(--cform-border-width), 4px), var(--cform-padding) * 3 - clamp(2px, var(--cform-border-width), 4px), 20px - clamp(2px, var(--cform-border-width), 4px));
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-sm {
+  padding-block: clamp(5px - clamp(2px, var(--liwe3-border-width), 4px), var(--liwe3-input-padding-y) - 10px - clamp(2px, var(--liwe3-border-width), 4px), 7px - clamp(2px, var(--liwe3-border-width), 4px));
+  padding-inline: clamp(10px - clamp(2px, var(--liwe3-border-width), 4px), var(--liwe3-input-padding-y) * 3 - clamp(2px, var(--liwe3-border-width), 4px), 20px - clamp(2px, var(--liwe3-border-width), 4px));
 }
-.cform-btn.cform-btn-outlined.cform-btn-primary {
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-primary {
   background-color: unset;
-  border-color: var(--cform-btn-primary);
-  color: var(--cform-btn-primary);
+  border-color: var(--liwe3-form-btn-primary);
+  color: var(--liwe3-form-btn-primary);
 }
-.cform-btn.cform-btn-outlined.cform-btn-primary:hover {
-  background-color: var(--cform-btn-primary);
-  color: var(--cform-accent-color);
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-primary:hover {
+  background-color: var(--liwe3-form-btn-primary);
+  color: var(--liwe3-form-accent-color);
 }
-.cform-btn.cform-btn-outlined.cform-btn-primary:active {
-  background-color: color-mix(in srgb, var(--cform-btn-primary) 80%, #fff);
-  border-color: color-mix(in srgb, var(--cform-btn-primary) 80%, #fff);
-  color: var(--cform-accent-color);
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-primary:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-primary) 80%, #fff);
+  border-color: color-mix(in srgb, var(--liwe3-form-btn-primary) 80%, #fff);
+  color: var(--liwe3-form-accent-color);
 }
-.cform-btn.cform-btn-outlined.cform-btn-secondary {
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-secondary {
   background-color: unset;
-  border-color: var(--cform-btn-secondary);
-  color: var(--cform-btn-secondary);
+  border-color: var(--liwe3-form-btn-secondary);
+  color: var(--liwe3-form-btn-secondary);
 }
-.cform-btn.cform-btn-outlined.cform-btn-secondary:hover {
-  background-color: var(--cform-btn-secondary);
-  color: var(--cform-accent-color);
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-secondary:hover {
+  background-color: var(--liwe3-form-btn-secondary);
+  color: var(--liwe3-form-accent-color);
 }
-.cform-btn.cform-btn-outlined.cform-btn-secondary:active {
-  background-color: color-mix(in srgb, var(--cform-btn-secondary) 80%, #fff);
-  border-color: color-mix(in srgb, var(--cform-btn-secondary) 80%, #fff);
-  color: var(--cform-accent-color);
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-secondary:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-secondary) 80%, #fff);
+  border-color: color-mix(in srgb, var(--liwe3-form-btn-secondary) 80%, #fff);
+  color: var(--liwe3-form-accent-color);
 }
-.cform-btn.cform-btn-outlined.cform-btn-info {
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-info {
   background-color: unset;
-  border-color: var(--cform-btn-info);
-  color: var(--cform-btn-info);
+  border-color: var(--liwe3-form-btn-info);
+  color: var(--liwe3-form-btn-info);
 }
-.cform-btn.cform-btn-outlined.cform-btn-info:hover {
-  background-color: var(--cform-btn-info);
-  color: var(--cform-accent-color);
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-info:hover {
+  background-color: var(--liwe3-form-btn-info);
+  color: var(--liwe3-form-accent-color);
 }
-.cform-btn.cform-btn-outlined.cform-btn-info:active {
-  background-color: color-mix(in srgb, var(--cform-btn-info) 80%, #fff);
-  border-color: color-mix(in srgb, var(--cform-btn-info) 80%, #fff);
-  color: var(--cform-accent-color);
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-info:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-btn-info) 80%, #fff);
+  border-color: color-mix(in srgb, var(--liwe3-form-btn-info) 80%, #fff);
+  color: var(--liwe3-form-accent-color);
 }
-.cform-btn.cform-btn-outlined.cform-btn-error {
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-error {
   background-color: unset;
-  border-color: var(--cform-error);
-  color: var(--cform-error);
+  border-color: var(--liwe3-form-error);
+  color: var(--liwe3-form-error);
 }
-.cform-btn.cform-btn-outlined.cform-btn-error:hover {
-  background-color: var(--cform-error);
-  color: var(--cform-accent-color);
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-error:hover {
+  background-color: var(--liwe3-form-error);
+  color: var(--liwe3-form-accent-color);
 }
-.cform-btn.cform-btn-outlined.cform-btn-error:active {
-  background-color: color-mix(in srgb, var(--cform-error) 80%, #fff);
-  border-color: color-mix(in srgb, var(--cform-error) 80%, #fff);
-  color: var(--cform-accent-color);
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-error:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-error) 80%, #fff);
+  border-color: color-mix(in srgb, var(--liwe3-form-error) 80%, #fff);
+  color: var(--liwe3-form-accent-color);
 }
-.cform-btn.cform-btn-outlined.cform-btn-accent {
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-accent {
   background-color: unset;
-  border-color: var(--cform-accent);
-  color: var(--cform-accent);
+  border-color: var(--liwe3-form-accent);
+  color: var(--liwe3-form-accent);
 }
-.cform-btn.cform-btn-outlined.cform-btn-accent:hover {
-  background-color: var(--cform-accent);
-  color: var(--cform-accent-color);
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-accent:hover {
+  background-color: var(--liwe3-form-accent);
+  color: var(--liwe3-form-accent-color);
 }
-.cform-btn.cform-btn-outlined.cform-btn-accent:active {
-  background-color: color-mix(in srgb, var(--cform-accent) 80%, #fff);
-  border-color: color-mix(in srgb, var(--cform-accent) 80%, #fff);
-  color: var(--cform-accent-color);
+
+.liwe3-form-btn.liwe3-form-btn-outlined.liwe3-form-btn-accent:active {
+  background-color: color-mix(in srgb, var(--liwe3-form-accent) 80%, #fff);
+  border-color: color-mix(in srgb, var(--liwe3-form-accent) 80%, #fff);
+  color: var(--liwe3-form-accent-color);
 }
-.cform-btn.cform-btn-link {
+
+.liwe3-form-btn.liwe3-form-btn-link {
   background-color: transparent !important;
   border: unset !important;
-  color: var(--cform-accent);
+  color: var(--liwe3-form-accent);
 }
-.cform-btn.cform-btn-rounded {
+
+.liwe3-form-btn.liwe3-form-btn-rounded {
   border-radius: 50em;
 }
-.cform-btn.cform-btn-block {
+
+.liwe3-form-btn.liwe3-form-btn-block {
   display: block;
   width: 100%;
 }

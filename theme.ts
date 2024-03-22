@@ -77,252 +77,247 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 			.join( '\n' ) +
 		'\n}\n';
 	// Inject light and dark theme variables assignements
-	// Inject cform variables assignements. NOTE: mode3 is used as default forms color set
+	// Inject liwe3-form variables assignements. NOTE: mode3 is used as default forms color set
 	if ( [ 'light', 'dark' ].includes( name ) ) {
 		style.innerHTML += `.liwe3-${ name }-theme {\n` +
 			Object.entries( colors )
 				.map( ( keyVal ) => `--${ keyVal[ 0 ].replace( `-${ name }`, '' ) }: var(--${ keyVal[ 0 ] });` )
 				.join( '\n' ) +
 			`
-				--cform-radius: var(--liwe3-border-radius);
-				--cform-font-size: var(--liwe3-font-size);
-				--cform-padding: var(--liwe3-input-padding-y);
-				--cform-border-width: var(--liwe3-border-width);
-				--cform-border-width-focus: calc(var(--liwe3-border-width)*2);
-				--cform-border-focus-color: var(--liwe3-${ name }-mode4-500-border);
-				--cform-bg: var(--liwe3-${ name }-mode3);
-				--cform-text-color: var(--liwe3-${ name }-mode3-500-text);
-				--cform-accent: var(--liwe3-${ name }-mode4);
-				--cform-accent-color: var(--liwe3-${ name }-mode4-700);
-				--cform-border-color: var(--liwe3-${ name }-mode3-200-border);
-				--cform-focus-bg: var(--liwe3-${ name }-mode3-500-hover);
-				--cform-error: var(--liwe3-${ name }-error-500);
+				--liwe3-form-border-width-focus: calc(var(--liwe3-border-width)*2);
+				--liwe3-form-bg: var(--liwe3-${ name }-mode3);
+				--liwe3-form-text-color: var(--liwe3-${ name }-mode3-500-text);
+				--liwe3-form-accent: var(--liwe3-${ name }-mode4);
+				--liwe3-form-accent-color: var(--liwe3-${ name }-mode4-700);
+				--liwe3-form-border-color: var(--liwe3-${ name }-mode3-200-border);
+				--liwe3-form-focus-bg: var(--liwe3-${ name }-mode3-500-hover);
+				--liwe3-form-error: var(--liwe3-${ name }-error-500);
 				.mode1 {
-					--cform-bg: var(--liwe3-${ name }-mode1);
-					--cform-text-color: var(--liwe3-${ name }-mode1-500-text);
-					--cform-border-color: var(--liwe3-${ name }-mode1-200-border);
-					--cform-focus-bg: var(--liwe3-${ name }-mode1-500-hover);
-					&.cform-custom-input {
-						--cform-text-placeholder-color: var(--liwe3-${ name }-mode1-500-text) !important;
-						--cform-legend: var(--liwe3-${ name }-mode1-200-border);
+					--liwe3-form-bg: var(--liwe3-${ name }-mode1);
+					--liwe3-form-text-color: var(--liwe3-${ name }-mode1-500-text);
+					--liwe3-form-border-color: var(--liwe3-${ name }-mode1-200-border);
+					--liwe3-form-focus-bg: var(--liwe3-${ name }-mode1-500-hover);
+					&.liwe3-form-custom-input {
+						--liwe3-form-text-placeholder-color: var(--liwe3-${ name }-mode1-500-text) !important;
+						--liwe3-form-legend: var(--liwe3-${ name }-mode1-200-border);
 					}
-					&.cform-custom-checkbox-radio {
-						--cform-accent: var(--liwe3-${ name }-mode1);
-						--cform-accent-color: var(--liwe3-${ name }-mode1-500-text);
+					&.liwe3-form-custom-checkbox-radio {
+						--liwe3-form-accent: var(--liwe3-${ name }-mode1);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-mode1-500-text);
 					}
-					&.cform-radio-group input[type=radio]:checked+label {
-						--cform-accent: var(--liwe3-${ name }-mode1-500-hover);
-						--cform-accent-color: var(--liwe3-${ name }-mode1-500-text);
+					&.liwe3-form-radio-group input[type=radio]:checked+label {
+						--liwe3-form-accent: var(--liwe3-${ name }-mode1-500-hover);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-mode1-500-text);
 					}
 				}
 				.mode2 {
-					--cform-bg: var(--liwe3-${ name }-mode2);
-					--cform-text-color: var(--liwe3-${ name }-mode2-500-text);
-					--cform-border-color: var(--liwe3-${ name }-mode2-200-border);
-					--cform-focus-bg: var(--liwe3-${ name }-mode2-500-hover);
-					&.cform-custom-input {
-						--cform-text-placeholder-color: var(--liwe3-${ name }-mode2-500-text) !important;
-						--cform-legend: var(--liwe3-${ name }-mode2-200-border);
+					--liwe3-form-bg: var(--liwe3-${ name }-mode2);
+					--liwe3-form-text-color: var(--liwe3-${ name }-mode2-500-text);
+					--liwe3-form-border-color: var(--liwe3-${ name }-mode2-200-border);
+					--liwe3-form-focus-bg: var(--liwe3-${ name }-mode2-500-hover);
+					&.liwe3-form-custom-input {
+						--liwe3-form-text-placeholder-color: var(--liwe3-${ name }-mode2-500-text) !important;
+						--liwe3-form-legend: var(--liwe3-${ name }-mode2-200-border);
 					}
-					&.cform-custom-checkbox-radio {
-						--cform-accent: var(--liwe3-${ name }-mode2);
-						--cform-accent-color: var(--liwe3-${ name }-mode2-500-text);
+					&.liwe3-form-custom-checkbox-radio {
+						--liwe3-form-accent: var(--liwe3-${ name }-mode2);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-mode2-500-text);
 					}
-					&.cform-radio-group input[type=radio]:checked+label {
-						--cform-accent: var(--liwe3-${ name }-mode2-500-hover);
-						--cform-accent-color: var(--liwe3-${ name }-mode2-500-text);
+					&.liwe3-form-radio-group input[type=radio]:checked+label {
+						--liwe3-form-accent: var(--liwe3-${ name }-mode2-500-hover);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-mode2-500-text);
 					}
 				}
 				.mode3 {
-					--cform-bg: var(--liwe3-${ name }-mode3);
-					--cform-text-color: var(--liwe3-${ name }-mode3-500-text);
-					--cform-border-color: var(--liwe3-${ name }-mode3-200-border);
-					--cform-focus-bg: var(--liwe3-${ name }-mode3-500-hover);
-					&.cform-custom-input {
-						--cform-text-placeholder-color: var(--liwe3-${ name }-mode3-500-text) !important;
-						--cform-legend: var(--liwe3-${ name }-mode3-200-border);
+					--liwe3-form-bg: var(--liwe3-${ name }-mode3);
+					--liwe3-form-text-color: var(--liwe3-${ name }-mode3-500-text);
+					--liwe3-form-border-color: var(--liwe3-${ name }-mode3-200-border);
+					--liwe3-form-focus-bg: var(--liwe3-${ name }-mode3-500-hover);
+					&.liwe3-form-custom-input {
+						--liwe3-form-text-placeholder-color: var(--liwe3-${ name }-mode3-500-text) !important;
+						--liwe3-form-legend: var(--liwe3-${ name }-mode3-200-border);
 					}
-					&.cform-custom-checkbox-radio {
-						--cform-accent: var(--liwe3-${ name }-mode3);
-						--cform-accent-color: var(--liwe3-${ name }-mode3-500-text);
+					&.liwe3-form-custom-checkbox-radio {
+						--liwe3-form-accent: var(--liwe3-${ name }-mode3);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-mode3-500-text);
 					}
-					&.cform-radio-group input[type=radio]:checked+label {
-						--cform-accent: var(--liwe3-${ name }-mode3-500-hover);
-						--cform-accent-color: var(--liwe3-${ name }-mode3-500-text);
+					&.liwe3-form-radio-group input[type=radio]:checked+label {
+						--liwe3-form-accent: var(--liwe3-${ name }-mode3-500-hover);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-mode3-500-text);
 					}
 				}
 				.mode4 {
-					--cform-bg: var(--liwe3-${ name }-mode4);
-					--cform-text-color: var(--liwe3-${ name }-mode4-500-text);
-					--cform-border-color: var(--liwe3-${ name }-mode4-200-border);
-					--cform-focus-bg: var(--liwe3-${ name }-mode4-500-hover);
-					&.cform-custom-input {
-						--cform-text-placeholder-color: var(--liwe3-${ name }-mode4-500-text) !important;
-						--cform-legend: var(--liwe3-${ name }-mode4-200-border);
+					--liwe3-form-bg: var(--liwe3-${ name }-mode4);
+					--liwe3-form-text-color: var(--liwe3-${ name }-mode4-500-text);
+					--liwe3-form-border-color: var(--liwe3-${ name }-mode4-200-border);
+					--liwe3-form-focus-bg: var(--liwe3-${ name }-mode4-500-hover);
+					&.liwe3-form-custom-input {
+						--liwe3-form-text-placeholder-color: var(--liwe3-${ name }-mode4-500-text) !important;
+						--liwe3-form-legend: var(--liwe3-${ name }-mode4-200-border);
 					}
-					&.cform-custom-checkbox-radio {
-						--cform-accent: var(--liwe3-${ name }-mode4);
-						--cform-accent-color: var(--liwe3-${ name }-mode4-500-text);
+					&.liwe3-form-custom-checkbox-radio {
+						--liwe3-form-accent: var(--liwe3-${ name }-mode4);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-mode4-500-text);
 					}
-					&.cform-radio-group input[type=radio]:checked+label {
-						--cform-accent: var(--liwe3-${ name }-mode4-500-hover);
-						--cform-accent-color: var(--liwe3-${ name }-mode4-500-text);
+					&.liwe3-form-radio-group input[type=radio]:checked+label {
+						--liwe3-form-accent: var(--liwe3-${ name }-mode4-500-hover);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-mode4-500-text);
 					}
 				}
 				.link {
-					--cform-bg: var(--liwe3-${ name }-link);
-					--cform-text-color: var(--liwe3-${ name }-link-500-text);
-					--cform-border-color: var(--liwe3-${ name }-link-200-border);
-					--cform-focus-bg: var(--liwe3-${ name }-link-500-hover);
-					&.cform-custom-input {
-						--cform-text-placeholder-color: var(--liwe3-${ name }-link-500-text) !important;
-						--cform-legend: var(--liwe3-${ name }-link-200-border);
+					--liwe3-form-bg: var(--liwe3-${ name }-link);
+					--liwe3-form-text-color: var(--liwe3-${ name }-link-500-text);
+					--liwe3-form-border-color: var(--liwe3-${ name }-link-200-border);
+					--liwe3-form-focus-bg: var(--liwe3-${ name }-link-500-hover);
+					&.liwe3-form-custom-input {
+						--liwe3-form-text-placeholder-color: var(--liwe3-${ name }-link-500-text) !important;
+						--liwe3-form-legend: var(--liwe3-${ name }-link-200-border);
 					}
-					&.cform-custom-checkbox-radio {
-						--cform-accent: var(--liwe3-${ name }-link);
-						--cform-accent-color: var(--liwe3-${ name }-link-500-text);
+					&.liwe3-form-custom-checkbox-radio {
+						--liwe3-form-accent: var(--liwe3-${ name }-link);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-link-500-text);
 					}
-					&.cform-radio-group input[type=radio]:checked+label {
-						--cform-accent: var(--liwe3-${ name }-link-500-hover);
-						--cform-accent-color: var(--liwe3-${ name }-link-500-text);
+					&.liwe3-form-radio-group input[type=radio]:checked+label {
+						--liwe3-form-accent: var(--liwe3-${ name }-link-500-hover);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-link-500-text);
 					}
 				}
 				.info {
-					--cform-bg: var(--liwe3-${ name }-info);
-					--cform-text-color: var(--liwe3-${ name }-info-500-text);
-					--cform-border-color: var(--liwe3-${ name }-info-200-border);
-					--cform-focus-bg: var(--liwe3-${ name }-info-500-hover);
-					&.cform-custom-input {
-						--cform-text-placeholder-color: var(--liwe3-${ name }-info-500-text) !important;
-						--cform-legend: var(--liwe3-${ name }-info-200-border);
+					--liwe3-form-bg: var(--liwe3-${ name }-info);
+					--liwe3-form-text-color: var(--liwe3-${ name }-info-500-text);
+					--liwe3-form-border-color: var(--liwe3-${ name }-info-200-border);
+					--liwe3-form-focus-bg: var(--liwe3-${ name }-info-500-hover);
+					&.liwe3-form-custom-input {
+						--liwe3-form-text-placeholder-color: var(--liwe3-${ name }-info-500-text) !important;
+						--liwe3-form-legend: var(--liwe3-${ name }-info-200-border);
 					}
-					&.cform-custom-checkbox-radio {
-						--cform-accent: var(--liwe3-${ name }-info);
-						--cform-accent-color: var(--liwe3-${ name }-info-500-text);
+					&.liwe3-form-custom-checkbox-radio {
+						--liwe3-form-accent: var(--liwe3-${ name }-info);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-info-500-text);
 					}
-					&.cform-radio-group input[type=radio]:checked+label {
-						--cform-accent: var(--liwe3-${ name }-info-500-hover);
-						--cform-accent-color: var(--liwe3-${ name }-info-500-text);
+					&.liwe3-form-radio-group input[type=radio]:checked+label {
+						--liwe3-form-accent: var(--liwe3-${ name }-info-500-hover);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-info-500-text);
 					}
 				}
 				.success {
-					--cform-bg: var(--liwe3-${ name }-success);
-					--cform-text-color: var(--liwe3-${ name }-success-500-text);
-					--cform-border-color: var(--liwe3-${ name }-success-200-border);
-					--cform-focus-bg: var(--liwe3-${ name }-success-500-hover);
-					&.cform-custom-input {
-						--cform-text-placeholder-color: var(--liwe3-${ name }-success-500-text) !important;
-						--cform-legend: var(--liwe3-${ name }-success-200-border);
+					--liwe3-form-bg: var(--liwe3-${ name }-success);
+					--liwe3-form-text-color: var(--liwe3-${ name }-success-500-text);
+					--liwe3-form-border-color: var(--liwe3-${ name }-success-200-border);
+					--liwe3-form-focus-bg: var(--liwe3-${ name }-success-500-hover);
+					&.liwe3-form-custom-input {
+						--liwe3-form-text-placeholder-color: var(--liwe3-${ name }-success-500-text) !important;
+						--liwe3-form-legend: var(--liwe3-${ name }-success-200-border);
 					}
-					&.cform-custom-checkbox-radio {
-						--cform-accent: var(--liwe3-${ name }-success);
-						--cform-accent-color: var(--liwe3-${ name }-success-500-text);
+					&.liwe3-form-custom-checkbox-radio {
+						--liwe3-form-accent: var(--liwe3-${ name }-success);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-success-500-text);
 					}
-					&.cform-radio-group input[type=radio]:checked+label {
-						--cform-accent: var(--liwe3-${ name }-success-500-hover);
-						--cform-accent-color: var(--liwe3-${ name }-success-500-text);
+					&.liwe3-form-radio-group input[type=radio]:checked+label {
+						--liwe3-form-accent: var(--liwe3-${ name }-success-500-hover);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-success-500-text);
 					}
 				}
 				.warning {
-					--cform-bg: var(--liwe3-${ name }-warning);
-					--cform-text-color: var(--liwe3-${ name }-warning-500-text);
-					--cform-border-color: var(--liwe3-${ name }-warning-200-border);
-					--cform-focus-bg: var(--liwe3-${ name }-warning-500-hover);
-					&.cform-custom-input {
-						--cform-text-placeholder-color: var(--liwe3-${ name }-warning-500-text);
-						--cform-legend: var(--liwe3-${ name }-warning-200-border);
+					--liwe3-form-bg: var(--liwe3-${ name }-warning);
+					--liwe3-form-text-color: var(--liwe3-${ name }-warning-500-text);
+					--liwe3-form-border-color: var(--liwe3-${ name }-warning-200-border);
+					--liwe3-form-focus-bg: var(--liwe3-${ name }-warning-500-hover);
+					&.liwe3-form-custom-input {
+						--liwe3-form-text-placeholder-color: var(--liwe3-${ name }-warning-500-text);
+						--liwe3-form-legend: var(--liwe3-${ name }-warning-200-border);
 					}
-					&.cform-custom-checkbox-radio {
-						--cform-accent: var(--liwe3-${ name }-warning);
-						--cform-accent-color: var(--liwe3-${ name }-warning-500-text);
+					&.liwe3-form-custom-checkbox-radio {
+						--liwe3-form-accent: var(--liwe3-${ name }-warning);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-warning-500-text);
 					}
-					&.cform-radio-group input[type=radio]:checked+label {
-						--cform-accent: var(--liwe3-${ name }-warning-500-hover);
-						--cform-accent-color: var(--liwe3-${ name }-warning-500-text);
+					&.liwe3-form-radio-group input[type=radio]:checked+label {
+						--liwe3-form-accent: var(--liwe3-${ name }-warning-500-hover);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-warning-500-text);
 					}
 				}
 				.error {
-					--cform-bg: var(--liwe3-${ name }-error);
-					--cform-text-color: var(--liwe3-${ name }-error-500-text);
-					--cform-border-color: var(--liwe3-${ name }-error-200-border);
-					--cform-focus-bg: var(--liwe3-${ name }-error-500-hover);
-					&.cform-custom-input {
-						--cform-text-placeholder-color: var(--liwe3-${ name }-error-500-text);
-						--cform-legend: var(--liwe3-${ name }-error-200-border);
+					--liwe3-form-bg: var(--liwe3-${ name }-error);
+					--liwe3-form-text-color: var(--liwe3-${ name }-error-500-text);
+					--liwe3-form-border-color: var(--liwe3-${ name }-error-200-border);
+					--liwe3-form-focus-bg: var(--liwe3-${ name }-error-500-hover);
+					&.liwe3-form-custom-input {
+						--liwe3-form-text-placeholder-color: var(--liwe3-${ name }-error-500-text);
+						--liwe3-form-legend: var(--liwe3-${ name }-error-200-border);
 					}
-					&.cform-custom-checkbox-radio {
-						--cform-accent: var(--liwe3-${ name }-error);
-						--cform-accent-color: var(--liwe3-${ name }-error-500-text);
+					&.liwe3-form-custom-checkbox-radio {
+						--liwe3-form-accent: var(--liwe3-${ name }-error);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-error-500-text);
 					}
-					&.cform-radio-group input[type=radio]:checked+label {
-						--cform-accent: var(--liwe3-${ name }-error-500-hover);
-						--cform-accent-color: var(--liwe3-${ name }-error-500-text);
+					&.liwe3-form-radio-group input[type=radio]:checked+label {
+						--liwe3-form-accent: var(--liwe3-${ name }-error-500-hover);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-error-500-text);
 					}
 				}
 				.dark {
-					--cform-bg: var(--liwe3-${ name }-background);
-					--cform-text-color: var(--liwe3-${ name }-background-500-text);
-					--cform-border-color: var(--liwe3-${ name }-background-200-border);
-					--cform-focus-bg: var(--liwe3-${ name }-background-500-hover);
-					&.cform-custom-input {
-						--cform-text-placeholder-color: var(--liwe3-${ name }-background-500-text);
-						--cform-legend: var(--liwe3-${ name }-background-200-border);
+					--liwe3-form-bg: var(--liwe3-${ name }-background);
+					--liwe3-form-text-color: var(--liwe3-${ name }-background-500-text);
+					--liwe3-form-border-color: var(--liwe3-${ name }-background-200-border);
+					--liwe3-form-focus-bg: var(--liwe3-${ name }-background-500-hover);
+					&.liwe3-form-custom-input {
+						--liwe3-form-text-placeholder-color: var(--liwe3-${ name }-background-500-text);
+						--liwe3-form-legend: var(--liwe3-${ name }-background-200-border);
 					}
-					&.cform-custom-checkbox-radio {
-						--cform-accent: var(--liwe3-${ name }-background);
-						--cform-accent-color: var(--liwe3-${ name }-background-500-text);
+					&.liwe3-form-custom-checkbox-radio {
+						--liwe3-form-accent: var(--liwe3-${ name }-background);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-background-500-text);
 					}
-					&.cform-radio-group input[type=radio]:checked+label {
-						--cform-accent: var(--liwe3-${ name }-background-500-hover);
-						--cform-accent-color: var(--liwe3-${ name }-background-500-text);
+					&.liwe3-form-radio-group input[type=radio]:checked+label {
+						--liwe3-form-accent: var(--liwe3-${ name }-background-500-hover);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-background-500-text);
 					}
 				}
 				.background {
-					--cform-bg: var(--liwe3-${ name }-background);
-					--cform-text-color: var(--liwe3-${ name }-background-500-text);
-					--cform-border-color: var(--liwe3-${ name }-background-200-border);
-					--cform-focus-bg: var(--liwe3-${ name }-background-500-hover);
-					&.cform-custom-input {
-						--cform-text-placeholder-color: var(--liwe3-${ name }-background-500-text);
-						--cform-legend: var(--liwe3-${ name }-background-200-border);
+					--liwe3-form-bg: var(--liwe3-${ name }-background);
+					--liwe3-form-text-color: var(--liwe3-${ name }-background-500-text);
+					--liwe3-form-border-color: var(--liwe3-${ name }-background-200-border);
+					--liwe3-form-focus-bg: var(--liwe3-${ name }-background-500-hover);
+					&.liwe3-form-custom-input {
+						--liwe3-form-text-placeholder-color: var(--liwe3-${ name }-background-500-text);
+						--liwe3-form-legend: var(--liwe3-${ name }-background-200-border);
 					}
-					&.cform-custom-checkbox-radio {
-						--cform-accent: var(--liwe3-${ name }-background);
-						--cform-accent-color: var(--liwe3-${ name }-background-500-text);
+					&.liwe3-form-custom-checkbox-radio {
+						--liwe3-form-accent: var(--liwe3-${ name }-background);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-background-500-text);
 					}
-					&.cform-radio-group input[type=radio]:checked+label {
-						--cform-accent: var(--liwe3-${ name }-background-500-hover);
-						--cform-accent-color: var(--liwe3-${ name }-background-500-text);
+					&.liwe3-form-radio-group input[type=radio]:checked+label {
+						--liwe3-form-accent: var(--liwe3-${ name }-background-500-hover);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-background-500-text);
 					}
 				}
 				.color {
-					--cform-bg: var(--liwe3-${ name }-text);
-					--cform-text-color: var(--liwe3-${ name }-text-500-text);
-					--cform-border-color: var(--liwe3-${ name }-text-200-border);
-					--cform-focus-bg: var(--liwe3-${ name }-text-500-hover);
-					&.cform-custom-input {
-						--cform-text-placeholder-color: var(--liwe3-${ name }-text-500-text);
-						--cform-legend: var(--liwe3-${ name }-text-200-border);
+					--liwe3-form-bg: var(--liwe3-${ name }-text);
+					--liwe3-form-text-color: var(--liwe3-${ name }-text-500-text);
+					--liwe3-form-border-color: var(--liwe3-${ name }-text-200-border);
+					--liwe3-form-focus-bg: var(--liwe3-${ name }-text-500-hover);
+					&.liwe3-form-custom-input {
+						--liwe3-form-text-placeholder-color: var(--liwe3-${ name }-text-500-text);
+						--liwe3-form-legend: var(--liwe3-${ name }-text-200-border);
 					}
-					&.cform-custom-checkbox-radio {
-						--cform-accent: var(--liwe3-${ name }-text);
-						--cform-accent-color: var(--liwe3-${ name }-text-500-text);
+					&.liwe3-form-custom-checkbox-radio {
+						--liwe3-form-accent: var(--liwe3-${ name }-text);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-text-500-text);
 					}
-					&.cform-radio-group input[type=radio]:checked+label {
-						--cform-accent: var(--liwe3-${ name }-text-500-hover);
-						--cform-accent-color: var(--liwe3-${ name }-text-500-text);
+					&.liwe3-form-radio-group input[type=radio]:checked+label {
+						--liwe3-form-accent: var(--liwe3-${ name }-text-500-hover);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-text-500-text);
 					}
 				}
-				.cform-custom-switch {
-					--cform-text-placeholder-color: var(--liwe3-${ name }-mode3-700-text);
-					--cform-radius: var(--liwe3-border-radius);
+				.liwe3-form-custom-switch {
+					--liwe3-form-text-placeholder-color: var(--liwe3-${ name }-mode3-700-text);
+					--liwe3-form-radius: var(--liwe3-border-radius);
 				}
-				.cform-custom-btn {
-					--cform-btn-primary: var(--liwe3-${ name }-mode3);
-					--cform-btn-default-text: var(--liwe3-${ name }-mode3-500-text);
-					--cform-radius: var(--liwe3-border-radius);
+				.liwe3-form-custom-btn {
+					--liwe3-form-btn-primary: var(--liwe3-${ name }-mode3);
+					--liwe3-form-btn-default-text: var(--liwe3-${ name }-mode3-500-text);
+					--liwe3-form-radius: var(--liwe3-border-radius);
 				}
-				.cform-radio-group {
+				.liwe3-form-radio-group {
 					max-width: fit-content;
 				}
 				.svelte-select {

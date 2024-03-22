@@ -26,21 +26,18 @@ export const themeModes: Color[] = [
 	'link'
 ];
 
-/*
-// define default layout vars
-export const themeLayoutVars: LayoutVars[] = [
-	'font-size',
-	'font-weight',
-	'line-height',
-	'border-radius',
-	'border-width',
-	'border-style',
-	'button-padding-y',
-	'button-padding-x',
-	'input-padding-y',
-	'input-padding-x'
-];
-*/
+const defaultLayoutVars: Record<string, string> = {
+	'font-size': '20px',
+	'font-weight': '400',
+	'line-height': '1.2rem',
+	'border-radius': '0.15rem',
+	'border-width': '1px',
+	'border-style': 'solid',
+	'button-padding-y': '0.25rem',
+	'button-padding-x': '0.1rem',
+	'input-padding-y': '0.15rem',
+	'input-padding-x': '0.15rem'
+};
 
 export const themeLayoutUnits: Record<string, string> = {
 	'font-size': 'px',
@@ -86,18 +83,7 @@ export const theme = writable<ThemeStore>( {
 		color: '#ffffff',
 		link: '#0000ff'
 	},
-	vars: {
-		'font-size': '20px',
-		'font-weight': '400',
-		'line-height': '1.2rem',
-		'border-radius': '0.15rem',
-		'border-width': '1px',
-		'border-style': 'solid',
-		'button-padding-y': '0.25rem',
-		'button-padding-x': '0.1rem',
-		'input-padding-y': '0.15rem',
-		'input-padding-x': '0.15rem'
-	}
+	vars: defaultLayoutVars
 } );
 
 export const themeGet = ( mode: 'light' | 'dark' ) => {
@@ -166,6 +152,19 @@ export const themeSetLayoutVar = ( name: string, value: string ) => {
 	if ( !store ) return;
 
 	store.vars[ name ] = value;
+	theme.set( store );
+
+	themeCreate( { vars: store.vars } );
+	if ( browser ) {
+		localStorage.setItem( 'liwe3-layout-vars', JSON.stringify( store.vars ) );
+	}
+};
+
+export const themeResetLayoutVars = () => {
+	const store = get( theme );
+	if ( !store ) return;
+
+	store.vars = defaultLayoutVars;
 	theme.set( store );
 
 	themeCreate( { vars: store.vars } );

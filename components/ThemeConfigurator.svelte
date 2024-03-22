@@ -211,13 +211,13 @@
 							/>
 						{/each}
 						<div class="liwe3-col2 p5">
-							<div class={`${mode} cform-switch cform-custom-switch`}>
+							<div class={`${mode} liwe3-form-switch liwe3-form-custom-switch`}>
 								<Input type="checkbox" id={`switch-${mode}`} />
 								<label for={`switch-${mode}`}>{mode}</label>
 							</div>
 						</div>
 						<div class="liwe3-col2 p5">
-							<div class={`${mode} radio-group cform-radio-group`}>
+							<div class={`${mode} radio-group liwe3-form-radio-group`}>
 								<input type="radio" id={`${mode}-option-one3`} name="selector3" checked />
 								<label for={`${mode}-option-one3`}>Html</label>
 								<input type="radio" id={`${mode}-option-two3`} name="selector3" />
@@ -227,9 +227,9 @@
 							</div>
 						</div>
 						<div class="liwe3-col2 m5">
-							<fieldset class={`cform ${mode} cform-custom-input`}>
+							<fieldset class={`liwe3-form ${mode} liwe3-form-custom-input`}>
 								<legend>Textarea</legend>
-								<textarea class={`cform ${mode} custom-input-cform`} rows="4" placeholder={mode} />
+								<textarea class={`liwe3-form ${mode} custom-input-liwe3-form`} rows="4" placeholder={mode} />
 							</fieldset>
 						</div>
 					</div>
@@ -257,7 +257,7 @@
 									<Input label="Last Name" placeholder="Last Name" />
 								</div>
 								<div class="liwe3-col6 liwe3-offset-6">
-									<div class="mode3 radio-group cform-radio-group">
+									<div class="mode3 radio-group liwe3-form-radio-group">
 										<input type="radio" id="mode3-option-one3" name="selector3" checked />
 										<label for="mode3-option-one3">Male</label>
 										<input type="radio" id="mode3-option-two3" name="selector3" />
@@ -294,7 +294,7 @@
 									<label class="label" for="textarea1">Textarea</label>
 									<textarea
 										id="textarea1"
-										class={`cform mode3 custom-input-cform`}
+										class={`liwe3-form mode3 custom-input-liwe3-form`}
 										rows="5"
 										placeholder="Your text here"
 									/>

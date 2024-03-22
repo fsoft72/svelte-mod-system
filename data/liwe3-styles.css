@@ -214,6 +214,7 @@
     /* button info */
     &.info {
       --liwe3-button-background: var(--liwe3-info-color);
+      --liwe3-button-color: var(--liwe3-light-info-500-text);
       --liwe3-button-hover: var(--liwe3-light-info-500-hover);
       --liwe3-button-active: var(--liwe3-light-info-500-active);
       --liwe3-button-500: var(--liwe3-light-info-text);
@@ -251,6 +252,7 @@
     /* button success */
     &.success {
       --liwe3-button-background: var(--liwe3-light-success);
+      --liwe3-button-color: var(--liwe3-light-success-500-text);
       --liwe3-button-hover: var(--liwe3-light-success-500-hover);
       --liwe3-button-active: var(--liwe3-light-success-500-active);
       --liwe3-button-500: var(--liwe3-light-success-text);
@@ -288,6 +290,7 @@
     /* button warning */
     &.warning {
       --liwe3-button-background: var(--liwe3-light-warning);
+      --liwe3-button-color: var(--liwe3-light-warning-500-text);
       --liwe3-button-hover: var(--liwe3-light-warning-500-hover);
       --liwe3-button-active: var(--liwe3-light-warning-500-active);
       --liwe3-button-500: var(--liwe3-light-warning-500-text);
@@ -326,6 +329,7 @@
     &.error,
     &.danger {
       --liwe3-button-background: var(--liwe3-light-error);
+      --liwe3-button-color: var(--liwe3-light-error-500-text);
       --liwe3-button-hover: var(--liwe3-light-error-500-hover);
       --liwe3-button-active: var(--liwe3-light-error-500-active);
       --liwe3-button-500: var(--liwe3-light-error-text);
