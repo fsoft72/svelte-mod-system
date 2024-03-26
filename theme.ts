@@ -321,6 +321,9 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 					max-width: fit-content;
 				}
 				.svelte-select {
+					--font-size: var(--liwe3-font-size);
+					--height: calc(var(--font-size) + calc(var(--liwe3-input-padding-y) * 6));
+					--max-height: calc(var(--height) + .2rem);
 					--border: var(--liwe3-border-width) solid var(--liwe3-${ name }-mode3-200-border);
 					--input-padding: var(--liwe3-input-padding-y);
 					--value-container-padding: calc(var(--input-padding) * 5) var(--input-padding);
