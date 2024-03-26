@@ -511,23 +511,29 @@ export const themeCreateDefault = ( themeData: any ) => {
 	if ( browser ) {
 		// check if the user has saved a theme in local storage
 		const lightTheme = localStorage.getItem( `liwe3-light-theme` );
-		if ( lightTheme ) themeSetModeColors( 'light', JSON.parse( lightTheme ) );
+		if ( lightTheme )
+			themeSetModeColors( 'light', JSON.parse( lightTheme ) );
+		else if ( themeData.light ) themeSetModeColors( 'light', themeData.light );
 
 		const darkTheme = localStorage.getItem( `liwe3-dark-theme` );
-		if ( darkTheme ) themeSetModeColors( 'dark', JSON.parse( darkTheme ) );
+		if ( darkTheme )
+			themeSetModeColors( 'dark', JSON.parse( darkTheme ) );
+		else if ( themeData.dark ) themeSetModeColors( 'dark', themeData.dark );
 
 		const layoutVars = localStorage.getItem( `liwe3-layout-vars` );
-		if ( layoutVars ) themeSetLayoutVars( JSON.parse( layoutVars ) );
+		if ( layoutVars )
+			themeSetLayoutVars( JSON.parse( layoutVars ) );
+		else if ( themeData.vars ) themeSetLayoutVars( themeData.vars );
 
 		const themeMode = localStorage.getItem( `liwe3-theme-mode` ) || themeData.mode || 'light';
 		themeSetMode( themeMode == 'dark' ? 'dark' : 'light' );
-	}
 
-	themeCreate( {
-		light: themeData.light || themeStore.light,
-		dark: themeData.dark || themeStore.dark,
-		vars: themeData.vars || themeStore.vars
-	} );
+		themeCreate( {
+			light: themeStore.light,
+			dark: themeStore.dark,
+			vars: themeStore.vars
+		} );
+	}
 };
 
 export const themeSetMode = ( mode: 'light' | 'dark' ) => {
