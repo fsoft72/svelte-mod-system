@@ -23,9 +23,9 @@ const calculateColors = ( name: string, r: number, g: number, b: number ) => {
 			colors[ `${ name }-${ val }` ] = col.css();
 
 			// also calculate the right text color for the background
-			colors[ `${ name }-${ val }-text` ] = col.luminance() > 0.6 ? chroma( 48, 48, 48 ).darken( ( 700 + ( val * factor ) ) / 300 ).css()
-				: col.luminance() < 0.4 ? chroma( 242, 242, 242 ).brighten( ( 300 + ( val * factor ) ) / 200 ).css()
-					: chroma( 33, 33, 33 ).darken( ( 500 + ( val * factor ) ) / 300 ).css(); // intermediate color
+			colors[ `${ name }-${ val }-text` ] = col.luminance() > 0.7 ? chroma( 48, 48, 48 ).darken( ( 700 + ( val * factor ) ) / 300 ).css()
+				: col.luminance() < 0.3 ? chroma( 242, 242, 242 ).brighten( ( 300 + ( val * factor ) ) / 200 ).css()
+					: chroma( 48, 48, 48 ).darken( ( 600 + ( val * factor ) ) / 300 ).css(); // intermediate color
 
 			// calculate the border color
 			colors[ `${ name }-${ val }-border` ] = chroma( r, g, b )
@@ -106,8 +106,8 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 						--liwe3-form-accent-color: var(--liwe3-${ name }-mode1-500-text);
 					}
 					&.liwe3-form-radio-group input[type=radio]:checked+label {
-						--liwe3-form-accent: var(--liwe3-${ name }-mode1-500-hover);
-						--liwe3-form-accent-color: var(--liwe3-${ name }-mode1-500-text);
+						--liwe3-form-accent: var(--liwe3-${ name }-mode4-500-hover);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-mode4-500-text);
 					}
 				}
 				.mode2 {
@@ -124,8 +124,8 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 						--liwe3-form-accent-color: var(--liwe3-${ name }-mode2-500-text);
 					}
 					&.liwe3-form-radio-group input[type=radio]:checked+label {
-						--liwe3-form-accent: var(--liwe3-${ name }-mode2-500-hover);
-						--liwe3-form-accent-color: var(--liwe3-${ name }-mode2-500-text);
+						--liwe3-form-accent: var(--liwe3-${ name }-mode4-500-hover);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-mode4-500-text);
 					}
 				}
 				.mode3 {
@@ -142,8 +142,8 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 						--liwe3-form-accent-color: var(--liwe3-${ name }-mode3-500-text);
 					}
 					&.liwe3-form-radio-group input[type=radio]:checked+label {
-						--liwe3-form-accent: var(--liwe3-${ name }-mode3-500-hover);
-						--liwe3-form-accent-color: var(--liwe3-${ name }-mode3-500-text);
+						--liwe3-form-accent: var(--liwe3-${ name }-mode4-500-hover);
+						--liwe3-form-accent-color: var(--liwe3-${ name }-mode4-500-text);
 					}
 				}
 				.mode4 {

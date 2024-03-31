@@ -979,7 +979,7 @@ button {
   border-color: var(--liwe3-button-border);
   border-radius: var(--liwe3-border-radius);
   background-color: var(--liwe3-button-background);
-  color: var(--liwe3-button-color);
+  /*color: var(--liwe3-button-color);*/
   font-size: var(--liwe3-font-size);
   user-select: none;
   cursor: pointer;

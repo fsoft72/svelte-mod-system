@@ -157,7 +157,7 @@
 							<div
 								class={val === 500 ? 'liwe3-col3' : 'liwe3-col1'}
 								style={`background-color: var(--liwe3-${
-									$theme.theme ? 'dark' : 'light'
+									$theme.theme ? $theme.theme : 'dark'
 								}-${name}-${val});`}
 							>
 								<div class="color-text"><p>{val}</p></div>
