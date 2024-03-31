@@ -5,23 +5,32 @@
 	import { ArrowUturnLeft } from 'svelte-hero-icons';
 	import Button from '$liwe3/components/Button.svelte';
 
+	type allowedUnits = 'px' | 'rem' | '%' | 'number' | 'string';
 	const formatValue = {
 		clean: (name: string, value: string) => {
 			const val = value ? value.replace(themeLayoutUnits[name], '').trim() : '';
 			return val;
 		},
-		full: (name: string, value: string) =>
-			['number', 'string'].includes(themeLayoutUnits[name]) ? value : value + themeLayoutUnits[name]
+		full: (name: string, value: string) => {
+			return ['number', 'string'].includes(themeLayoutUnits[name]) ? value : value + themeLayoutUnits[name]
+		}
 	};
 
 	const setVar = (rule: string, value: string) => {
 		themeSetLayoutVar(rule, value);
 	};
+
 	const resetVars = () => {
 		confirm("Are you sure you want to reset the variables?") ?
 		themeResetLayoutVars() : null;
 	};
-	console.log(themeLayoutUnits);
+
+	const onVarChange = (e: Event, rule: allowedUnits) => {
+		const target = e.target as HTMLInputElement;
+		const value = formatValue.full(rule, target.value) || '';
+		setVar(rule, value);
+	};
+
 </script>
 
 <div class="container">
@@ -36,7 +45,7 @@
 									type="number"
 									step=".05"
 									min="0"
-									on:change={(e) => setVar(rule, formatValue.full(rule, e.target?.value))}
+									on:change={ (e) => onVarChange(e, rule)}
 									value={formatValue.clean(rule, $theme.vars[rule])}
 									label={`${rule} (${themeLayoutUnits[rule]})`}
 								/>
@@ -45,14 +54,14 @@
 									type="number"
 									step="1"
 									min="0"
-									on:change={(e) => setVar(rule, formatValue.full(rule, e.target?.value))}
+									on:change={ (e) => onVarChange(e, rule)}
 									value={formatValue.clean(rule, $theme.vars[rule])}
 									label={`${rule} (${themeLayoutUnits[rule]})`}
 								/>
 							{:else if themeLayoutUnits[rule] == 'string'}
 								<Input
 									type="text"
-									on:change={(e) => setVar(rule, formatValue.full(rule, e.target?.value))}
+									on:change={ (e) => onVarChange(e, rule)}
 									value={formatValue.clean(rule, $theme.vars[rule])}
 									label={`${rule} (${themeLayoutUnits[rule]})`}
 								/>
@@ -63,7 +72,7 @@
 									min="0"
 									max="100"
 									class="slider"
-									on:change={(e) => setVar(rule, formatValue.full(rule, e.target?.value))}
+									on:change={ (e) => onVarChange(e, rule) }
 									value={formatValue.clean(rule, $theme.vars[rule])}
 								/>
 							{/if}

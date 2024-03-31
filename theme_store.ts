@@ -83,7 +83,7 @@ export const theme = writable<ThemeStore>( {
 		color: '#ffffff',
 		link: '#0000ff'
 	},
-	vars: defaultLayoutVars
+	vars: { ...defaultLayoutVars }
 } );
 
 export const themeGet = ( mode: 'light' | 'dark' ) => {
@@ -161,23 +161,10 @@ export const themeSetLayoutVar = ( name: string, value: string ) => {
 };
 
 export const themeResetLayoutVars = () => {
-	const store = get( theme );
-	if ( !store ) return;
-
-	store.vars = defaultLayoutVars;
-	theme.set( store );
-
-	themeCreate( { vars: store.vars } );
+	const vars = { ...defaultLayoutVars };
+	themeSetLayoutVars( vars );
+	themeCreate( { vars: vars } );
 	if ( browser ) {
-		localStorage.setItem( 'liwe3-layout-vars', JSON.stringify( store.vars ) );
+		localStorage.setItem( 'liwe3-layout-vars', JSON.stringify( vars ) );
 	}
-}
-
-/*
-export let liwe3Theme: ThemeStore;
-
-// subscribe to the user store
-theme.subscribe( ( value ) => {
-	liwe3Theme = value;
-} );
-*/
+};
