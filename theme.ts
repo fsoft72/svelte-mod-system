@@ -322,11 +322,11 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 				}
 				.svelte-select {
 					--font-size: var(--liwe3-font-size);
-					--height: calc(var(--font-size) + calc(var(--liwe3-input-padding-y) * 6));
+					--height: calc(var(--font-size) + calc(var(--liwe3-input-padding-y) * 8));
 					--max-height: calc(var(--height) + .2rem);
 					--border: var(--liwe3-border-width) solid var(--liwe3-${ name }-mode3-200-border);
 					--input-padding: var(--liwe3-input-padding-y);
-					--value-container-padding: calc(var(--input-padding) * 5) var(--input-padding);
+					--value-container-padding: var(--liwe3-input-padding-y) var(--liwe3-input-padding-y);
 					.value-container > input {
 						padding-block: clamp(1px,var(--input-padding) * 2.5,15px);
 						padding-inline: clamp(5px,var(--input-padding) * 4,20px);
@@ -459,7 +459,6 @@ const injectColors = ( name: string, colors: Record<string, string> ) => {
 				}
 				`;
 		'\n}\n';
-		// console.log( 'Inject colors', name, style.innerHTML );
 	}
 
 	if ( is_new ) document.head.appendChild( style );
