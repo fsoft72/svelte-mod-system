@@ -229,7 +229,11 @@
 						<div class="liwe3-col2 m5">
 							<fieldset class={`liwe3-form ${mode} liwe3-form-custom-input`}>
 								<legend>Textarea</legend>
-								<textarea class={`liwe3-form ${mode} custom-input-liwe3-form`} rows="4" placeholder={mode} />
+								<textarea
+									class={`liwe3-form ${mode} custom-input-liwe3-form`}
+									rows="4"
+									placeholder={mode}
+								></textarea>
 							</fieldset>
 						</div>
 					</div>
@@ -297,7 +301,7 @@
 										class={`liwe3-form mode3 custom-input-liwe3-form`}
 										rows="5"
 										placeholder="Your text here"
-									/>
+									></textarea>
 								</div>
 							</div>
 						</div>
