@@ -116,7 +116,7 @@
 		data={displayDomains}
 		fields={gridFields}
 		{actions}
-		updateField={async (row, field_name) => {
+		onupdatefield={async (row, field_name) => {
 			console.log('updateField', row, field_name);
 			// const res = await user_admin_fields(row.id, { [field_name]: row[field_name] });
 
