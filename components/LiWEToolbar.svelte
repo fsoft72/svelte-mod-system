@@ -1,10 +1,10 @@
 <script lang="ts">
 	import ThemeSwitcher from '$liwe3/components/ThemeSwitcher.svelte';
 	import Avatar from '$modules/user/components/Avatar.svelte';
-	import { user } from '$modules/user/store';
+	import { userStore } from '$modules/user/store';
 </script>
 
-{#if $user?.uid}
+{#if $userStore?.uid}
 	<div class="toolbar">
 		LiWE Toolbar
 		<div class="item">
@@ -12,7 +12,7 @@
 		</div>
 		<div class="row">
 			<ThemeSwitcher />
-			<Avatar user={$user} />
+			<Avatar user={$userStore} />
 		</div>
 	</div>
 	<div class="spacer" />
