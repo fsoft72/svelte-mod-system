@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ThemeSwitcher from '$liwe3/components/ThemeSwitcher.svelte';
 	import Avatar from '$modules/user/components/Avatar.svelte';
-	import { userStore } from '$modules/user/store';
+	import { userStore } from '$modules/user/store.svelte';
 </script>
 
 {#if $userStore?.uid}
