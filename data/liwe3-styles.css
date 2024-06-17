@@ -80,7 +80,7 @@
   --liwe3-info-color: var(--liwe3-light-info);
   --liwe3-success-color: var(--liwe3-light-success);
   --liwe3-warning-color: var(--liwe3-light-warning);
-  --liwe3-error-color: var(--liwe3-light-danger);
+  --liwe3-error-color: var(--liwe3-light-error);
   --liwe3-paper: var(--liwe3-light-mode3-400);
   --liwe3-lighter-paper: var(--liwe3-light-mode3-200);
   --liwe3-darker-paper: var(--liwe3-light-mode3-500);
@@ -427,7 +427,7 @@
   --liwe3-info-color: var(--liwe3-dark-info);
   --liwe3-success-color: var(--liwe3-dark-success);
   --liwe3-warning-color: var(--liwe3-dark-warning);
-  --liwe3-error-color: var(--liwe3-dark-danger);
+  --liwe3-error-color: var(--liwe3-dark-error);
   --liwe3-paper: var(--liwe3-dark-mode3-400);
   --liwe3-lighter-paper: var(--liwe3-dark-mode3-200);
   --liwe3-darker-paper: var(--liwe3-dark-mode3-500);
