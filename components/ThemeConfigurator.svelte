@@ -8,7 +8,7 @@
 	import DataGrid, {
 		type GridAction,
 		type GridDataRow,
-		type GridField
+		type GridField,
 	} from '$liwe3/components/DataGrid.svelte';
 	import type { Color } from '$liwe3/types/types';
 	import { themeCreate } from '../theme';
@@ -22,6 +22,7 @@
 	import { theme, themeModes } from '../theme_store';
 	import ThemeColorSelector from './ThemeColorSelector.svelte';
 	import ThemeVarsSelector from './ThemeVarsSelector.svelte';
+	import Checkbox from '$liwe3/components/Checkbox.svelte';
 
 	const ranges = [900, 800, 700, 600, 500, 400, 300, 200, 100, 50];
 	const fields: GridField[] = [
@@ -29,7 +30,7 @@
 			name: 'id',
 			type: 'string',
 			label: 'ID',
-			hidden: true
+			hidden: true,
 		},
 		{
 			name: 'email',
@@ -37,7 +38,7 @@
 			label: 'Email',
 			sortable: true,
 			filterable: true,
-			editable: true
+			editable: true,
 		},
 		{
 			name: 'first_name',
@@ -45,7 +46,7 @@
 			label: 'First Name',
 			sortable: true,
 			filterable: true,
-			editable: true
+			editable: true,
 		},
 		{
 			name: 'last_name',
@@ -53,8 +54,8 @@
 			label: 'Last Name',
 			sortable: true,
 			filterable: true,
-			editable: true
-		}
+			editable: true,
+		},
 	];
 
 	const data: GridDataRow[] = [
@@ -62,26 +63,26 @@
 			id: '1',
 			first_name: 'John',
 			last_name: 'Doe',
-			email: 'jdoe@example.com'
+			email: 'jdoe@example.com',
 		},
 		{
 			id: '2',
 			first_name: 'Jane',
 			last_name: 'Doe',
-			email: 'jane@example.com'
+			email: 'jane@example.com',
 		},
 		{
 			id: '3',
 			first_name: 'John',
 			last_name: 'Smith',
-			email: 'jj@example.com'
+			email: 'jj@example.com',
 		},
 		{
 			id: '4',
 			first_name: 'Jane',
 			last_name: 'Smith',
-			email: 'smith@ssss.com'
-		}
+			email: 'smith@ssss.com',
+		},
 	];
 
 	const actions: GridAction[] = [
@@ -90,7 +91,7 @@
 			label: 'Edit',
 			action: (row: GridDataRow) => {
 				console.log('=== EDIT: ', row);
-			}
+			},
 		},
 		{
 			id: 'a2',
@@ -98,8 +99,8 @@
 			action: (row: GridDataRow) => {
 				console.log('=== DELETE: ', row);
 			},
-			mode: 'error'
-		}
+			mode: 'error',
+		},
 	];
 
 	let mode: Color = 'mode1';
@@ -212,7 +213,7 @@
 						{/each}
 						<div class="liwe3-col2 p5">
 							<div class={`${mode} liwe3-form-switch liwe3-form-custom-switch`}>
-								<Input type="checkbox" id={`switch-${mode}`} />
+								<Checkbox id={`switch-${mode}`} />
 								<label for={`switch-${mode}`}>{mode}</label>
 							</div>
 						</div>
