@@ -12,7 +12,7 @@
 		</div>
 		<div class="row">
 			<ThemeSwitcher />
-			<Avatar user={storeUser} />
+			<Avatar />
 		</div>
 	</div>
 	<div class="spacer" />

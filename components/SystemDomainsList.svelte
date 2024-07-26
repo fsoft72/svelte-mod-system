@@ -10,7 +10,7 @@
 		system_admin_domain_add,
 		system_admin_domain_update,
 		system_admin_domains_list,
-		system_domain_create_invite
+		system_domain_create_invite,
 	} from '../actions';
 	import Modal from '$liwe3/components/Modal.svelte';
 	import SystemDomainEdit from './SystemDomainEdit.svelte';
@@ -38,7 +38,7 @@
 			action: async (row: any) => {
 				inv = await system_domain_create_invite(row.id);
 				inviteModalOpen = true;
-			}
+			},
 		},
 		{
 			id: 'edit',
@@ -48,7 +48,7 @@
 			action: (row: any) => {
 				currentRow = row;
 				editModalOpen = true;
-			}
+			},
 		},
 		{
 			id: 'delete',
@@ -58,8 +58,8 @@
 			action: (row: any) => {
 				currentRow = row;
 				deleteModalOpen = true;
-			}
-		}
+			},
+		},
 	];
 
 	const deleteDomain = async () => {
@@ -150,8 +150,8 @@
 		<div class="delete-domain">{currentRow?.code} / {currentRow?.name}</div>
 
 		<div slot="footer">
-			<Button mode="error" on:click={deleteDomain}>{$_('Delete Domain')}</Button>
-			<Button mode="info" on:click={() => (deleteModalOpen = false)}>{$_('Cancel')}</Button>
+			<Button mode="error" onclick={deleteDomain}>{$_('Delete Domain')}</Button>
+			<Button mode="info" onclick={() => (deleteModalOpen = false)}>{$_('Cancel')}</Button>
 		</div>
 	</Modal>
 {/if}
