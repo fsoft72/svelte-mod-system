@@ -33,7 +33,7 @@
 			<div class="theme-selector">
 				<Checkbox
 					checked={$theme.theme === 'dark'}
-					on:change={(e) => setDarkMode(e.target.checked)}
+					on:change={(e: any) => setDarkMode(e.target?.checked)}
 					label="Dark mode"
 				/>
 				<Button mode="info" on:click={exportJSON}>Export JSON</Button>
@@ -48,13 +48,13 @@
 							{#if $theme.theme === 'dark'}
 								<input
 									type="color"
-									on:change={(e) => setColor(mode, e.target?.value)}
+									on:change={(e: any) => setColor(mode, e.target?.value)}
 									value={$theme.dark[mode]}
 								/>
 							{:else}
 								<input
 									type="color"
-									on:change={(e) => setColor(mode, e.target?.value)}
+									on:change={(e: any) => setColor(mode, e.target?.value)}
 									value={$theme.light[mode]}
 								/>
 							{/if}
