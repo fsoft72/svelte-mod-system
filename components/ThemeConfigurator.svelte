@@ -6,12 +6,11 @@
 	import Tabs from '$liwe3/components/Tabs.svelte';
 	import Tab from '$liwe3/components/sub/Tab.svelte';
 	import DataGrid, {
-		type GridAction,
-		type GridDataRow,
-		type GridField,
+		type DataGridAction,
+		type DataGridRow,
+		type DataGridField
 	} from '$liwe3/components/DataGrid.svelte';
 	import type { Color } from '$liwe3/types/types';
-	import { themeCreate } from '../theme';
 	import AutoComplete from '$liwe3/components/AutoComplete.svelte';
 	import MarkdownInput from '$liwe3/components/MarkdownInput.svelte';
 	import Modal from '$liwe3/components/Modal.svelte';
@@ -25,12 +24,12 @@
 	import Checkbox from '$liwe3/components/Checkbox.svelte';
 
 	const ranges = [900, 800, 700, 600, 500, 400, 300, 200, 100, 50];
-	const fields: GridField[] = [
+	const fields: DataGridField[] = [
 		{
 			name: 'id',
 			type: 'string',
 			label: 'ID',
-			hidden: true,
+			hidden: true
 		},
 		{
 			name: 'email',
@@ -38,7 +37,7 @@
 			label: 'Email',
 			sortable: true,
 			filterable: true,
-			editable: true,
+			editable: true
 		},
 		{
 			name: 'first_name',
@@ -46,7 +45,7 @@
 			label: 'First Name',
 			sortable: true,
 			filterable: true,
-			editable: true,
+			editable: true
 		},
 		{
 			name: 'last_name',
@@ -54,74 +53,59 @@
 			label: 'Last Name',
 			sortable: true,
 			filterable: true,
-			editable: true,
-		},
+			editable: true
+		}
 	];
 
-	const data: GridDataRow[] = [
+	const data: DataGridRow[] = [
 		{
 			id: '1',
 			first_name: 'John',
 			last_name: 'Doe',
-			email: 'jdoe@example.com',
+			email: 'jdoe@example.com'
 		},
 		{
 			id: '2',
 			first_name: 'Jane',
 			last_name: 'Doe',
-			email: 'jane@example.com',
+			email: 'jane@example.com'
 		},
 		{
 			id: '3',
 			first_name: 'John',
 			last_name: 'Smith',
-			email: 'jj@example.com',
+			email: 'jj@example.com'
 		},
 		{
 			id: '4',
 			first_name: 'Jane',
 			last_name: 'Smith',
-			email: 'smith@ssss.com',
-		},
+			email: 'smith@ssss.com'
+		}
 	];
 
-	const actions: GridAction[] = [
+	const actions: DataGridAction[] = [
 		{
 			id: 'a1',
 			label: 'Edit',
-			action: (row: GridDataRow) => {
+			onclick: (row: DataGridRow) => {
 				console.log('=== EDIT: ', row);
-			},
+			}
 		},
 		{
 			id: 'a2',
 			label: 'Delete',
-			action: (row: GridDataRow) => {
+			onclick: (row: DataGridRow) => {
 				console.log('=== DELETE: ', row);
 			},
-			mode: 'error',
-		},
+			mode: 'error'
+		}
 	];
 
-	let mode: Color = 'mode1';
+	let mode: Color = $state('mode1');
 
-	let testMode: Color = 'mode1';
-	let showModal = false;
-
-	/*
-	onMount(() => {
-		// const tc = themeColors();
-		//iterate on tc and set the colors
-		tc.map((theme, idx) => {
-			Object.entries(tc[idx]).map(([themeType, colors]) => {
-				Object.entries(colors).map(([k, v]) => {
-					themeType === 'dark' ? (dark[k] = intToRGBHex(v)) : (light[k] = intToRGBHex(v));
-				});
-			});
-		});
-		is_ready = true;
-	});
-	*/
+	let testMode: Color = $state('mode1');
+	let showModal = $state(false);
 </script>
 
 <div class={`container liwe3-${$theme.theme}-theme`}>
@@ -138,10 +122,10 @@
 				title="Theme modal test"
 				size="md"
 				mode={testMode}
-				on:cancel={() => {
+				oncancel={() => {
 					showModal = false;
 				}}
-				on:close={() => {
+				onclose={() => {
 					showModal = false;
 				}}
 			>
@@ -329,10 +313,10 @@
 			</Tab>
 			<Tab id="dragtree" title="Draggable Tree">
 				<div class="row">
-					<DraggableTree mode="mode1" />
-					<DraggableTree mode="mode2" />
-					<DraggableTree mode="mode3" />
-					<DraggableTree mode="mode4" />
+					<DraggableTree mode="mode1" tree={{ children: [] }} />
+					<DraggableTree mode="mode2" tree={{ children: [] }} />
+					<DraggableTree mode="mode3" tree={{ children: [] }} />
+					<DraggableTree mode="mode4" tree={{ children: [] }} />
 				</div>
 			</Tab>
 			<Tab id="elements" title="Elements List">
@@ -363,28 +347,28 @@
 					<div class="row">
 						<Button
 							mode="mode1"
-							on:click={() => {
+							onclick={() => {
 								testMode = 'mode1';
 								showModal = true;
 							}}>Open Modal</Button
 						>
 						<Button
 							mode="mode2"
-							on:click={() => {
+							onclick={() => {
 								testMode = 'mode2';
 								showModal = true;
 							}}>Open Modal</Button
 						>
 						<Button
 							mode="mode3"
-							on:click={() => {
+							onclick={() => {
 								testMode = 'mode3';
 								showModal = true;
 							}}>Open Modal</Button
 						>
 						<Button
 							mode="mode4"
-							on:click={() => {
+							onclick={() => {
 								testMode = 'mode4';
 								showModal = true;
 							}}>Open Modal</Button
