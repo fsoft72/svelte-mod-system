@@ -1,6 +1,6 @@
-import type { GridField } from '$liwe3/components/DataGrid.svelte';
+import type { DataGridField } from '$liwe3/components/DataGrid.svelte';
 
-const fields: GridField[] = [
+const fields: DataGridField[] = [
 	{
 		name: 'id',
 		label: 'ID',
