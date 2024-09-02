@@ -1,6 +1,9 @@
 <script lang="ts">
 	import Button from '$liwe3/components/Button.svelte';
-	import DataGrid, { type GridAction, type GridDataRow } from '$liwe3/components/DataGrid.svelte';
+	import DataGrid, {
+		type DataGridAction,
+		type DataGridRow
+	} from '$liwe3/components/DataGrid.svelte';
 	import { _ } from '$liwe3/stores/LocalizationStore';
 	import { onMount } from 'svelte';
 	import gridFields from './subs/domains_fields';
@@ -10,7 +13,7 @@
 		system_admin_domain_add,
 		system_admin_domain_update,
 		system_admin_domains_list,
-		system_domain_create_invite,
+		system_domain_create_invite
 	} from '../actions';
 	import Modal from '$liwe3/components/Modal.svelte';
 	import SystemDomainEdit from './SystemDomainEdit.svelte';
@@ -22,14 +25,14 @@
 	let inv = '';
 
 	let domains: SystemDomain[] = [];
-	let displayDomains: GridDataRow[] = [];
+	let displayDomains: DataGridRow[] = [];
 	let filteredDomains: SystemDomain[] = [];
 
 	let editModalOpen = false;
 	let deleteModalOpen = false;
 	let inviteModalOpen = false;
 
-	let actions: GridAction[] = [
+	let actions: DataGridAction[] = [
 		{
 			id: 'invite',
 			label: 'Invite',
@@ -38,7 +41,7 @@
 			action: async (row: any) => {
 				inv = await system_domain_create_invite(row.id);
 				inviteModalOpen = true;
-			},
+			}
 		},
 		{
 			id: 'edit',
@@ -48,7 +51,7 @@
 			action: (row: any) => {
 				currentRow = row;
 				editModalOpen = true;
-			},
+			}
 		},
 		{
 			id: 'delete',
@@ -58,8 +61,8 @@
 			action: (row: any) => {
 				currentRow = row;
 				deleteModalOpen = true;
-			},
-		},
+			}
+		}
 	];
 
 	const deleteDomain = async () => {
@@ -112,44 +115,46 @@
 			{$_('Create Domain')}
 		</Button>
 	</div>
-	<DataGrid
-		data={displayDomains}
-		fields={gridFields}
-		{actions}
-		onupdatefield={async (row, field_name) => {
-			console.log('updateField', row, field_name);
-			// const res = await user_admin_fields(row.id, { [field_name]: row[field_name] });
+	{#key displayDomains}
+		<DataGrid
+			data={displayDomains}
+			fields={gridFields}
+			{actions}
+			onupdatefield={async (row, field_name) => {
+				console.log('updateField', row, field_name);
+				// const res = await user_admin_fields(row.id, { [field_name]: row[field_name] });
 
-			// if (res.error) return;
-		}}
-	/>
-	<Paginator
-		total={totRows}
-		rows={maxRowsPerPage}
-		on:pagechange={(e) => {
-			displayDomains = filteredDomains.slice(
-				(e.detail.page - 1) * maxRowsPerPage,
-				e.detail.page * maxRowsPerPage
-			);
-		}}
-	/>
+				// if (res.error) return;
+			}}
+		/>
+		<Paginator
+			total={totRows}
+			rows={maxRowsPerPage}
+			on:pagechange={(e) => {
+				displayDomains = filteredDomains.slice(
+					(e.detail.page - 1) * maxRowsPerPage,
+					e.detail.page * maxRowsPerPage
+				);
+			}}
+		/>
+	{/key}
 </div>
 
 {#if deleteModalOpen}
 	<Modal
 		title={$_('Delete domain')}
-		on:confirm={() => {
+		onclose={() => {
 			domains = domains.filter((r) => r.id !== currentRow.id);
 			deleteModalOpen = false;
 		}}
-		on:cancel={() => {
+		oncancel={() => {
 			deleteModalOpen = false;
 		}}
 	>
 		{$_('Please confirm you want to delete domain')}<br />
 		<div class="delete-domain">{currentRow?.code} / {currentRow?.name}</div>
 
-		<div slot="footer">
+		<div class="buttons">
 			<Button mode="error" onclick={deleteDomain}>{$_('Delete Domain')}</Button>
 			<Button mode="info" onclick={() => (deleteModalOpen = false)}>{$_('Cancel')}</Button>
 		</div>
@@ -159,10 +164,10 @@
 {#if editModalOpen}
 	<Modal
 		title={$_('Edit domain')}
-		on:confirm={() => {
+		onclose={() => {
 			editModalOpen = false;
 		}}
-		on:cancel={() => {
+		oncancel={() => {
 			editModalOpen = false;
 		}}
 	>
@@ -174,10 +179,10 @@
 	<Modal
 		title={$_('Invite token')}
 		size="md"
-		on:confirm={() => {
+		onclose={() => {
 			inviteModalOpen = false;
 		}}
-		on:cancel={() => {
+		oncancel={() => {
 			inviteModalOpen = false;
 		}}
 	>
@@ -195,6 +200,7 @@
 		border-radius: var(--liwe3-border-radius);
 		padding-bottom: 0.01rem;
 	}
+
 	.delete-domain {
 		font-weight: bold;
 		text-align: center;
