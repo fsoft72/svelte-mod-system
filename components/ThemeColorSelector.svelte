@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Button from '$liwe3/components/Button.svelte';
 	import Checkbox from '$liwe3/components/Checkbox.svelte';
-	import Input from '$liwe3/components/Input.svelte';
 	import { downloadFile } from '$liwe3/utils/utils';
 	import { themeSetMode } from '../theme';
 	import { theme, themeModes, themeSetDarkMode, themeSetModeColor } from '../theme_store';
@@ -33,7 +32,7 @@
 			<div class="theme-selector">
 				<Checkbox
 					checked={$theme.theme === 'dark'}
-					on:change={(e: any) => setDarkMode(e.target?.checked)}
+					onchange={(e: any) => setDarkMode(e.target?.checked)}
 					label="Dark mode"
 				/>
 				<Button mode="info" on:click={exportJSON}>Export JSON</Button>
