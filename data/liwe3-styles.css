@@ -783,15 +783,11 @@ button {
 html {
   position: relative;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
   font-size: var(--liwe3-font-size);
 }
 
 body {
   width: 100%;
-  height: 100%;
-  overflow: auto;
   background-color: var(--liwe3-background);
   font-family: var(--liwe3-font-family);
   font-size: var(--liwe3-font-size);
