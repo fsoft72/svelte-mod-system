@@ -15,7 +15,7 @@
 			<Avatar />
 		</div>
 	</div>
-	<div class="spacer" />
+	<div class="spacer"></div>
 {/if}
 
 <style>
