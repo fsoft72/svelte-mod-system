@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ThemeSwitcher from '$liwe3/components/ThemeSwitcher.svelte';
+	import ThemeSwitcher from '$modules/theme/components/ThemeSwitcher.svelte';
 	import Avatar from '$modules/user/components/Avatar.svelte';
 	import { storeUser } from '$modules/user/store.svelte';
 </script>
