@@ -5,7 +5,11 @@
 	import type { FormField } from '$liwe3/components/FormCreator.svelte';
 	import type { SystemDomain } from '../types';
 
-	export let domain: SystemDomain;
+	interface Props {
+		domain: SystemDomain;
+	}
+
+	let { domain }: Props = $props();
 
 	let fields: FormField[] = [
 		{

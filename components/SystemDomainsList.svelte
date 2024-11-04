@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import Button from '$liwe3/components/Button.svelte';
 	import DataGrid, {
 		type DataGridAction,
@@ -19,18 +21,18 @@
 	import SystemDomainEdit from './SystemDomainEdit.svelte';
 	import { PencilSquare, Trash } from 'svelte-hero-icons';
 
-	let currentRow: any = null;
+	let currentRow: any = $state(null);
 	let totRows: number = 0;
 	let maxRowsPerPage = 50;
-	let inv = '';
+	let inv = $state('');
 
-	let domains: SystemDomain[] = [];
-	let displayDomains: DataGridRow[] = [];
-	let filteredDomains: SystemDomain[] = [];
+	let domains: SystemDomain[] = $state([]);
+	let displayDomains: DataGridRow[] = $state([]);
+	let filteredDomains: SystemDomain[] = $state([]);
 
-	let editModalOpen = false;
-	let deleteModalOpen = false;
-	let inviteModalOpen = false;
+	let editModalOpen = $state(false);
+	let deleteModalOpen = $state(false);
+	let inviteModalOpen = $state(false);
 
 	let actions: DataGridAction[] = [
 		{
@@ -91,10 +93,10 @@
 		domains = res;
 	};
 
-	$: {
+	$effect(() => {
 		filteredDomains = domains || [];
 		displayDomains = filteredDomains.slice(0, maxRowsPerPage);
-	}
+	});
 
 	onMount(async () => {
 		updateDomains();

@@ -2,13 +2,18 @@
 	import ThemeSwitcher from '$modules/theme/components/ThemeSwitcher.svelte';
 	import Avatar from '$modules/user/components/Avatar.svelte';
 	import { storeUser } from '$modules/user/store.svelte';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 </script>
 
 {#if storeUser?.uid}
 	<div class="toolbar">
 		LiWE Toolbar
 		<div class="item">
-			<slot />
+			{@render children?.()}
 		</div>
 		<div class="row">
 			<ThemeSwitcher />
