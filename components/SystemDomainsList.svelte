@@ -6,7 +6,7 @@
 		type DataGridAction,
 		type DataGridRow
 	} from '$liwe3/components/DataGrid.svelte';
-	import { _ } from '$liwe3/stores/LocalizationStore';
+	import LocalizationStore from '$liwe3/stores/LocalizationStore.svelte';
 	import { onMount } from 'svelte';
 	import gridFields from './subs/domains_fields';
 	import type { SystemDomain } from '../types';
@@ -20,6 +20,8 @@
 	import Modal from '$liwe3/components/Modal.svelte';
 	import SystemDomainEdit from './SystemDomainEdit.svelte';
 	import { PencilSquare, Trash } from 'svelte-hero-icons';
+
+	const _ = LocalizationStore._;
 
 	let currentRow: any = $state(null);
 	let totRows: number = 0;
@@ -105,7 +107,7 @@
 
 <div class="container">
 	<div class="buttons">
-		<p class="title">{$_('System Domains List')}</p>
+		<p class="title">{_('System Domains List')}</p>
 		<Button
 			mode="mode2"
 			size="sm"
@@ -114,7 +116,7 @@
 				editModalOpen = true;
 			}}
 		>
-			{$_('Create Domain')}
+			{_('Create Domain')}
 		</Button>
 	</div>
 	{#key displayDomains}
@@ -144,7 +146,7 @@
 
 {#if deleteModalOpen}
 	<Modal
-		title={$_('Delete domain')}
+		title={_('Delete domain')}
 		onclose={() => {
 			domains = domains.filter((r) => r.id !== currentRow.id);
 			deleteModalOpen = false;
@@ -153,19 +155,19 @@
 			deleteModalOpen = false;
 		}}
 	>
-		{$_('Please confirm you want to delete domain')}<br />
+		{_('Please confirm you want to delete domain')}<br />
 		<div class="delete-domain">{currentRow?.code} / {currentRow?.name}</div>
 
 		<div class="buttons">
-			<Button mode="error" onclick={deleteDomain}>{$_('Delete Domain')}</Button>
-			<Button mode="info" onclick={() => (deleteModalOpen = false)}>{$_('Cancel')}</Button>
+			<Button mode="error" onclick={deleteDomain}>{_('Delete Domain')}</Button>
+			<Button mode="info" onclick={() => (deleteModalOpen = false)}>{_('Cancel')}</Button>
 		</div>
 	</Modal>
 {/if}
 
 {#if editModalOpen}
 	<Modal
-		title={$_('Edit domain')}
+		title={_('Edit domain')}
 		onclose={() => {
 			editModalOpen = false;
 		}}
@@ -179,7 +181,7 @@
 
 {#if inviteModalOpen}
 	<Modal
-		title={$_('Invite token')}
+		title={_('Invite token')}
 		size="md"
 		onclose={() => {
 			inviteModalOpen = false;
