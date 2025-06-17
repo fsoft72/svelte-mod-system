@@ -4,7 +4,8 @@
 	import Button from '$liwe3/components/Button.svelte';
 	import DataGrid, {
 		type DataGridAction,
-		type DataGridRow
+		type DataGridButton,
+		type DataGridRow,
 	} from '$liwe3/components/DataGrid.svelte';
 	import LocalizationStore from '$liwe3/stores/LocalizationStore.svelte';
 	import { onMount } from 'svelte';
@@ -15,11 +16,12 @@
 		system_admin_domain_add,
 		system_admin_domain_update,
 		system_admin_domains_list,
-		system_domain_create_invite
+		system_domain_create_invite,
 	} from '../actions';
 	import Modal from '$liwe3/components/Modal.svelte';
 	import SystemDomainEdit from './SystemDomainEdit.svelte';
 	import { PencilSquare, Trash } from 'svelte-hero-icons';
+	import { mkid } from '$liwe3/utils/utils';
 
 	const _ = LocalizationStore._;
 
@@ -42,38 +44,51 @@
 			label: 'Invite',
 			icon: PencilSquare,
 			mode: 'mode3',
-			action: async (row: any) => {
+			onclick: async (row: any) => {
 				inv = await system_domain_create_invite(row.id);
 				inviteModalOpen = true;
-			}
+			},
 		},
 		{
 			id: 'edit',
 			label: 'Edit',
 			icon: PencilSquare,
 			mode: 'mode1',
-			action: (row: any) => {
+			onclick: (row: any) => {
 				currentRow = row;
 				editModalOpen = true;
-			}
+			},
 		},
 		{
 			id: 'delete',
 			label: 'Delete',
 			icon: Trash,
 			mode: 'error',
-			action: (row: any) => {
+			onclick: (row: any) => {
 				currentRow = row;
 				deleteModalOpen = true;
-			}
-		}
+			},
+		},
+	];
+
+	let buttons: DataGridButton[] = [
+		{
+			id: 'create',
+			label: _('Create Domain'),
+			icon: 'plus',
+			mode: 'mode2',
+			onclick: () => {
+				currentRow = { id: '', code: '', name: '', visible: true };
+				editModalOpen = true;
+			},
+		},
 	];
 
 	const deleteDomain = async () => {
 		console.log('=== DELETE DOMAIN', currentRow);
 	};
 
-	const onDomain = async (domain: SystemDomain) => {
+	const onDomain = async (domain: Record<string, any>) => {
 		let res;
 
 		if (domain?.id.length) {
@@ -85,6 +100,8 @@
 		if (res.error) return;
 
 		updateDomains();
+
+		editModalOpen = false;
 	};
 
 	const updateDomains = async () => {
@@ -106,24 +123,13 @@
 </script>
 
 <div class="container">
-	<div class="buttons">
-		<p class="title">{_('System Domains List')}</p>
-		<Button
-			mode="mode2"
-			size="sm"
-			on:click={() => {
-				currentRow = { id: '' };
-				editModalOpen = true;
-			}}
-		>
-			{_('Create Domain')}
-		</Button>
-	</div>
 	{#key displayDomains}
 		<DataGrid
+			title={_('Domains')}
 			data={displayDomains}
 			fields={gridFields}
 			{actions}
+			{buttons}
 			onupdatefield={async (row, field_name) => {
 				console.log('updateField', row, field_name);
 				// const res = await user_admin_fields(row.id, { [field_name]: row[field_name] });
@@ -134,11 +140,8 @@
 		<Paginator
 			total={totRows}
 			rows={maxRowsPerPage}
-			on:pagechange={(e) => {
-				displayDomains = filteredDomains.slice(
-					(e.detail.page - 1) * maxRowsPerPage,
-					e.detail.page * maxRowsPerPage
-				);
+			onpagechange={(page: number, maxRowsPerPage: number) => {
+				displayDomains = filteredDomains.slice(page - 1 * maxRowsPerPage, page * maxRowsPerPage);
 			}}
 		/>
 	{/key}
@@ -175,7 +178,7 @@
 			editModalOpen = false;
 		}}
 	>
-		<SystemDomainEdit domain={currentRow} on:domain={(e) => onDomain(e.detail)} />
+		<SystemDomainEdit domain={currentRow} onsubmit={onDomain} />
 	</Modal>
 {/if}
 

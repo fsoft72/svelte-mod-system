@@ -1,22 +1,21 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-
 	import FormCreator from '$liwe3/components/FormCreator.svelte';
 	import type { FormField } from '$liwe3/components/FormCreator.svelte';
 	import type { SystemDomain } from '../types';
 
 	interface Props {
 		domain: SystemDomain;
+		onsubmit: (data: Record<string, any>) => void;
 	}
 
-	let { domain }: Props = $props();
+	let { domain, onsubmit }: Props = $props();
 
 	let fields: FormField[] = [
 		{
 			name: 'id',
 			label: 'ID',
 			type: 'hidden',
-			required: true
+			required: false,
 		},
 		{
 			name: 'code',
@@ -24,7 +23,7 @@
 			type: 'text',
 			required: true,
 			placeholder: 'code',
-			col: 4
+			col: 4,
 		},
 		{
 			name: 'name',
@@ -32,24 +31,18 @@
 			type: 'text',
 			required: true,
 			placeholder: 'Name',
-			col: 6
+			col: 6,
 		},
 		{
 			name: 'visible',
 			label: 'Visible',
 			type: 'checkbox',
 			required: false,
-			col: 2
-		}
+			col: 2,
+		},
 	];
-
-	const dispatch = createEventDispatcher();
-
-	const onSubmit = (data: any) => {
-		dispatch('domain', data);
-	};
 </script>
 
 <div class="container">
-	<FormCreator {fields} values={domain} on:submit={(e) => onSubmit(e.detail)} />
+	<FormCreator {fields} values={domain} {onsubmit} />
 </div>
